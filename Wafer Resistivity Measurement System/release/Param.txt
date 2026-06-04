@@ -1,0 +1,6 @@
+isDefaultUsingThisParam:1;
+CurrentPosition:0;
+VoltageRange:0;
+a:1;
+b:0;
+CurrentCalibrationData:2.5,2.5,2.5,2.5,2.5,2.5,0.25;

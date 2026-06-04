@@ -1,0 +1,27 @@
+# Keil build output
+Objects/
+Listings/
+*.bak
+*.dep
+*.crf
+*.d
+*.o
+*.axf
+*.hex
+*.map
+*.lst
+
+# Keil user/local settings
+*.uvguix.*
+*.uvoptx
+
+# Qt build output
+build*/
+*.pro.user
+*.user
+*.autosave
+
+# General
+*.log
+.DS_Store
+Thumbs.db
