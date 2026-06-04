@@ -177,6 +177,13 @@ private:
     void SetStyle_PushButton(QPushButton *btn);
     void SetStyle_ToolButton(QToolButton *btn);
 
+    /************************ menu_init.cpp **************************/
+    void Init_Menu(void);
+    void Init_Menu_CurrPos(void);
+    void Init_Menu_VolRange(void);
+    void Init_Menu_MeasureMode(void);
+    void Init_Menu_ControlAlgo(void);
+    void Init_Menu_COM(void);
 
     void Slot_cin_Kp(void);
     void Slot_cin_Ti(void);

@@ -28,6 +28,7 @@ SOURCES += main.cpp \
     controlloop.cpp \
     Serial/Answer/answer_read_current_only.cpp \
     Serial/Answer/answer_modify_control_voltage.cpp \
+    Menu/menu_init.cpp \
     Param/Slots/slot_cin_kp.cpp \
     Param/Slots/slot_cin_ti.cpp \
     Param/Slots/slot_cin_td.cpp
