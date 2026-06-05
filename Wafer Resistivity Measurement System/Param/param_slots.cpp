@@ -63,6 +63,7 @@ void Widget::onButtonCurrErrorBoundClicked()
     if (true || Popup_Confirm_Dialog("提示", "是否保存并使用该误差范围?")) {
         Param_used.CurrErrorBound = val;
         Param_Setting_Write(NAME_CurrErrorBound, val);
+        Command_SendPIDControlConfig();
     }
 
     ui->cin_CurrErrorBound->setText(QString::number(Param_used.CurrErrorBound));

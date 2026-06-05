@@ -31,6 +31,7 @@ void	ADC2_Read(void);
 bool	is_ADC1_ReadComplete(void);
 bool	is_ADC2_ReadComplete(void);
 float	Return_Data_ADC1_f(void);
+float	Return_Data_ADC2_f(void);
 
 /** Function_ADC_Gain.c */
 void Set_ADC1_Gain(int num_Gain);

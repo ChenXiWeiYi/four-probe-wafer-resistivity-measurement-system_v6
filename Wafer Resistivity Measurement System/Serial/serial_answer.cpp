@@ -46,6 +46,11 @@ void Widget::DispatchPacket(const QByteArray &payload)
             Answer_MeasureState(payload);
             qDebug() << "接收到测量状态答复";
             break;
+        case(0xC0):
+            if(CommStruct_used.Flag_isEchoVerified){
+                ui->logText_1->append("PID控制配置已发送");
+            }
+            break;
         case(0xD0):
             Answer_CurrentForControl(payload);
             break;
@@ -171,6 +176,12 @@ void Widget::Answer_ErrorRecieve(const QByteArray &payload)
         break;
     case(0x02):
         ui->logText_1->append("单片机错误: 控制字未知");
+        break;
+    case(0x08):
+        ui->logText_1->append("单片机错误: 电流误差超限");
+        break;
+    case(0x09):
+        ui->logText_1->append("单片机错误: PID配置数据长度错误");
         break;
     case(0x0E):
         ui->logText_1->append("单片机错误: 未知错误");

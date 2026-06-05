@@ -105,6 +105,7 @@ int main(void)
 						ADC1_Read();
 						CLR_Flag_ADC1_DRDY();
 						ADC2_Read();
+						CurrentControl_UpdateFromADC();
 						CLR_Flag_ADC2_DRDY();
 						cnt_Measure = cnt_Measure + 1;
 						cnt = cnt + 1;
@@ -128,6 +129,7 @@ int main(void)
 			if(is_Flag_ADC2_DRDY()){
 				if(1){ //(DRDY_ADC2 == 0){
 					ADC2_Read();
+					CurrentControl_UpdateFromADC();
 					CLR_Flag_ADC2_DRDY();
 					Answer_ReadCurrentOnly();
 					Stop_ReadCurrentOnly();
@@ -152,6 +154,7 @@ int main(void)
 						ADC1_Read();
 						CLR_Flag_ADC1_DRDY();
 						ADC2_Read();
+						CurrentControl_UpdateFromADC();
 						CLR_Flag_ADC2_DRDY();
 						cnt_Measure = cnt_Measure + 1;
 						cnt = cnt + 1;

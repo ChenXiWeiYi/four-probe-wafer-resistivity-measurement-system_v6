@@ -55,6 +55,7 @@
 #include "Answer_Handler.h"
 #include "USART.h"
 #include "Measure.h"
+#include "Control_Current_Value.h"
 
 #endif /* __MAIN_H */
 

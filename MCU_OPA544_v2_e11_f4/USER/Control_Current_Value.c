@@ -1,79 +1,130 @@
 #include "Control_Current_Value.h"
+#include "Function_ADC.h"
+#include "Function_DAC.h"
+#include "Answer_Handler.h"
 
-static float SP_Current = 0;
-static float PV_Current = 2.5;
-static float Kp = 0;		// 比例系数
-static float Ti = 1000000000000;		// 积分时间
-static float Td = 0;	// 微分时间
-static float dt = 1;		// 时间间隔
-static bool flag_AutoModifyCurrnt = false;
+static bool Flag_PIDEnabled = false;
+static bool Flag_PIDParamReceived = false;
+static bool Flag_CurrentErrorReported = false;
 
-static void Modify_Current_Value(void);
+static uint8_t CurrentPos_UI = 0;
+static float SP_Current = 0.0f;
+static float PV_Current = 0.0f;
+static float Kp = 0.0f;
+static float Ki = 0.0f;
+static float Kd = 0.0f;
+static float Last_uk = 0.0f;
+static float Last_Err = 0.0f;
+static float Last_Last_Err = 0.0f;
+static float CurrErrorBoundPercent = 0.0f;
 
-/**
- * @brief 是否自动修改电流值
- *
- */
-void if_Auto_Modify_Current(bool flag_AutoModifyCurrnt_new)
+static float CurrentControl_ReturnCurrentGain(uint8_t currentPos)
 {
-	flag_AutoModifyCurrnt = flag_AutoModifyCurrnt_new;
+    switch(currentPos){
+    case 1: return 25.0f;
+    case 2: return 100.0f;
+    case 3: return 1000.0f;
+    case 4: return 10000.0f;
+    case 5: return 100000.0f;
+    case 6: return 1000000.0f;
+    case 7: return 1000000.0f;
+    default: return 100000000000.0f;
+    }
 }
 
-/**
- * @brief 修改电流设定值
- * @param SP_Current_new 新的电流设定值
- */
-void Modify_SP_Current(float SP_Current_new)
+static float CurrentControl_Abs(float value)
 {
-	SP_Current = SP_Current_new;
+    return value < 0.0f ? -value : value;
 }
 
-/**
- * @brief 修改电流测量值
- * @param PV_Current_new 新的电流测量值
- */
-void Modify_PV_Current(float PV_Current_new)
+static float CurrentControl_LimitVoltage(float voltage)
 {
-	PV_Current = PV_Current_new;
-	if(flag_AutoModifyCurrnt)
-	{
-		Modify_Current_Value();
-	}
+    if(voltage > 3.0f) return 3.0f;
+    if(voltage < 0.0f) return 0.0f;
+    return voltage;
 }
 
-/**
- * @brief 修改电流输出值
- * 仅在 Modify_PV_Current 中被调用
- */
-static void Modify_Current_Value(void)
+void CurrentControl_SetConfig(bool enabled, float errorBoundPercent)
 {
-	float Error_Current = 0;
-	static float Error_Current_1 = 0;		// 上一个误差
-	static float Sigma_Error_Current = 0;	// 总误差
-	float OutputValue_Current_f = 2.5;
-	uint16_t OutputValue_Current_u16 = 0;
-	uint8_t OutputValue_Current_u8[2] = {0};
-
-	Error_Current_1 = Error_Current;
-	Error_Current = PV_Current - SP_Current;
-	Sigma_Error_Current = Sigma_Error_Current + Error_Current;
-	OutputValue_Current_f = Kp * Error_Current + Sigma_Error_Current / Ti * dt + Td * (Error_Current - Error_Current_1) / dt;
-	
-	OutputValue_Current_u16 = (uint16_t)(OutputValue_Current_f/5*65535);
-	OutputValue_Current_u8[0] = (OutputValue_Current_u16>>8) & 0xFF;
-	OutputValue_Current_u8[1] = OutputValue_Current_u16 & 0xFF;
-	printf("Test:Modify Currnet Value. %f. to Hex:%X%X.\r\n",OutputValue_Current_f, OutputValue_Current_u8[0],OutputValue_Current_u8[1]);
-	Modify_Set_Voltage_Value(OutputValue_Current_u8);
-
+    Flag_PIDEnabled = enabled;
+    CurrErrorBoundPercent = errorBoundPercent;
+    Flag_CurrentErrorReported = false;
 }
 
-/**
- * @brief 返回浮点数电流值
- * @return 浮点数电流值
- */
-
-float Read_PV_Current_f(void)
+void CurrentControl_SetEnabled(bool enabled)
 {
-	return PV_Current;
+    Flag_PIDEnabled = enabled;
+    Flag_CurrentErrorReported = false;
 }
 
+void CurrentControl_SetParams(uint8_t currentPos, float spCurrent, float kp, float ki, float kd)
+{
+    CurrentPos_UI = currentPos;
+    SP_Current = spCurrent;
+    Kp = kp;
+    Ki = ki;
+    Kd = kd;
+    Last_Err = 0.0f;
+    Last_Last_Err = 0.0f;
+    Flag_CurrentErrorReported = false;
+    Flag_PIDParamReceived = true;
+}
+
+void CurrentControl_SetOutputVoltage(float voltage)
+{
+    Last_uk = CurrentControl_LimitVoltage(voltage);
+}
+
+float CurrentControl_ConvertADC2ToCurrent(void)
+{
+    float adcVoltage = Return_Data_ADC2_f();
+    float currentGain = CurrentControl_ReturnCurrentGain(CurrentPos_UI);
+    PV_Current = adcVoltage / currentGain;
+    return PV_Current;
+}
+
+void CurrentControl_UpdateFromADC(void)
+{
+    float err;
+    float errPercent;
+    float deltaUk;
+    float outputVoltage;
+
+    CurrentControl_ConvertADC2ToCurrent();
+
+    if(!Flag_PIDEnabled){
+        return;
+    }
+    if(!Flag_PIDParamReceived){
+        return;
+    }
+    if(SP_Current <= 0.0f){
+        return;
+    }
+
+    err = SP_Current - PV_Current;
+    errPercent = CurrentControl_Abs(err / SP_Current * 100.0f);
+
+    if(CurrErrorBoundPercent > 0.0f && errPercent > CurrErrorBoundPercent){
+        if(!Flag_CurrentErrorReported){
+            Answer_Error(Error_CurrentOutOfRange);
+            Flag_CurrentErrorReported = true;
+        }
+    }else{
+        Flag_CurrentErrorReported = false;
+    }
+
+    if(Kp == 0.0f && Ki == 0.0f && Kd == 0.0f){
+        return;
+    }
+
+    deltaUk = Kp * (err - Last_Err)
+            + Ki * err
+            + Kd * (err + Last_Last_Err - 2.0f * Last_Err);
+    outputVoltage = CurrentControl_LimitVoltage(Last_uk + deltaUk);
+
+    DAC_Write(outputVoltage);
+    Last_uk = outputVoltage;
+    Last_Last_Err = Last_Err;
+    Last_Err = err;
+}

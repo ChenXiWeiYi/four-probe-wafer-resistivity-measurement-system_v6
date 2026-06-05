@@ -65,5 +65,6 @@ void Widget::onMenuCOMTriggered(QAction *action)
         qDebug() << comName << "open success";
         ui->logText_1->append(QString("成功: 打开 %1").arg(comName));
         ui->Button_SelCOM->setText(comName);
+        Command_SendPIDControlConfig();
     }
 }

@@ -152,7 +152,8 @@ private:
     void Command_ModifyControlVoltage(void);
     void Command_StartMeasurement(void);
     void Command_ReadCurrentOnly(void);
-     void Command_SendCustomControlVoltage(float voltage);
+    void Command_SendPIDControlConfig(void);
+    void Command_SendCustomControlVoltage(float voltage);
     /****************** serial_calculate_crc16.cpp *******************/
     unsigned short Calculate_CRC16(const QByteArray &data);
     /****************** serial_readserialdata.cpp ********************/

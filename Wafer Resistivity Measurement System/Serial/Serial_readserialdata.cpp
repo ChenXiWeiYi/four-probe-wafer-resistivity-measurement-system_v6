@@ -20,8 +20,8 @@ void Widget::readSerialData(void)
         }
         unsigned char bodyLen = (unsigned char)m_buffer.at(2);  // 第三个字节存数据+CRC长度,不包括自己和帧头
 
-        if(bodyLen > 20){   // 数据长度比20还多,一眼假头
-            m_buffer.remove(0,1);
+        if(bodyLen > 60){
+            m_buffer.remove(0, 1);
             continue;
         }
 

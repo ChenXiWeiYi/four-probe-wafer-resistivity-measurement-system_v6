@@ -8,7 +8,7 @@
 /** 预编译 **/
 #define PROTOCOL_HEAD1	0xAA	// 帧头1
 #define PROTOCOL_HEAD2	0x55	// 帧头2
-#define MAX_RX_LEN		20		// 最大接收缓冲区大小(根据实际需求调整)
+#define MAX_RX_LEN		64		// 最大接收缓冲区大小(根据实际需求调整)
 
 /** 接收状态机枚举 **/
 typedef enum {
