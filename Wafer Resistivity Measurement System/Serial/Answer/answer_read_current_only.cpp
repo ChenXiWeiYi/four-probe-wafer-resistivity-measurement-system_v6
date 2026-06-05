@@ -21,7 +21,10 @@ void Widget::Answer_ReadCurrentOnly(const QByteArray &payload)
             return;
         }
 
-        if(Param_used.ControlAlgo == ALGO_NONE) return;
+        if(!Param_used.PIDControlEnabled){
+            Timer_ContactMonitor->start(10);
+            return;
+        }
 
         Controller_used.PV_Current += Current;
         if(MeasureState_used.cnt_Curr == 9){

@@ -109,7 +109,8 @@ Widget::Widget(QWidget *parent)
     ui->ProgressBar_Init->setValue(98);
     Init_Param_ControlVoltages();
     ui->ProgressBar_Init->setValue(99);
-    Init_Param_ControlAlgo();
+    Init_Param_PIDParameters();
+    Init_Param_PIDControlEnabled();
     ui->ProgressBar_Init->setValue(100);
 
     ui->ProgressBar_MeasureProgress->setValue(0);

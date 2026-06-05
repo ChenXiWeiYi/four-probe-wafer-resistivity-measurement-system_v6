@@ -15,7 +15,10 @@ enum ParamName_TypeDef{
     NAME_SemiType = 10,
     NAME_MeasureMode = 11,
     NAME_ControlVoltages = 12,
-    NAME_ControlAlgorithm = 13
+    NAME_PID_Kp = 13,
+    NAME_PID_Ti = 14,
+    NAME_PID_Td = 15,
+    NAME_PIDControlEnabled = 16
 };
 
 enum MeasureWarning_TypeDef{
@@ -76,14 +79,5 @@ enum SemiType_TypeDef{
     SEMITYPE_P = 0,
     SEMITYPE_N = 1
 };
-
-// 闭环控制算法类型
-enum ControlAlgo_TypeDef {
-    ALGO_NONE = 0,
-    ALGO_NORMAL_PID = 1,    // 传统PID整定
-    ALGO_LAMBDA_PID = 2,    // Lambda整定PID(代码一样，只是参数不同)
-    ALGO_MPC = 3            // 模型预测控制
-};
-
 
 #endif // GLOBAL_ENUM_DEFINE_H

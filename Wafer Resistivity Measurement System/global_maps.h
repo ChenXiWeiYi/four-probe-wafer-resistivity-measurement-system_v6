@@ -12,7 +12,6 @@ extern const QMap<CurrPos_TypeDef, QString> Map_CurrPos;
 extern const QMap<CurrPos_TypeDef, double> Map_CurrValue;
 extern const QMap<VolRange_TypeDef, QString> Map_VolRange;
 extern const QMap<MeasureMode_TypeDef,QString> Map_MeasureMode;
-extern const QMap<ControlAlgo_TypeDef, QString> Map_ControlAlgo;
 
 extern const QMap<ValueType_TypeDef,QString> Map_ValueType;
 

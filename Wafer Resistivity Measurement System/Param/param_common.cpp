@@ -39,11 +39,16 @@ bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, const QString &Par
         Popup_Window("严重错误", "参数映射表缺失，请检查代码！");
         return false;
     }
+    bool found = false;
     for(int i = 0; i < lines.size(); ++i){
         if(lines[i].startsWith(ParamName_QS)){
             lines[i] = ParamName_QS + ParamValue + ";";
+            found = true;
             break;
         }
+    }
+    if(!found){
+        lines.append(ParamName_QS + ParamValue + ";");
     }
     if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
         Popup_Window("错误","参数文件打开失败(无法写入)!");
@@ -125,6 +130,42 @@ QString Widget::VectorToString(const QVector<float>& vec){
         list << QString::number(v, 'f', 6);
     }
     return list.join(",");
+}
+
+QString Widget::VectorToString(const QVector<double>& vec){
+    QStringList list;
+    for(double v : vec) {
+        list << QString::number(v, 'f', 6);
+    }
+    return list.join(",");
+}
+
+int Widget::CurrentPidParamIndex(void) const
+{
+    int idx = Param_used.CurrPos - static_cast<int>(CURRENTPOSITION_100mA);
+    if(idx < 0 || idx >= Param_used.PID_Kp.size()){
+        return -1;
+    }
+    return idx;
+}
+
+void Widget::Load_PIDParamsForCurrentPosition(void)
+{
+    int idx = CurrentPidParamIndex();
+    if(idx < 0){
+        ui->cin_Kp->setText("---");
+        ui->cin_Ti->setText("---");
+        ui->cin_Td->setText("---");
+        return;
+    }
+
+    Controller_used.Kp = Param_used.PID_Kp[idx];
+    Controller_used.Ti = Param_used.PID_Ti[idx];
+    Controller_used.Td = Param_used.PID_Td[idx];
+
+    ui->cin_Kp->setText(QString::number(Controller_used.Kp));
+    ui->cin_Ti->setText(QString::number(Controller_used.Ti));
+    ui->cin_Td->setText(QString::number(Controller_used.Td));
 }
 
 

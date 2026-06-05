@@ -44,7 +44,6 @@ private:
     QMenu *Menu_VolRange;
     QMenu *Menu_COM;                    // COM口选择菜单
     QMenu *Menu_MeasureMode;
-    QMenu *Menu_ControlAlgo;
     QSerialPort *serialPort;           // 串口对象
     QAction *SelCOMAction;             // 当前选中的COM口
     int SelChannel;                    // 当前选中的通道号
@@ -71,7 +70,8 @@ private:
     void Init_Param_FspCorrectionFactor(void);
     void Init_Param_SemiType(void);
     void Init_Param_ControlVoltages(void);
-    void Init_Param_ControlAlgo(void);
+    void Init_Param_PIDParameters(void);
+    void Init_Param_PIDControlEnabled(void);
     /************************ param_common.cpp ***********************/
     QVariant Param_Setting_Read(ParamName_TypeDef ParamName);
     bool Param_Setting_Write(ParamName_TypeDef ParamName, const QString &ParamValue);
@@ -79,9 +79,12 @@ private:
     bool Param_Setting_Write(ParamName_TypeDef ParamName, float ParamValue);
     bool Param_Setting_Write(ParamName_TypeDef ParamName, double ParamValue);
     QString VectorToString(const QVector<float> &vec);
+    QString VectorToString(const QVector<double> &vec);
     QVariant Return_Param_used(ParamName_TypeDef ParamName);
     void Modify_Param_used(ParamName_TypeDef ParamName, double value);
     void Modify_Param_used(ParamName_TypeDef ParamName, int value);
+    int CurrentPidParamIndex(void) const;
+    void Load_PIDParamsForCurrentPosition(void);
     /********************** param_correction.cpp *********************/
     void Update_GeometryCorrectionFactor(void);
     void Update_CorrectionFactor(double Resistance);
@@ -91,7 +94,6 @@ private:
     void onMenuVolRangeTriggered(QAction *action);
     void onMenuCOMTriggered(QAction *action);
     void onMenuMeasureModeTriggered(QAction *action);
-    void onMenuControlAlgoTriggered(QAction *action);
     /************************ param_slots.cpp ************************/
     void onButtonSelSemiTypeClicked();
     void onButtonSemiTypeClicked();
@@ -182,7 +184,6 @@ private:
     void Init_Menu_CurrPos(void);
     void Init_Menu_VolRange(void);
     void Init_Menu_MeasureMode(void);
-    void Init_Menu_ControlAlgo(void);
     void Init_Menu_COM(void);
 
     void Slot_cin_Kp(void);
