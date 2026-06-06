@@ -149,8 +149,9 @@ void Widget::on_pushButton_2_clicked()
 
 void Widget::on_pushButton_3_clicked()
 {
+    int mcuCurrPos = CurrentMcuCurrPos();
     Controller_used.PV_Current = 0;
-    Controller_used.SP_Current = Map_CurrValue.value(static_cast<CurrPos_TypeDef>(Param_used.CurrPos));
+    Controller_used.SP_Current = Map_CurrValue.value(static_cast<CurrPos_TypeDef>(mcuCurrPos));
     Controller_used.Last_uk = Param_used.ControlVoltages[static_cast<int>(Param_used.CurrPos)];
     Controller_used.Last_Err = 0.0;      // 上次误差 (用于微分)
     MeasureState_used.cnt_Curr = 0;

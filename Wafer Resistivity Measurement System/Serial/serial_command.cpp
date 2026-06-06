@@ -11,11 +11,12 @@ void AppendFloat(QByteArray *data, float value)
 void Widget::Command_SwitchCurrPos(void)
 {
     QByteArray data;
-    data.append(static_cast<char>(0x20 + (7 - static_cast<int>(Param_used.CurrPos))));
+    int mcuCurrPos = CurrentMcuCurrPos();
+    data.append(static_cast<char>(0x20 + mcuCurrPos));
 
     int idx = CurrentPidParamIndex();
     if(idx >= 0){
-        float spCurrent = static_cast<float>(Map_CurrValue.value(static_cast<CurrPos_TypeDef>(Param_used.CurrPos)));
+        float spCurrent = static_cast<float>(Map_CurrValue.value(static_cast<CurrPos_TypeDef>(mcuCurrPos)));
         float kp = static_cast<float>(Param_used.PID_Kp[idx]);
         float ki = 0.0f;
         float kd = static_cast<float>(Param_used.PID_Kp[idx] * Param_used.PID_Td[idx]);
@@ -24,7 +25,7 @@ void Widget::Command_SwitchCurrPos(void)
             ki = static_cast<float>(Param_used.PID_Kp[idx] / Param_used.PID_Ti[idx]);
         }
 
-        data.append(static_cast<char>(Param_used.CurrPos));
+        data.append(static_cast<char>(mcuCurrPos));
         data.append(static_cast<char>(Param_used.PIDControlEnabled ? 1 : 0));
         AppendFloat(&data, spCurrent);
         AppendFloat(&data, kp);

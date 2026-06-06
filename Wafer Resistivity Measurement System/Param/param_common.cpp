@@ -140,9 +140,19 @@ QString Widget::VectorToString(const QVector<double>& vec){
     return list.join(",");
 }
 
+int Widget::CurrentMcuCurrPos(void) const
+{
+    return 7 - static_cast<int>(Param_used.CurrPos);
+}
+
 int Widget::CurrentPidParamIndex(void) const
 {
-    int idx = Param_used.CurrPos - static_cast<int>(CURRENTPOSITION_100mA);
+    if(Param_used.CurrPos == static_cast<int>(CURRENTPOSITION_auto)){
+        return -1;
+    }
+
+    int mcuCurrPos = CurrentMcuCurrPos();
+    int idx = mcuCurrPos - static_cast<int>(CURRENTPOSITION_100mA);
     if(idx < 0 || idx >= Param_used.PID_Kp.size()){
         return -1;
     }

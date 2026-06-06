@@ -83,6 +83,7 @@ private:
     QVariant Return_Param_used(ParamName_TypeDef ParamName);
     void Modify_Param_used(ParamName_TypeDef ParamName, double value);
     void Modify_Param_used(ParamName_TypeDef ParamName, int value);
+    int CurrentMcuCurrPos(void) const;
     int CurrentPidParamIndex(void) const;
     void Load_PIDParamsForCurrentPosition(void);
     /********************** param_correction.cpp *********************/
