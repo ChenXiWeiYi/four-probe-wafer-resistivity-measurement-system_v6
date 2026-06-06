@@ -53,18 +53,7 @@ void Widget::onMenuCOMTriggered(QAction *action)
 {
     QString comName = action->text();
 
-    serialPort->close();
-    serialPort->setPortName(comName);
-
-    if(!serialPort->open(QIODevice::ReadWrite)){
-        qDebug() << comName << "open failed";
-        ui->logText_1->append(QString("错误: 无法打开 %1 - %2").arg(comName).arg(serialPort->errorString()));
-        ui->Button_SelCOM->setText("---");
+    if(!Open_SerialPortByName(comName, false)){
         action->setChecked(false);
-    }else{
-        qDebug() << comName << "open success";
-        ui->logText_1->append(QString("成功: 打开 %1").arg(comName));
-        ui->Button_SelCOM->setText(comName);
-        Command_SendPIDControlConfig();
     }
 }

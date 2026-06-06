@@ -41,6 +41,7 @@ SOURCES +=
 SOURCES += \
     Serial/serial_readserialdata.cpp \
     Serial/serial_calculate_crc16.cpp \
+    Serial/serial_autoconnect.cpp \
     Serial/serial_frame.cpp \
     Serial/serial_send_controlbyte.cpp \
     Serial/serial_answer.cpp \

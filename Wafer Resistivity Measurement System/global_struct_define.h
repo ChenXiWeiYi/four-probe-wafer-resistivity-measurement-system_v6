@@ -68,6 +68,9 @@ struct CommStruct_TypeDef
     unsigned char Seq_WaitingDone = 0;
     unsigned char CtrlByte_WaitingDone = 0;
     unsigned char Error_LastDone = 0;
+    bool Flag_isSerialConnected = false;
+    bool Flag_isSerialProbing = false;
+    int Cnt_HeartbeatLost = 0;
 };
 
 struct ControllerStruct_TypeDef

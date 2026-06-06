@@ -37,6 +37,9 @@ void Process_USART1(void)
         case 0x60:
             commandResult = Command_VoltRangeSwitch(pPayload, payload_len);
             break;
+        case 0x70:
+            commandResult = Command_Heartbeat(pPayload, payload_len);
+            break;
         case 0xA0:
             commandResult = Command_CurrentControlInputModify(pPayload, payload_len);
             break;

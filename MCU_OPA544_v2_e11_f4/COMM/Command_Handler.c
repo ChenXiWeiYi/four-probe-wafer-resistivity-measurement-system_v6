@@ -145,6 +145,15 @@ ErrorNumber_TypeDef Command_ReadCurrentOnly(uint8_t *payload, uint8_t payload_le
     return Error_None;
 }
 
+ErrorNumber_TypeDef Command_Heartbeat(uint8_t *payload, uint8_t payload_len)
+{
+    if(payload_len != 2){
+        return Error_InvalidPayloadLength;
+    }
+
+    return Error_None;
+}
+
 ErrorNumber_TypeDef Command_VoltRangeSwitch(uint8_t *payload, uint8_t payload_len)
 {
     int VolRange;

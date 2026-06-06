@@ -115,6 +115,13 @@ void Widget::Answer_AckNack(const QByteArray &payload)
         case 0x60:
             Answer_VoltageRange();
             break;
+        case 0x70:
+            CommStruct_used.Cnt_HeartbeatLost = 0;
+            if(CommStruct_used.Flag_isSerialProbing){
+                Handle_SerialConnected(serialPort->portName(), true);
+                Command_SendPIDControlConfig();
+            }
+            break;
         case 0xA0:
             Answer_ModifyControlVoltage();
             break;
@@ -143,6 +150,11 @@ void Widget::Answer_AckNack(const QByteArray &payload)
         break;
     case 0x60:
         Answer_VoltageRange();
+        break;
+    case 0x70:
+        if(CommStruct_used.Flag_isSerialProbing){
+            Handle_SerialDisconnected("设备识别失败", false);
+        }
         break;
     case 0xA0:
         Answer_ModifyControlVoltage();

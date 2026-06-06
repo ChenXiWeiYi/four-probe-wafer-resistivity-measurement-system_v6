@@ -100,6 +100,14 @@ void Widget::Command_ReadCurrentOnly(void)
     Serial_SendFrame(data);
 }
 
+void Widget::Command_Heartbeat(void)
+{
+    QByteArray data;
+    data.append(static_cast<char>(0x70));
+    data.append(static_cast<char>(NextCommandSeq()));
+    Serial_SendFrame(data);
+}
+
 void Widget::Command_SendPIDControlConfig(void)
 {
     if(!serialPort->isOpen()){

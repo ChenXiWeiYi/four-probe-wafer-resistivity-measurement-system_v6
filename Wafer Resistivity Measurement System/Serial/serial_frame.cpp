@@ -32,6 +32,7 @@ bool Widget::Serial_SendFrame(const QByteArray &payload)
     if(payload.size() >= 2){
         unsigned char ctrlByte = static_cast<unsigned char>(payload.at(0));
         if(ctrlByte == 0x20 || ctrlByte == 0x40 || ctrlByte == 0x60 ||
+           ctrlByte == 0x70 ||
            ctrlByte == 0xA0 || ctrlByte == 0xB0 || ctrlByte == 0xC0){
             commandNeedsAck = true;
         }

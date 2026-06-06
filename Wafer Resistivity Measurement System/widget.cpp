@@ -19,6 +19,8 @@ Widget::Widget(QWidget *parent)
     , Timer_MeasureInterval(new QTimer(this))
     , Timer_EchoMonitor(new QTimer(this))
     , Timer_ContactMonitor(new QTimer(this))
+    , Timer_COMScan(new QTimer(this))
+    , Timer_Heartbeat(new QTimer(this))
     , ChannelSwitchSuccessFlag(false)
 {
     // 初始化UI
@@ -62,6 +64,10 @@ Widget::Widget(QWidget *parent)
     // serialPort = new QSerialPort(this);
     // ... 配置串口 ...
     connect(serialPort, &QSerialPort::readyRead, this, &Widget::readSerialData);
+    connect(serialPort,
+            static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::errorOccurred),
+            this,
+            &Widget::onSerialPortError);
     serialPort->setBaudRate(QSerialPort::Baud115200);
     // 关联其他按钮信号槽
     connect(ui->Button_logText1_CLR, &QPushButton::clicked, [this](){ ui->logText_1->clear(); });
@@ -73,6 +79,11 @@ Widget::Widget(QWidget *parent)
     Timer_EchoMonitor->setSingleShot(true);
     connect(Timer_ContactMonitor, &QTimer::timeout, this, &Widget::onTimerContactMonitorTimeout);
     Timer_ContactMonitor->setSingleShot(true);
+    connect(Timer_COMScan, &QTimer::timeout, this, &Widget::onTimerCOMScanTimeout);
+    Timer_COMScan->setSingleShot(false);
+    connect(Timer_Heartbeat, &QTimer::timeout, this, &Widget::onTimerHeartbeatTimeout);
+    Timer_Heartbeat->setSingleShot(false);
+    Start_AutoConnectSerial();
 
 
     //

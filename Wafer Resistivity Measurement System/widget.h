@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "global_struct_define.h"
 #include <QSerialPort>
+#include <QSerialPortInfo>
 #include <QTimer>
 #include "ui_widget.h"
 #include <QVector>
@@ -51,6 +52,8 @@ private:
     QTimer *Timer_MeasureInterval;
     QTimer *Timer_EchoMonitor;
     QTimer *Timer_ContactMonitor;
+    QTimer *Timer_COMScan;
+    QTimer *Timer_Heartbeat;
     bool ChannelSwitchSuccessFlag;     // 通道切换成功标志位
     QVector<double> ResistivityValue_QVector;
     QByteArray m_buffer; // 全局数据缓存区
@@ -156,6 +159,7 @@ private:
     void Command_ModifyControlVoltage(void);
     void Command_StartMeasurement(void);
     void Command_ReadCurrentOnly(void);
+    void Command_Heartbeat(void);
     void Command_SendPIDControlConfig(void);
     void Command_SendCustomControlVoltage(float voltage);
     /****************** serial_calculate_crc16.cpp *******************/
@@ -168,6 +172,15 @@ private:
     void Send_ControlByte(char CtrlByte);
     /********************* serial_echoerror.cpp **********************/
     void onTimerEchoMonitorTimeout(void);
+    /******************** serial_autoconnect.cpp *********************/
+    void Start_AutoConnectSerial(void);
+    void onTimerCOMScanTimeout(void);
+    void onTimerHeartbeatTimeout(void);
+    void onSerialPortError(QSerialPort::SerialPortError error);
+    bool Is_CH340Port(const QSerialPortInfo &portInfo) const;
+    bool Open_SerialPortByName(const QString &portName, bool autoConnect);
+    void Handle_SerialConnected(const QString &portName, bool autoConnect);
+    void Handle_SerialDisconnected(const QString &reason, bool showPopup);
 
     /*********************** controlloop.cpp *************************/
     void ControlLoop_Update(double PV_Current);
