@@ -62,6 +62,8 @@ void Set_Current_Position(int CurrPos);	// 设置通道并启动通道切换
 void Channel_Switch(void);	// // 在TIM2的中断服务-回调函数中被调用
 void CLR_CurrentPosition(void);
 bool is_CurrPosSwitch(void);
+void Set_CurrentPositionDoneNotify(uint8_t seq, uint8_t originCtrlByte);
+void Process_CurrentPositionDoneNotify(void);
 
 /**  Set_VoltMeter1_Range.c  **/
 void Set_VoltMeter1_Range(int Range_Vol1);

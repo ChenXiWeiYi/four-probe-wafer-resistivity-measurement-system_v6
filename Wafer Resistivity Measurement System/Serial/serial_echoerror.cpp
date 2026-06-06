@@ -2,7 +2,22 @@
 
 void Widget::onTimerEchoMonitorTimeout(void)
 {
-    CommStruct_used.Flag_isWaitingEcho = false;
-    Popup_Window("错误","单片机回显校验1s失败");
-}
+    if(CommStruct_used.Flag_isWaitingEcho){
+        CommStruct_used.Flag_isWaitingEcho = false;
+        CommStruct_used.Flag_isEchoVerified = false;
+        Popup_Window("Error", "MCU ACK/NACK response timeout");
+        return;
+    }
 
+    if(CommStruct_used.Flag_isWaitingDone){
+        unsigned char originCtrlByte = CommStruct_used.CtrlByte_WaitingDone;
+
+        CommStruct_used.Flag_isWaitingDone = false;
+        CommStruct_used.Flag_isEchoVerified = false;
+        Popup_Window("Error", "MCU operation done response timeout");
+
+        if(originCtrlByte == 0x20){
+            Answer_CurrentPosition();
+        }
+    }
+}

@@ -15,6 +15,10 @@ uint8_t	CurrPos_Sel = Current_POSITION_NONE;
 
 static bool	Flag_CurrPos2None = true;		// Flag_CurrPos2None 是否输出空通道，初始状态输出空通道
 static bool	Flag_CurrPosSwitch = false;		// 是否启动通道切换，初始状态不启动切换
+static volatile bool Flag_CurrPosDonePending = false;
+static volatile bool Flag_CurrPosDoneReady = false;
+static volatile uint8_t CurrPosDoneSeq = 0;
+static volatile uint8_t CurrPosDoneCtrlByte = 0;
 
 ChannelState_StateTypeDef CommState_595 = Start;	// 595通讯状态,Shift：595移入DS上的状态,Storage：595更新输出
 
@@ -131,6 +135,26 @@ bool is_CurrPosSwitch(void)
 	return Flag_CurrPosSwitch;
 }
 
+void Set_CurrentPositionDoneNotify(uint8_t seq, uint8_t originCtrlByte)
+{
+	Flag_CurrPosDonePending = true;
+	Flag_CurrPosDoneReady = false;
+	CurrPosDoneSeq = seq;
+	CurrPosDoneCtrlByte = originCtrlByte;
+}
+
+void Process_CurrentPositionDoneNotify(void)
+{
+	if(Flag_CurrPosDoneReady){
+		uint8_t seq = CurrPosDoneSeq;
+		uint8_t originCtrlByte = CurrPosDoneCtrlByte;
+
+		Flag_CurrPosDoneReady = false;
+		Flag_CurrPosDonePending = false;
+		Answer_OperationDone(seq, originCtrlByte, Error_None);
+	}
+}
+
 
 /**
  * @brief	启动通道切换
@@ -161,4 +185,7 @@ static void Channel_Switch_ok(void)
 	__HAL_TIM_SET_COUNTER(&TIM2_Handler,0);	// 清空TIM2计数
 	CurrPos_Sel = Current_POSITION_NONE;
 	num_595 = 0;	// 保险,防止多中断一次
+	if(Flag_CurrPosDonePending){
+		Flag_CurrPosDoneReady = true;
+	}
 }

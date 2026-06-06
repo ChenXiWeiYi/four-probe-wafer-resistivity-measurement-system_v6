@@ -57,15 +57,17 @@ void CurrentControl_SetEnabled(bool enabled)
     Flag_CurrentErrorReported = false;
 }
 
-void CurrentControl_SetParams(uint8_t currentPos, float spCurrent, float kp, float ki, float kd)
+void CurrentControl_SetParams(uint8_t currentPos, float spCurrent, float kp, float ki, float kd, float initialUk)
 {
     CurrentPos_UI = currentPos;
     SP_Current = spCurrent;
     Kp = kp;
     Ki = ki;
     Kd = kd;
+    Last_uk = CurrentControl_LimitVoltage(initialUk);
     Last_Err = 0.0f;
     Last_Last_Err = 0.0f;
+    PV_Current = 0.0f;
     Flag_CurrentErrorReported = false;
     Flag_PIDParamReceived = true;
 }

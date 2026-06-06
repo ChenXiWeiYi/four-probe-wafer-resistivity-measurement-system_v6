@@ -12,7 +12,7 @@ void Widget::Answer_ModifyControlVoltage(void)
     if(CommStruct_used.Flag_isEchoVerified){
         ui->cin_ControlVoltage->setText(QString::number(Param_used.ControlVoltages[static_cast<int>(Param_used.CurrPos)]));
         QString valStr = VectorToString(Param_used.ControlVoltages);
-        Controller_used.SP_Current = Map_CurrValue.value(static_cast<CurrPos_TypeDef>(Param_used.CurrPos));
+        Controller_used.SP_Current = Map_CurrValue.value(static_cast<CurrPos_TypeDef>(CurrentMcuCurrPos()));
    //     Controller_used.Last_uk = Param_used.ControlVoltages[static_cast<int>(Param_used.CurrPos)];
         Param_Setting_Write(NAME_ControlVoltages, valStr);
         if(MeasureState_used.Flag_TestCurrent == false){    // 自控的时候别弹窗口

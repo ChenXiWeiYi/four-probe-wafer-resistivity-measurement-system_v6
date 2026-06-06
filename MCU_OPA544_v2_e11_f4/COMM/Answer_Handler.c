@@ -4,17 +4,41 @@
 #include "Function_ADC.h"
 #include <string.h>
 
+void Answer_Ack(uint8_t seq, uint8_t originCtrlByte)
+{
+	uint8_t Message[5] = {0x10, 0x00, 0x00, 0x00, Error_None};
+	Message[1] = seq;
+	Message[2] = originCtrlByte;
+	Protocol_SendPacket(&Message[0], sizeof(Message));
+}
+
+void Answer_Nack(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeDef ErrorNumber)
+{
+	uint8_t Message[5] = {0x10, 0x00, 0x00, 0x01, Error_UnknownOperation};
+	Message[1] = seq;
+	Message[2] = originCtrlByte;
+	Message[4] = ErrorNumber;
+	Protocol_SendPacket(&Message[0], sizeof(Message));
+}
+
 /**
- * @brief Answer_ChannelSwitchProgress 向上位机发送档位情况
- *	BH	bit0~3 F:档位合适 0:档位不合适
-		bit4~7 E:档位校正标志
-	BL	bit0~3 电流档位
-		bit4~7 电压档位
- * @param CurrPos 电流档位
- * @param VoltRange 电压档位
- * @param ok 档位是否合适
- * @date 2026.02.03
+ * @brief Send operation completion frame 0x30.
+ * @param seq Command sequence copied from original command.
+ * @param originCtrlByte Original command control byte.
+ * @param ErrorNumber Completion result error code.
  */
+void Answer_OperationDone(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeDef ErrorNumber)
+{
+	uint8_t Message[5] = {0x30, 0x00, 0x00, 0x00, Error_None};
+	Message[1] = seq;
+	Message[2] = originCtrlByte;
+	if(ErrorNumber != Error_None){
+		Message[3] = 0x01;
+		Message[4] = ErrorNumber;
+	}
+	Protocol_SendPacket(&Message[0], sizeof(Message));
+}
+
 void Answer_ChannelSwitchProgress(int CurrPos, int VoltRange, bool ok)
 {
 	uint8_t Message[2] = {0xE0, 0x00};

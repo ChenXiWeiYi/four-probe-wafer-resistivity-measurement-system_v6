@@ -94,6 +94,7 @@ int main(void)
 		if(is_USART1_RxOK()){	// 处理USART1
 			Process_USART1();
 		}
+		Process_CurrentPositionDoneNotify();
 	
 		
 		// 判断是否测量

@@ -139,6 +139,8 @@ private:
     // ============================= 通信 ============================ //
     /********************** serial_answer.cpp ************************/
     void DispatchPacket(const QByteArray &payload);
+    void Answer_AckNack(const QByteArray &payload);
+    void Answer_OperationDone(const QByteArray &payload);
     void Answer_CurrentPosition(void);
     void Answer_VoltageRange(void);
     void Answer_ModifyControlVoltage(void);
@@ -148,6 +150,7 @@ private:
     void Answer_ReadCurrentOnly(const QByteArray &payload);
     void Answer_CurrentForControl(const QByteArray &payload);
     /********************** serial_command.cpp ***********************/
+    unsigned char NextCommandSeq(void);
     void Command_SwitchCurrPos(void);
     void Command_SwitchVolRange(void);
     void Command_ModifyControlVoltage(void);
@@ -159,8 +162,8 @@ private:
     unsigned short Calculate_CRC16(const QByteArray &data);
     /****************** serial_readserialdata.cpp ********************/
     void readSerialData(void);
-    /**************** serial_protocol_sendpacket.cpp *****************/
-    void Protocol_SendPacket(const QByteArray &payload);
+    /********************** serial_frame.cpp *************************/
+    bool Serial_SendFrame(const QByteArray &payload);
     /****************** serial_send_contrlbyte.cpp *******************/
     void Send_ControlByte(char CtrlByte);
     /********************* serial_echoerror.cpp **********************/

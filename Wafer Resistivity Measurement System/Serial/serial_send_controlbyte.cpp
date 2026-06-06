@@ -10,6 +10,7 @@
 void Widget::Send_ControlByte(char CtrlByte)
 {
     QByteArray data;
-    data.append(CtrlByte); // 只有一个字节的命令
-    Protocol_SendPacket(data);
+    data.append(CtrlByte);
+    data.append(static_cast<char>(NextCommandSeq()));
+    Serial_SendFrame(data);
 }

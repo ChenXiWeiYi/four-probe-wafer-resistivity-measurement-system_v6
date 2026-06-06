@@ -8,6 +8,8 @@ void Process_USART1(void)
     uint16_t calCRC;
     uint16_t recCRC;
     uint8_t CtrlByte;
+    uint8_t Seq;
+    ErrorNumber_TypeDef commandResult;
     uint8_t payload_len = RxPacketLen - 5;
     uint8_t *pPayload = &RxPacket[3];
 
@@ -15,33 +17,48 @@ void Process_USART1(void)
     recCRC = (RxPacket[RxPacketLen - 1] << 8) | RxPacket[RxPacketLen - 2];
 
     if(calCRC == recCRC){
+        if(payload_len < 2){
+            Answer_Error(Error_InvalidPayloadLength);
+            USART1_Clear_Rx();
+            return;
+        }
+
         CtrlByte = RxPacket[3];
-        switch(CtrlByte & 0xF0){
+        Seq = RxPacket[4];
+        commandResult = Error_UnknownOperation;
+
+        switch(CtrlByte){
         case 0x20:
-            Command_CurrPosSwitch(pPayload, payload_len);
+            commandResult = Command_CurrPosSwitch(pPayload, payload_len);
             break;
         case 0x40:
-            Command_ReadCurrentOnly();
+            commandResult = Command_ReadCurrentOnly(pPayload, payload_len);
             break;
         case 0x60:
-            Command_VoltRangeSwitch(CtrlByte);
+            commandResult = Command_VoltRangeSwitch(pPayload, payload_len);
             break;
         case 0xA0:
-            Command_CurrentControlInputModify(&RxPacket[4]);
+            commandResult = Command_CurrentControlInputModify(pPayload, payload_len);
             break;
         case 0xB0:
-            Command_StartMeasurement(RxPacket[4]);
+            commandResult = Command_StartMeasurement(pPayload, payload_len);
             break;
         case 0xC0:
-            Command_PIDControlConfig(pPayload, payload_len);
+            commandResult = Command_PIDControlConfig(pPayload, payload_len);
             break;
         case 0xE0:
+            commandResult = Error_None;
             break;
         default:
-            Answer_Error(Error_UnknownOperation);
+            commandResult = Error_UnknownOperation;
             break;
         }
-        Protocol_SendPacket(pPayload, payload_len);
+
+        if(commandResult == Error_None){
+            Answer_Ack(Seq, CtrlByte);
+        }else{
+            Answer_Nack(Seq, CtrlByte, commandResult);
+        }
     }else{
         Answer_Error(Error_CRCError);
     }

@@ -60,6 +60,14 @@ struct CommStruct_TypeDef
     bool Flag_isWaitingEcho = false;
     bool Flag_isEchoVerified = false;
     QByteArray PayLoad_LastSend;
+    unsigned char Seq_Next = 1;
+    unsigned char Seq_Waiting = 0;
+    unsigned char CtrlByte_Waiting = 0;
+    unsigned char Error_LastAck = 0;
+    bool Flag_isWaitingDone = false;
+    unsigned char Seq_WaitingDone = 0;
+    unsigned char CtrlByte_WaitingDone = 0;
+    unsigned char Error_LastDone = 0;
 };
 
 struct ControllerStruct_TypeDef
