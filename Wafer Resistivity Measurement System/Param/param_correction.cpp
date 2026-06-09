@@ -47,6 +47,8 @@ void Widget::Update_CorrectionFactor(double Resistance)
  * @param map 查值的表 (Key=输入量, Value=结果量)
  * @param inputX 需要查询的输入值 X
  * @return 内插后的结果值 Y
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 double Widget::LinearInterpolate(const QMap<double, double>& map, double inputX)
 {

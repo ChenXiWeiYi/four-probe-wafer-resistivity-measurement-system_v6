@@ -4,6 +4,8 @@
  * @brief Widget::Return_DataGain 返回测量值应该除以的数
  * @param MeasureValue 啥测量值
  * @return 增益
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 double Widget::Return_DataGain(ValueType_TypeDef ValueType){
     if(ValueType == VALUE_CURRENT){

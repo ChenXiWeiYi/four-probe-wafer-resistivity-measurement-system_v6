@@ -10,7 +10,7 @@ uint8_t	Data_ADC2_u8[SIZE_Data_ADC] = {0x3F, 0xFF, 0xFF};
 #if 1
 /** 
  * @author	刘嘉诚
- * @date	2025.08.30 
+ * @date	2025.08.30
  */
 void ADC1_Read(void)
 {
@@ -29,7 +29,7 @@ void ADC1_Read(void)
 
 /** 
  * @author	刘嘉诚
- * @date	2025.08.30 
+ * @date	2025.08.30
  */
 void ADC2_Read(void)
 {
@@ -46,7 +46,7 @@ void ADC2_Read(void)
 
 /** 
  * @author	刘嘉诚
- * @date	2025.09.01 
+ * @date	2025.09.01
  */
 bool is_ADC1_ReadComplete(void)
 {
@@ -56,7 +56,7 @@ bool is_ADC1_ReadComplete(void)
 
 /** 
  * @author	刘嘉诚
- * @date	2025.09.01 
+ * @date	2025.09.01
  */
 bool is_ADC2_ReadComplete(void)
 {

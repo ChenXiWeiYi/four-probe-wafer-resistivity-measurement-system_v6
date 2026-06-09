@@ -22,7 +22,7 @@ typedef enum {
 /** 全局变量声明 **/
 extern UART_HandleTypeDef USART1_Handler;
 extern uint8_t  RxPacket[MAX_RX_LEN];   // 接收到的完整数据包
-extern uint16_t RxPacketLen;            // 当前包的总长度
+extern volatile uint16_t RxPacketLen;            // 当前包的总长度
 
 /** 函数声明 **/
 /******** USART.c ********/

@@ -6,6 +6,7 @@
  * DS:PC2	OE:PF9	MR:PA2
  * STCP:PF7	SHCP:PA1
  *
+ * @author 刘嘉诚
  * @date 2025.08.29
  */
 void HC595_GPIO_Init(void)

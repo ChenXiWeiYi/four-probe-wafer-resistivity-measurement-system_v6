@@ -2,8 +2,10 @@
 #include "Measure.h"
 #include "Answer_Handler.h"
 #include "Function_ADC.h"
+#include "EXTI_Init.h"
 
 static bool is_SuitMeasPos(int VoltRange,int CurrentPos);
+static void Read_FreshMeasureSample(void);
 
 static bool Flag_ChannelSwitchAuto = true;
 
@@ -37,7 +39,7 @@ bool Start_AutoSelChannel(void)
 			if((VoltRange <= VoltMeter1_RANGE_3mV) && !Flag_ok)
 			{
 				Set_VoltMeter1_Range(VoltRange);
-				Start_Measure();
+				Read_FreshMeasureSample();
 //				is_Measure_ok();
 				Flag_ok = is_SuitMeasPos(VoltRange,CurrentPos);
 				Answer_ChannelSwitchProgress(CurrentPos,VoltRange,Flag_ok);	// 发送当前切换状态
@@ -121,14 +123,45 @@ static bool is_SuitMeasPos(int VoltRange,int CurrentPos)
 }
 
 
-/** @date 2025.09.06 */
+/**
+ * @brief Read_FreshMeasureSample
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
+static void Read_FreshMeasureSample(void)
+{
+	CLR_Flag_ADC1_DRDY();
+	CLR_Flag_ADC2_DRDY();
+	Start_Measure();
+
+	while(!is_Flag_ADC1_DRDY());
+	while(!is_Flag_ADC2_DRDY());
+
+	ADC1_Read();
+	CLR_Flag_ADC1_DRDY();
+	ADC2_Read();
+	CLR_Flag_ADC2_DRDY();
+
+	Stop_Measure();
+}
+
+
+/**
+ * @brief Enable_AutoSelChannel
+ * @author 刘嘉诚
+ * @date 2025.09.06
+ */
 void Enable_AutoSelChannel(void)
 {
 	Flag_ChannelSwitchAuto = true;
 }
 
 
-/** @date 2025.09.06 */
+/**
+ * @brief Disable_AutoSelChannel
+ * @author 刘嘉诚
+ * @date 2025.09.06
+ */
 void Disable_AutoSelChannel(void)
 {
 	Flag_ChannelSwitchAuto = false;

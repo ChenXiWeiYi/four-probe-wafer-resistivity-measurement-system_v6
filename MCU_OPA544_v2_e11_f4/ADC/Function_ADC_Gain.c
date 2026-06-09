@@ -1,5 +1,10 @@
 #include "Function_ADC.h"
 
+/**
+ * @brief Set_ADC1_Gain
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Set_ADC1_Gain(int num_Gain)
 {
 	uint8_t Ctrl_CMR2[2] = {0x05,0x00};
@@ -18,6 +23,7 @@ void Set_ADC1_Gain(int num_Gain)
 
 /** 
  * @brief Set_ADC2_Gain 设置ADC2(电流测量)的增益
+ * @author 刘嘉诚
  * @date 2025.10.29
  */
 void Set_ADC2_Gain(int num_Gain)

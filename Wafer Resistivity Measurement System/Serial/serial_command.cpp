@@ -2,12 +2,22 @@
 #include "ui_widget.h"
 
 namespace {
+/**
+ * @brief AppendFloat
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void AppendFloat(QByteArray *data, float value)
 {
     data->append(reinterpret_cast<const char*>(&value), sizeof(float));
 }
 }
 
+/**
+ * @brief NextCommandSeq
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 unsigned char Widget::NextCommandSeq(void)
 {
     unsigned char seq = CommStruct_used.Seq_Next;
@@ -20,6 +30,11 @@ unsigned char Widget::NextCommandSeq(void)
     return seq;
 }
 
+/**
+ * @brief Command_SwitchCurrPos
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_SwitchCurrPos(void)
 {
     QByteArray data;
@@ -57,6 +72,11 @@ void Widget::Command_SwitchCurrPos(void)
     }
 }
 
+/**
+ * @brief Command_SwitchVolRange
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_SwitchVolRange(void)
 {
     QByteArray data;
@@ -66,6 +86,11 @@ void Widget::Command_SwitchVolRange(void)
     Serial_SendFrame(data);
 }
 
+/**
+ * @brief Command_StartMeasurement
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_StartMeasurement(void)
 {
     QByteArray data;
@@ -82,6 +107,11 @@ void Widget::Command_StartMeasurement(void)
     ui->Label_MeasureProgress->setText(QString("第%1组测量开始").arg(QString::number(MeasureState_used.cnt_MeasureGroup + 1)));
 }
 
+/**
+ * @brief Command_ModifyControlVoltage
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_ModifyControlVoltage(void)
 {
     float ControlVoltage = Param_used.ControlVoltages[static_cast<int>(Param_used.CurrPos)];
@@ -92,6 +122,11 @@ void Widget::Command_ModifyControlVoltage(void)
     Serial_SendFrame(data);
 }
 
+/**
+ * @brief Command_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_ReadCurrentOnly(void)
 {
     QByteArray data;
@@ -100,6 +135,11 @@ void Widget::Command_ReadCurrentOnly(void)
     Serial_SendFrame(data);
 }
 
+/**
+ * @brief Command_Heartbeat
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_Heartbeat(void)
 {
     QByteArray data;
@@ -108,6 +148,11 @@ void Widget::Command_Heartbeat(void)
     Serial_SendFrame(data);
 }
 
+/**
+ * @brief Command_SendPIDControlConfig
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_SendPIDControlConfig(void)
 {
     if(!serialPort->isOpen()){
@@ -122,6 +167,11 @@ void Widget::Command_SendPIDControlConfig(void)
     Serial_SendFrame(data);
 }
 
+/**
+ * @brief Command_SendCustomControlVoltage
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Command_SendCustomControlVoltage(float voltage)
 {
     if (voltage > 3.0f) voltage = 3.0f;

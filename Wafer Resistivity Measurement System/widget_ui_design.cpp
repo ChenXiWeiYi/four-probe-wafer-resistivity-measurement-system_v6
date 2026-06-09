@@ -1,6 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+/**
+ * @brief Init_Style_Button
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Style_Button(void)
 {
 //    SetStyle_PushButton(ui->Button_SelSemiType);
@@ -15,6 +20,11 @@ void Widget::Init_Style_Button(void)
 
 
 
+/**
+ * @brief SetStyle_PushButton
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::SetStyle_PushButton(QPushButton *btn)
 {
     btn->setStyleSheet(R"(
@@ -77,6 +87,11 @@ void Widget::SetStyle_PushButton(QPushButton *btn)
 }
 
 
+/**
+ * @brief SetStyle_ToolButton
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::SetStyle_ToolButton(QToolButton *btn)
 {
     btn->setStyleSheet(R"(

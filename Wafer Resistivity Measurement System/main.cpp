@@ -1,6 +1,11 @@
 #include <QApplication>
 #include "widget.h"
 
+/**
+ * @brief main
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);  // 创建应用程序对象

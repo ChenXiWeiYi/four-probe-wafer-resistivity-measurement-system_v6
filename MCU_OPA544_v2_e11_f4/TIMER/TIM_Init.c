@@ -1,6 +1,11 @@
 #include "TIM_Init.h"
 #include "Channel_Switch.h"
 
+/**
+ * @brief TIM_Init
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void TIM_Init(TIMPara_InitDef TIMPara_Init)
 {
 	TIM2_Init(TIMPara_Init.TIM2_ARR,TIMPara_Init.TIM2_PSC);
@@ -13,6 +18,8 @@ void TIM_Init(TIMPara_InitDef TIMPara_Init)
  * TIM时钟使能，设置TIM中断优先级，允许TIM中断(未允许具体类型的中断)
  *
  * @param htim 待配置的TIM
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 {
@@ -32,6 +39,8 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
  * 根据中断的TIM调用函数
  *
  * @param htim 中断的TIM
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -43,5 +52,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
  *
  * 所有的TIM中断服务入口函数，仅用于调用中断服务函数
  *
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void TIM2_IRQHandler(void){	HAL_TIM_IRQHandler(&TIM2_Handler);}	// TIM2

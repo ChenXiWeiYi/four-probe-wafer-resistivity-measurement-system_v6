@@ -4,6 +4,11 @@
 #include <QDebug>
 
 namespace {
+/**
+ * @brief ParseDoubleVector
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool ParseDoubleVector(const QString &str, int expectedSize, QVector<double> *values)
 {
     QStringList parts = str.split(",");
@@ -27,6 +32,11 @@ bool ParseDoubleVector(const QString &str, int expectedSize, QVector<double> *va
 }
 }
 
+/**
+ * @brief Init_Param_Channel
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_Channel(void)
 {
     bool ok1, ok2;
@@ -51,6 +61,11 @@ void Widget::Init_Param_Channel(void)
     ui->Button_VolRange->setText(Map_VolRange.value(static_cast<VolRange_TypeDef>(Param_used.VolRange)));
 }
 
+/**
+ * @brief Init_Param_ab
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_ab(void)
 {
     bool ok1, ok2;
@@ -69,6 +84,11 @@ void Widget::Init_Param_ab(void)
     ui->cin_b->setText(QString::number(Param_used.b));
 }
 
+/**
+ * @brief Init_Param_Temperature
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_Temperature(void)
 {
     bool ok;
@@ -83,6 +103,11 @@ void Widget::Init_Param_Temperature(void)
     ui->cin_Temperature->setText(QString::number(Param_used.Temperature));
 }
 
+/**
+ * @brief Init_Param_CurrErrorBound
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_CurrErrorBound(void)
 {
     bool ok;
@@ -97,6 +122,11 @@ void Widget::Init_Param_CurrErrorBound(void)
     ui->cin_CurrErrorBound->setText(QString::number(Param_used.CurrErrorBound));
 }
 
+/**
+ * @brief Init_Param_Thickness
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_Thickness(void)
 {
     bool ok;
@@ -111,6 +141,11 @@ void Widget::Init_Param_Thickness(void)
     ui->cin_Thickness->setText(QString::number(Param_used.SampleThickness));
 }
 
+/**
+ * @brief Init_Param_ProbeSpacing
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_ProbeSpacing(void)
 {
     bool ok;
@@ -125,6 +160,11 @@ void Widget::Init_Param_ProbeSpacing(void)
     ui->cin_ProbeSpacing->setText(QString::number(Param_used.ProbeSpacing));
 }
 
+/**
+ * @brief Init_Param_SampleDiameter
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_SampleDiameter(void)
 {
     bool ok;
@@ -139,6 +179,11 @@ void Widget::Init_Param_SampleDiameter(void)
     ui->cin_SampleDiameter->setText(QString::number(Param_used.SampleDiameter));
 }
 
+/**
+ * @brief Init_Param_FspCorrectionFactor
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_FspCorrectionFactor(void)
 {
     bool ok;
@@ -153,6 +198,11 @@ void Widget::Init_Param_FspCorrectionFactor(void)
     ui->cin_FspCorrectionFactor->setText(QString::number(Param_used.FspCorrectionFactor));
 }
 
+/**
+ * @brief Init_Param_SemiType
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_SemiType(void)
 {
     bool ok;
@@ -166,6 +216,11 @@ void Widget::Init_Param_SemiType(void)
     ui->Button_SelSemiType->setText(Param_used.SemiType == SEMITYPE_P ? "P" : "N");
 }
 
+/**
+ * @brief Init_Param_ControlVoltages
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_ControlVoltages(void)
 {
     QString str = Param_Setting_Read(NAME_ControlVoltages).toString();
@@ -180,6 +235,11 @@ void Widget::Init_Param_ControlVoltages(void)
     }
 }
 
+/**
+ * @brief Init_Param_PIDParameters
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_PIDParameters(void)
 {
     QVector<double> kp;
@@ -199,6 +259,11 @@ void Widget::Init_Param_PIDParameters(void)
     Load_PIDParamsForCurrentPosition();
 }
 
+/**
+ * @brief Init_Param_PIDControlEnabled
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Param_PIDControlEnabled(void)
 {
     bool ok;

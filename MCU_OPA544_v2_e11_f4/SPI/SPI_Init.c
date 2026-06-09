@@ -1,5 +1,10 @@
 #include "SPI_Init.h"
 
+/**
+ * @brief SPI_Init
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void SPI_Init(void)
 {
 	SPI1_Init();
@@ -9,6 +14,11 @@ void SPI_Init(void)
 
 
 
+/**
+ * @brief HAL_SPI_MspInit
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void HAL_SPI_MspInit(SPI_HandleTypeDef *hspi)
 {
 	GPIO_InitTypeDef GPIO_Initure;

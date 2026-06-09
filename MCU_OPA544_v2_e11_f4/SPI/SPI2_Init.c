@@ -7,6 +7,7 @@ SPI_HandleTypeDef SPI2_Handler;
  *
  * DAC8330上升沿采样
  *
+ * @author 刘嘉诚
  * @date 2025.08.30
  */
 

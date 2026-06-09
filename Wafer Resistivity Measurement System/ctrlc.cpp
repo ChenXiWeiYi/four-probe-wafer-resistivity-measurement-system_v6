@@ -4,6 +4,11 @@
 #include <QClipboard>   // 处理剪贴板
 #include <QApplication> // 获取全局剪贴板对象
 
+/**
+ * @brief keyPressEvent
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::keyPressEvent(QKeyEvent *event)
 {
     // 监听：如果按下了 Ctrl+C，并且当前焦点在 TableWidget_f 上

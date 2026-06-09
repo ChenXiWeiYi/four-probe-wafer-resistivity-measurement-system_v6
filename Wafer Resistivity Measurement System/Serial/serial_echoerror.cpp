@@ -1,5 +1,10 @@
 #include "widget.h"
 
+/**
+ * @brief onTimerEchoMonitorTimeout
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onTimerEchoMonitorTimeout(void)
 {
     if(CommStruct_used.Flag_isWaitingEcho){

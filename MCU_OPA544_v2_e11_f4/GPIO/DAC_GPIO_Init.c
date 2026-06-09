@@ -5,6 +5,7 @@
  *
  * DAC_DIN:PB15 DAC_SCLK:PB13 DAC_SYNC:PE8
  *
+ * @author 刘嘉诚
  * @date 2025.08.29
  */
 void DAC_GPIO_Init(void)

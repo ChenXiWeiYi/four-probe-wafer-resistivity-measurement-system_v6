@@ -13,6 +13,7 @@
  * @brief Widget::Popup_Window 弹出普通的不需要操作的窗口
  * @param title 窗口标题
  * @param content 显示内容
+ * @author 刘嘉诚
  * @date 2025.10.20
  */
 void Widget::Popup_Window(QString title, QString content)
@@ -42,6 +43,7 @@ void Widget::Popup_Window(QString title, QString content)
  * @param windowTitle 弹出窗口的标题
  * @param content 弹出窗口的内容
  * @return 点击确认还是取消
+ * @author 刘嘉诚
  * @date 2025.10.21
  */
 bool Widget::Popup_Confirm_Dialog(const QString &windowTitle, const QString &content)
@@ -85,6 +87,7 @@ bool Widget::Popup_Confirm_Dialog(const QString &windowTitle, const QString &con
  * @brief Widget::initLineEdiftPlaceholder 设置输入的占位符
  * @param lineEdit 设置占位符的LineEdit
  * @param placeholderText 占位符
+ * @author 刘嘉诚
  * @date 2025.10.20
  */
 void Widget::initLineEditPlaceholder(QLineEdit *lineEdit, const QString &placeholderText)
@@ -109,6 +112,7 @@ padding: 2px;                         /* 内边距：避免文字贴边框（可
 /**
  * @brief Widget::AppendTimeToFile 添加时间戳
  * @param FileName
+ * @author 刘嘉诚
  * @date 2026.01.29
  */
 void Widget::AppendTimeToFile(const QString& FileName)

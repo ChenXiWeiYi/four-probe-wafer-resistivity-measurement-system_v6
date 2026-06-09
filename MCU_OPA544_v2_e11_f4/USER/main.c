@@ -1,6 +1,10 @@
 #include "main.h"
 
-/** @date 2026.01.13 */ 
+/**
+ * @brief main
+ * @author ¡ıºŒ≥œ
+ * @date 2026.01.13
+ */
 
 int main(void)
 {

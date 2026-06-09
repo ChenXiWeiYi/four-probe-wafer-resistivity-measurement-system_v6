@@ -7,6 +7,8 @@
  * @brief Widget::Calculate_CRC16 CRC校验
  * @param data
  * @return
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 unsigned short Widget::Calculate_CRC16(const QByteArray &data)
 {

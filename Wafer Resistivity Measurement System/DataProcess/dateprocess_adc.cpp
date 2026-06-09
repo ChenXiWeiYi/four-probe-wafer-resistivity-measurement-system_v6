@@ -5,6 +5,8 @@
  * @brief Widget::DataProcess_ADC1_Voltage 处理ADC1电压数据 (3字节)
  * @param rawData_3Byte 3字节的原始数据
  * @return 计算出的电压值(double)
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 double Widget::DataProcess_ADC1_Voltage(const QByteArray &rawData_3Byte)
 {
@@ -40,6 +42,8 @@ double Widget::DataProcess_ADC1_Voltage(const QByteArray &rawData_3Byte)
  * @brief Widget::DataProcess_ADC2_Current 处理ADC2电流数据 (3字节)
  * @param rawData_3Byte 3字节的原始数据
  * @return 计算出的电流值 (double)
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 double Widget::DataProcess_ADC2_Current(const QByteArray &rawData_3Byte)
 {

@@ -3,6 +3,11 @@
 #include <QDebug>
 #include <QAction>
 
+/**
+ * @brief onMenuCurrPosTriggered
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onMenuCurrPosTriggered(QAction *action)
 {
     int CurrPos_i = action->data().toInt();
@@ -20,6 +25,11 @@ void Widget::onMenuCurrPosTriggered(QAction *action)
     Command_SwitchCurrPos();
 }
 
+/**
+ * @brief onMenuVolRangeTriggered
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onMenuVolRangeTriggered(QAction *action)
 {
     int VolRange_i = action->data().toInt();
@@ -34,6 +44,11 @@ void Widget::onMenuVolRangeTriggered(QAction *action)
     Command_SwitchVolRange();
 }
 
+/**
+ * @brief onMenuMeasureModeTriggered
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onMenuMeasureModeTriggered(QAction *action)
 {
     int MeasureMode_i = action->data().toInt();
@@ -49,6 +64,11 @@ void Widget::onMenuMeasureModeTriggered(QAction *action)
     ui->ToolButton_MeasureMode->setText(action->text());
 }
 
+/**
+ * @brief onMenuCOMTriggered
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onMenuCOMTriggered(QAction *action)
 {
     QString comName = action->text();

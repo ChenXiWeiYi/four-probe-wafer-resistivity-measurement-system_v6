@@ -6,7 +6,11 @@ static void	ADC2_Init(void);
 static int	delay_time = 1;	// 最小5.5*0.1 us
 
 
-/** @date 2025.09.01 */
+/**
+ * @brief ADC_Init
+ * @author 刘嘉诚
+ * @date 2025.09.01
+ */
 void ADC_Init(void)
 {
 	ADC1_Init();
@@ -14,7 +18,11 @@ void ADC_Init(void)
 }
 
 
-/** @date 2025.11.09 */
+/**
+ * @brief ADC1_Init
+ * @author 刘嘉诚
+ * @date 2025.11.09
+ */
 void ADC1_Init(void)
 {
 // 初始化
@@ -65,7 +73,11 @@ void ADC1_Init(void)
 }
 
 
-/** @date 2025.08.30 */
+/**
+ * @brief ADC2_Init
+ * @author 刘嘉诚
+ * @date 2025.08.30
+ */
 void ADC2_Init(void)
 {
 // 初始化
@@ -117,6 +129,11 @@ void ADC2_Init(void)
 
 
 
+/**
+ * @brief Test_ADC1_REFO
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Test_ADC1_REFO(void)
 {
 	static bool flag = false;

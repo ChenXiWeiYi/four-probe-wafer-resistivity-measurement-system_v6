@@ -7,6 +7,7 @@
  * @brief Widget::AppendValueToFile 将数据追加保存到文本文件，保留历史内容，每行格式为"数据,"
  * @param Value 待保存的double型数据
  * @param FilePath 保存的文件路径,2016.01.26改为在可执行路径下
+ * @author 刘嘉诚
  * @date  2026.01.26
  */
 void Widget::AppendValueToFile(double Value, ValueType_TypeDef ValueType)

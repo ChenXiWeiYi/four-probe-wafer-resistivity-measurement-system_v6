@@ -34,7 +34,7 @@ void Set_VoltMeter1_Range(int Range_Vol1)
 				break;
 			case(VoltMeter1_RANGE_30mV):		// LTC6373增益16,ADC增益8,3.84V
 				Set_ADC1Driver_1_Gain(LTC6373_off);
-//				Set_ADC1_Gain(ADC_GAIN1);
+				Set_ADC1_Gain(ADC_GAIN1);
 				Set_ADC1Driver_2_Gain(LTC6373_GAIN8);
 				Set_ADC1Driver_1_Gain(LTC6373_GAIN16);
 				break;
@@ -179,6 +179,7 @@ static void Set_ADC1Driver_2_Gain(int num_Gain)
 
 /**
  * @brief Set_ADC1Driver_Gain1 设置ADC1的驱动的总增益为1
+ * @author 刘嘉诚
  * @date 2025.10.28
  */
 void Set_ADC1Driver_Gain1(void)

@@ -11,10 +11,10 @@ static void Channel_Switch_ok(void);
 
 static int num_595 = 0;
 
-uint8_t	CurrPos_Sel = Current_POSITION_NONE;
+volatile uint8_t	CurrPos_Sel = Current_POSITION_NONE;
 
 static bool	Flag_CurrPos2None = true;		// Flag_CurrPos2None 是否输出空通道，初始状态输出空通道
-static bool	Flag_CurrPosSwitch = false;		// 是否启动通道切换，初始状态不启动切换
+static volatile bool	Flag_CurrPosSwitch = false;		// 是否启动通道切换，初始状态不启动切换
 static volatile bool Flag_CurrPosDonePending = false;
 static volatile bool Flag_CurrPosDoneReady = false;
 static volatile uint8_t CurrPosDoneSeq = 0;
@@ -135,6 +135,11 @@ bool is_CurrPosSwitch(void)
 	return Flag_CurrPosSwitch;
 }
 
+/**
+ * @brief Set_CurrentPositionDoneNotify
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Set_CurrentPositionDoneNotify(uint8_t seq, uint8_t originCtrlByte)
 {
 	Flag_CurrPosDonePending = true;
@@ -143,6 +148,11 @@ void Set_CurrentPositionDoneNotify(uint8_t seq, uint8_t originCtrlByte)
 	CurrPosDoneCtrlByte = originCtrlByte;
 }
 
+/**
+ * @brief Process_CurrentPositionDoneNotify
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Process_CurrentPositionDoneNotify(void)
 {
 	if(Flag_CurrPosDoneReady){

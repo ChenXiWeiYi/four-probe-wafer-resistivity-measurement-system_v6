@@ -2,6 +2,7 @@
 
 /** 
  * @brief 设置中断优先级，使能外部中断
+ * @author 刘嘉诚
  * @date 2026.01.12
  */
 
@@ -32,25 +33,49 @@ void EXTI_Init(void)
 }
 
 
-/** @brief 调用中断处理公用函数,包含中断标志清零和调用回调函数 */
+/**
+ * @brief 调用中断处理公用函数,包含中断标志清零和调用回调函数
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void EXTI1_IRQHandler(void)
 {
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 }
+/**
+ * @brief EXTI2_IRQHandler
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void EXTI2_IRQHandler(void)
 {
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
 }
 
+/**
+ * @brief EXTI4_IRQHandler
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void EXTI4_IRQHandler(void)
 {
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
 }
 
+/**
+ * @brief EXTI9_5_IRQHandler
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void EXTI9_5_IRQHandler(void)
 {
 	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_6) != RESET){ HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6); };
 }
+/**
+ * @brief EXTI15_10_IRQHandler
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void EXTI15_10_IRQHandler(void)
 {
 	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != RESET){ HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13); };
@@ -63,6 +88,8 @@ void EXTI15_10_IRQHandler(void)
  * 从中断处理公用函数最后会调用
  *
  * @param GPIO_Pin 触发外部中断的管脚
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {

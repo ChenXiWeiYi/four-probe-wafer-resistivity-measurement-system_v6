@@ -5,6 +5,11 @@
 #include <QMenu>
 #include <QToolButton>
 
+/**
+ * @brief Init_Menu
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Menu(void)
 {
     Init_Menu_CurrPos();
@@ -13,6 +18,11 @@ void Widget::Init_Menu(void)
     Init_Menu_COM();
 }
 
+/**
+ * @brief Init_Menu_CurrPos
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Menu_CurrPos(void)
 {
     Menu_CurrPos = new QMenu(this);
@@ -33,6 +43,11 @@ void Widget::Init_Menu_CurrPos(void)
     ui->Button_CurrPos->setMenu(Menu_CurrPos);
 }
 
+/**
+ * @brief Init_Menu_VolRange
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Menu_VolRange(void)
 {
     Menu_VolRange = new QMenu(this);
@@ -53,6 +68,11 @@ void Widget::Init_Menu_VolRange(void)
     ui->Button_VolRange->setMenu(Menu_VolRange);
 }
 
+/**
+ * @brief Init_Menu_MeasureMode
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Menu_MeasureMode(void)
 {
     Menu_MeasureMode = new QMenu(this);
@@ -73,6 +93,11 @@ void Widget::Init_Menu_MeasureMode(void)
     ui->ToolButton_MeasureMode->setMenu(Menu_MeasureMode);
 }
 
+/**
+ * @brief Init_Menu_COM
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Init_Menu_COM(void)
 {
     Menu_COM = new QMenu(this);

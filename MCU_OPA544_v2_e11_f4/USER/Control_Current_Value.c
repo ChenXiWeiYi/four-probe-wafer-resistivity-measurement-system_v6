@@ -18,6 +18,11 @@ static float Last_Err = 0.0f;
 static float Last_Last_Err = 0.0f;
 static float CurrErrorBoundPercent = 0.0f;
 
+/**
+ * @brief CurrentControl_ReturnCurrentGain
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 static float CurrentControl_ReturnCurrentGain(uint8_t currentPos)
 {
     switch(currentPos){
@@ -32,11 +37,21 @@ static float CurrentControl_ReturnCurrentGain(uint8_t currentPos)
     }
 }
 
+/**
+ * @brief CurrentControl_Abs
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 static float CurrentControl_Abs(float value)
 {
     return value < 0.0f ? -value : value;
 }
 
+/**
+ * @brief CurrentControl_LimitVoltage
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 static float CurrentControl_LimitVoltage(float voltage)
 {
     if(voltage > 3.0f) return 3.0f;
@@ -44,6 +59,11 @@ static float CurrentControl_LimitVoltage(float voltage)
     return voltage;
 }
 
+/**
+ * @brief CurrentControl_SetConfig
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void CurrentControl_SetConfig(bool enabled, float errorBoundPercent)
 {
     Flag_PIDEnabled = enabled;
@@ -51,12 +71,22 @@ void CurrentControl_SetConfig(bool enabled, float errorBoundPercent)
     Flag_CurrentErrorReported = false;
 }
 
+/**
+ * @brief CurrentControl_SetEnabled
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void CurrentControl_SetEnabled(bool enabled)
 {
     Flag_PIDEnabled = enabled;
     Flag_CurrentErrorReported = false;
 }
 
+/**
+ * @brief CurrentControl_SetParams
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void CurrentControl_SetParams(uint8_t currentPos, float spCurrent, float kp, float ki, float kd, float initialUk)
 {
     CurrentPos_UI = currentPos;
@@ -72,11 +102,21 @@ void CurrentControl_SetParams(uint8_t currentPos, float spCurrent, float kp, flo
     Flag_PIDParamReceived = true;
 }
 
+/**
+ * @brief CurrentControl_SetOutputVoltage
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void CurrentControl_SetOutputVoltage(float voltage)
 {
     Last_uk = CurrentControl_LimitVoltage(voltage);
 }
 
+/**
+ * @brief CurrentControl_ConvertADC2ToCurrent
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 float CurrentControl_ConvertADC2ToCurrent(void)
 {
     float adcVoltage = Return_Data_ADC2_f();
@@ -85,6 +125,11 @@ float CurrentControl_ConvertADC2ToCurrent(void)
     return PV_Current;
 }
 
+/**
+ * @brief CurrentControl_UpdateFromADC
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void CurrentControl_UpdateFromADC(void)
 {
     float err;

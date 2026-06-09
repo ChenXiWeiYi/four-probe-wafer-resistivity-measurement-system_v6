@@ -7,6 +7,7 @@ SPI_HandleTypeDef SPI1_Handler;
  *
  * ADS1210下降沿沿采样
  *
+ * @author 刘嘉诚
  * @date 2025.08.30
  */
 

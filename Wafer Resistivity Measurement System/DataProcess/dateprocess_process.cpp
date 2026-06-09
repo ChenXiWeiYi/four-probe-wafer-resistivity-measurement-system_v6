@@ -2,6 +2,11 @@
 
 
 
+/**
+ * @brief Process_Resistivity
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Process_Resistivity(double Voltage, double Current)
 {
     double Resistance = Voltage / Current;

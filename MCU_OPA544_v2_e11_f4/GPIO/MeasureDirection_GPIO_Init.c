@@ -8,6 +8,7 @@
  * 3:PB10
  * 4:PE14
  *
+ * @author 刘嘉诚
  * @date 2026.01.30
  */
 void MeasureDirection_GPIO_Init(void)

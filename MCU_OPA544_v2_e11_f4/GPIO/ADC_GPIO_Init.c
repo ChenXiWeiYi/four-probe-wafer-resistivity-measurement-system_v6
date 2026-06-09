@@ -11,6 +11,7 @@
  * SCK:PC10	SDOUT:PC11	SDIO:PC12
  * CS:PD1	DRDY:PD4	DSYNC:PD0
  *
+ * @author 刘嘉诚
  * @date 2025.08.29
  */
 void ADC_GPIO_Init(void)

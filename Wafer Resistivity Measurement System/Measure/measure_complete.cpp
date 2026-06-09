@@ -1,6 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+/**
+ * @brief Measure_Complete
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Measure_Complete(void)
 {
     MeasureState_used.cnt_MeasureTimes = 0;
@@ -32,6 +37,11 @@ void Widget::Measure_Complete(void)
 }
 
 
+/**
+ * @brief Measure_Complete_MODE_SINGLE
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Measure_Complete_MODE_SINGLE(void){
     ui->ProgressBar_MeasureProgress->setValue(100);
     MeasureState_used.MeasureStage = STAGE_IDLE;
@@ -39,6 +49,11 @@ void Widget::Measure_Complete_MODE_SINGLE(void){
     Popup_Window("提示","测量完成");
 }
 
+/**
+ * @brief Measure_Complete_MODE_10TIMES_SINGLEPOINT_AUTO
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Measure_Complete_MODE_10TIMES_SINGLEPOINT_AUTO(void){
     if(MeasureState_used.cnt_MeasureGroup >= 10){
         MeasureState_used.cnt_MeasureGroup = 0;
@@ -54,6 +69,11 @@ void Widget::Measure_Complete_MODE_10TIMES_SINGLEPOINT_AUTO(void){
 }
 
 
+/**
+ * @brief Measure_Complete_MODE_10TIMES_SINGLEPOINT_MAN
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Measure_Complete_MODE_10TIMES_SINGLEPOINT_MAN(void)
 {
     if(MeasureState_used.cnt_MeasureGroup >= 10){

@@ -1,6 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
 
+/**
+ * @brief Add_Resistivity2Table
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Add_Resistivity2Table(double value)
 {
     if(MeasureState_used.MeasureDirection == MEASUREDIRECTION_FORWARD){

@@ -7,6 +7,8 @@
  *   len:    要计算的字节数
  * 返回值:
  *   计算出的 16位 CRC
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 uint16_t Protocol_CalcCRC16(uint8_t *pData, uint16_t len)
 {

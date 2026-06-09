@@ -7,6 +7,7 @@
 
 /**
  * @brief Widget::readSerialData 读取串口
+ * @author 刘嘉诚
  * @date 2026.02.02
  */
 void Widget::readSerialData(void)

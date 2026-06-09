@@ -10,10 +10,10 @@
 /** 变量定义 **/
 UART_HandleTypeDef USART1_Handler;
 
-static bool     RxFrameReady = false;	// 接收完成标志
+static volatile bool     RxFrameReady = false;	// 接收完成标志
 static uint8_t  aRxBuffer;				// HAL库中断接收USART缓冲,1B
 uint8_t  RxPacket[MAX_RX_LEN];	// 接收缓冲区
-uint16_t RxPacketLen = 0;		// 当前帧长度
+volatile uint16_t RxPacketLen = 0;		// 当前帧长度
 
 static RxState_t g_RxState = RX_STATE_WAIT_HEAD1;
 static uint8_t   g_RxCounter = 0;   // 接收计数器
@@ -23,7 +23,17 @@ static uint8_t   g_BodyLen = 0;     // 解析出的后续长度
 #pragma import(__use_no_semihosting)                             
 struct __FILE{ int handle;}; 
 FILE __stdout;       
+/**
+ * @brief _sys_exit
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void _sys_exit(int x){ x = x;}	// 定义_sys_exit()以避免使用半主机模式 
+/**
+ * @brief fputc
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 int fputc(int ch, FILE *f) // 重定义fputc函数
 {	
 	while((USART1->SR&0x40)==0);
@@ -35,6 +45,7 @@ int fputc(int ch, FILE *f) // 重定义fputc函数
  * @brief USART_Init 串口初始化
  * 此处中断只接受一个数据
  * @param BaudRate_USART1 USART1的波特率
+ * @author 刘嘉诚
  * @date 2025.08.31
  */
 void USART_Init(uint32_t BaudRate_USART1)
@@ -52,7 +63,11 @@ void USART_Init(uint32_t BaudRate_USART1)
 }
 
 
-/** 被HAL_UART_Init调用,初始化USART1的GPIO和中断 */
+/**
+ * @brief 被HAL_UART_Init调用,初始化USART1的GPIO和中断
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 {
 	GPIO_InitTypeDef GPIO_Initure;
@@ -77,6 +92,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  * @brief HAL_UART_RxCpltCallback 回调函数
  * 帧格式: 0xAA(帧头) 0x55(帧头) 后面的长度 数据 CRC
  * @param *huart 哪个USART
+ * @author 刘嘉诚
  * @date 2026.02.03
  */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
@@ -131,6 +147,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 /**
  * @brief USART1_IRQHandler 串口1中断服务程序
  * 不再轮询超时
+ * @author 刘嘉诚
  * @date 2026.02.03
  */
 void USART1_IRQHandler(void)                	
@@ -138,13 +155,21 @@ void USART1_IRQHandler(void)
 	HAL_UART_IRQHandler(&USART1_Handler);	//调用HAL库中断处理公用函数
 }
 
-/** 清除接收标志，允许接收下一帧 **/
+/**
+ * @brief 清除接收标志，允许接收下一帧
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void USART1_Clear_Rx(void)
 {
     RxFrameReady = false;
 }
 
-/** 查询是否接收完成 **/
+/**
+ * @brief 查询是否接收完成
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool is_USART1_RxOK(void)
 {
     return RxFrameReady;

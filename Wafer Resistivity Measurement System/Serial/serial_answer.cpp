@@ -69,6 +69,11 @@ void Widget::DispatchPacket(const QByteArray &payload)
     }
 }
 
+/**
+ * @brief Answer_AckNack
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Answer_AckNack(const QByteArray &payload)
 {
     if(payload.size() < 5){
@@ -175,6 +180,8 @@ void Widget::Answer_AckNack(const QByteArray &payload)
 /**
  * @brief Handle operation completion frame 0x30.
  * @param payload Payload in format: 0x30, seq, original command, status, error.
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void Widget::Answer_OperationDone(const QByteArray &payload)
 {
@@ -229,6 +236,8 @@ void Widget::Answer_OperationDone(const QByteArray &payload)
 
 /**
  * @brief Answer current position switch result.
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void Widget::Answer_CurrentPosition(void)
 {
@@ -326,6 +335,8 @@ void Widget::Answer_MeasureState(const QByteArray &payload)
 /**
  * @brief Widget::Answer_ErrorRecieve 答复:单片机错误
  * @param 载荷
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void Widget::Answer_ErrorRecieve(const QByteArray &payload)
 {
@@ -339,6 +350,11 @@ void Widget::Answer_ErrorRecieve(const QByteArray &payload)
 }
 
 
+/**
+ * @brief Answer_CurrentForControl
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Answer_CurrentForControl(const QByteArray &payload)
 {
     if(payload.size() < 4){
@@ -349,6 +365,11 @@ void Widget::Answer_CurrentForControl(const QByteArray &payload)
     AppendValueToFile(Current, VALUE_CURRENT);
 }
 
+/**
+ * @brief ErrorNumberToString
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 static QString ErrorNumberToString(unsigned char errorNumber)
 {
     switch(errorNumber){

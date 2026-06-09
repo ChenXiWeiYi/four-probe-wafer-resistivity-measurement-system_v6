@@ -1,5 +1,10 @@
 #include "GPIO_Init.h"
 
+/**
+ * @brief GPIO_Init
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void GPIO_Init(void)
 {
 	KeyBoardLED_GPIO_Init();

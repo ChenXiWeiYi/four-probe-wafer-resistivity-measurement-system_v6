@@ -4,6 +4,11 @@
 #include "Function_ADC.h"
 #include <string.h>
 
+/**
+ * @brief Answer_Ack
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Answer_Ack(uint8_t seq, uint8_t originCtrlByte)
 {
 	uint8_t Message[5] = {0x10, 0x00, 0x00, 0x00, Error_None};
@@ -12,6 +17,11 @@ void Answer_Ack(uint8_t seq, uint8_t originCtrlByte)
 	Protocol_SendPacket(&Message[0], sizeof(Message));
 }
 
+/**
+ * @brief Answer_Nack
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Answer_Nack(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeDef ErrorNumber)
 {
 	uint8_t Message[5] = {0x10, 0x00, 0x00, 0x01, Error_UnknownOperation};
@@ -26,6 +36,8 @@ void Answer_Nack(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeDef ErrorN
  * @param seq Command sequence copied from original command.
  * @param originCtrlByte Original command control byte.
  * @param ErrorNumber Completion result error code.
+ * @author 刘嘉诚
+ * @date 2026.06.08
  */
 void Answer_OperationDone(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeDef ErrorNumber)
 {
@@ -39,6 +51,11 @@ void Answer_OperationDone(uint8_t seq, uint8_t originCtrlByte, ErrorNumber_TypeD
 	Protocol_SendPacket(&Message[0], sizeof(Message));
 }
 
+/**
+ * @brief Answer_ChannelSwitchProgress
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Answer_ChannelSwitchProgress(int CurrPos, int VoltRange, bool ok)
 {
 	uint8_t Message[2] = {0xE0, 0x00};
@@ -53,6 +70,7 @@ void Answer_ChannelSwitchProgress(int CurrPos, int VoltRange, bool ok)
 
 /**
  * @brief Answer_MeasureComplete 答复:测量完成
+ * @author 刘嘉诚
  * @date 2026.02.03
  */
 void Answer_MeasureComplete(void)
@@ -68,6 +86,7 @@ void Answer_MeasureComplete(void)
 
 /**
  * @brief Answer_VoltageCurrentUpdate 答复:电压电流测量ADC输出值
+ * @author 刘嘉诚
  * @date 2026.02.03
  */
 void Answer_VoltageCurrentUpdate(void)
@@ -86,6 +105,7 @@ void Answer_VoltageCurrentUpdate(void)
 /**
  * @brief Answer_Error 答复:错误
  * @param ErrorNumber 错误编号
+ * @author 刘嘉诚
  * @date 2026.02.03
  */
 void Answer_Error(ErrorNumber_TypeDef ErrorNumber)
@@ -96,6 +116,11 @@ void Answer_Error(ErrorNumber_TypeDef ErrorNumber)
 }
 
 
+/**
+ * @brief Answer_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Answer_ReadCurrentOnly(void)
 {
 	uint8_t	Message[4] = {0x40,0x01,0x23,0x45};
@@ -110,6 +135,7 @@ void Answer_ReadCurrentOnly(void)
 
 /**
  * @brief Answer_CurrentForControl 答复:用于控制的电流读取
+ * @author 刘嘉诚
  * @date 2026.03.11
  */
 void Answer_CurrentForControl(void)

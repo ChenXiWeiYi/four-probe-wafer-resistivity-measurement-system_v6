@@ -2,6 +2,11 @@
 #include "ui_widget.h"
 #include <QDebug>
 
+/**
+ * @brief Slot_cin_Kp
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Slot_cin_Kp(void)
 {
     bool ok;

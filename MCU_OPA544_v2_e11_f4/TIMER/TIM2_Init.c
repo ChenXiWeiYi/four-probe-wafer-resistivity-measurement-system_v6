@@ -3,6 +3,11 @@
 // 595通讯时钟使用TIM2
 TIM_HandleTypeDef TIM2_Handler;
 
+/**
+ * @brief TIM2_Init
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void TIM2_Init(u16 ARR,u16 PSC)
 {
 	TIM2_Handler.Instance			= TIM2;

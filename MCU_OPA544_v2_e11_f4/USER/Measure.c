@@ -47,6 +47,11 @@ bool is_Measure(void)
 	return Flag_Measure;
 }
 
+/**
+ * @brief Start_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Start_ReadCurrentOnly(void)
 {
 	if(is_Measure()){
@@ -58,12 +63,22 @@ void Start_ReadCurrentOnly(void)
 	}
 }
 
+/**
+ * @brief Stop_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Stop_ReadCurrentOnly(void)
 {
 	Flag_ReadCurrentOnly = false;
 	CS_ADC2 = 1;
 }
 
+/**
+ * @brief is_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool is_ReadCurrentOnly(void)
 {
 	return Flag_ReadCurrentOnly;

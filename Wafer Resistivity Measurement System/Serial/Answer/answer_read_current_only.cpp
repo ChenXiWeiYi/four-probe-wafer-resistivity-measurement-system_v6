@@ -2,6 +2,11 @@
 #include "ui_widget.h"
 #include <QDebug>
 
+/**
+ * @brief Answer_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Answer_ReadCurrentOnly(const QByteArray &payload)
 {
     if(payload.size() < 4){

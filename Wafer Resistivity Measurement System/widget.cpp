@@ -9,6 +9,11 @@
 #include <QVBoxLayout>
 #include <QTimer>
 
+/**
+ * @brief Widget
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -138,13 +143,22 @@ Widget::Widget(QWidget *parent)
     Init_Style_Button();
 }
 
-/******************************主函数结束******************************/
+/**
+ * @brief ~Widget
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 
 Widget::~Widget()
 {
     delete ui;
 }
 
+/**
+ * @brief on_pushButton_clicked
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::on_pushButton_clicked()
 {
     MeasureState_used.Flag_FirstReadCurrent = true;
@@ -153,11 +167,21 @@ void Widget::on_pushButton_clicked()
     MeasureState_used.Time_MeasurementStart = QDateTime::currentDateTime().toString("yyyy-MM-dd_hh-mm-ss");
 }
 
+/**
+ * @brief on_pushButton_2_clicked
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::on_pushButton_2_clicked()
 {
     MeasureState_used.Flag_TestCurrent = false;
 }
 
+/**
+ * @brief on_pushButton_3_clicked
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::on_pushButton_3_clicked()
 {
     int mcuCurrPos = CurrentMcuCurrPos();

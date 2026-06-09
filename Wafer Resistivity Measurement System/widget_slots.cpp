@@ -2,16 +2,32 @@
 #include "ui_widget.h"
 
 
-/** 恒流源控制电压发送 **/
+/**
+ * @brief 恒流源控制电压发送
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onButtonSendControlVoltageClicked() { Command_ModifyControlVoltage(); }
 
-/** 电流档位发送 **/
+/**
+ * @brief 电流档位发送
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onButtonSendCurrentPositionClicked() { Command_SwitchCurrPos(); }
 
-/** 电压档位发送 **/
+/**
+ * @brief 电压档位发送
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onButtonSendVoltageRangeClicked() { Command_SwitchVolRange(); }
 
-/** 测量开始 **/
+/**
+ * @brief 测量开始
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::onButtonMeasStartClicked(){
     if(MeasureState_used.MeasureStage != STAGE_IDLE){   // 判断是不是没测完
         Popup_Window("错误","正在测量,请勿重复点击!");

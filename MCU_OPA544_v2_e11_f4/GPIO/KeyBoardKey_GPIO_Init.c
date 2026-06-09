@@ -5,6 +5,7 @@
  *
  * KEY1:PC6 KEY2:PC13 KEY3:PD14 KEY4:PE2
  *
+ * @author 刘嘉诚
  * @date 2025.08.29
  */
 void KeyBoardKey_GPIO_Init(void)

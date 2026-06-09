@@ -8,6 +8,11 @@
 
 bool Flag_Direction = true;
 
+/**
+ * @brief PayloadToFloat
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 static float PayloadToFloat(uint8_t *payload)
 {
     float value = 0.0f;
@@ -15,6 +20,11 @@ static float PayloadToFloat(uint8_t *payload)
     return value;
 }
 
+/**
+ * @brief Command_CurrPosSwitch
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_CurrPosSwitch(uint8_t *payload, uint8_t payload_len)
 {
     uint8_t CurrPos;
@@ -64,6 +74,11 @@ ErrorNumber_TypeDef Command_CurrPosSwitch(uint8_t *payload, uint8_t payload_len)
     return Error_None;
 }
 
+/**
+ * @brief Command_CurrentControlInputModify
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_CurrentControlInputModify(uint8_t *payload, uint8_t payload_len)
 {
     float SP_Current_f = 0.0f;
@@ -83,6 +98,11 @@ ErrorNumber_TypeDef Command_CurrentControlInputModify(uint8_t *payload, uint8_t 
     return Error_None;
 }
 
+/**
+ * @brief Command_PIDControlConfig
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_PIDControlConfig(uint8_t *payload, uint8_t payload_len)
 {
     bool pidEnabled;
@@ -107,6 +127,11 @@ ErrorNumber_TypeDef Command_PIDControlConfig(uint8_t *payload, uint8_t payload_l
     return Error_None;
 }
 
+/**
+ * @brief Command_StartMeasurement
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_StartMeasurement(uint8_t *payload, uint8_t payload_len)
 {
     uint8_t MeasureDirection;
@@ -134,6 +159,11 @@ ErrorNumber_TypeDef Command_StartMeasurement(uint8_t *payload, uint8_t payload_l
     return Error_None;
 }
 
+/**
+ * @brief Command_ReadCurrentOnly
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_ReadCurrentOnly(uint8_t *payload, uint8_t payload_len)
 {
     if(payload_len != 2){
@@ -145,6 +175,11 @@ ErrorNumber_TypeDef Command_ReadCurrentOnly(uint8_t *payload, uint8_t payload_le
     return Error_None;
 }
 
+/**
+ * @brief Command_Heartbeat
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_Heartbeat(uint8_t *payload, uint8_t payload_len)
 {
     if(payload_len != 2){
@@ -154,6 +189,11 @@ ErrorNumber_TypeDef Command_Heartbeat(uint8_t *payload, uint8_t payload_len)
     return Error_None;
 }
 
+/**
+ * @brief Command_VoltRangeSwitch
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 ErrorNumber_TypeDef Command_VoltRangeSwitch(uint8_t *payload, uint8_t payload_len)
 {
     int VolRange;
@@ -174,6 +214,11 @@ ErrorNumber_TypeDef Command_VoltRangeSwitch(uint8_t *payload, uint8_t payload_le
     return Error_None;
 }
 
+/**
+ * @brief Return_Direction
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool Return_Direction(void)
 {
     return Flag_Direction;

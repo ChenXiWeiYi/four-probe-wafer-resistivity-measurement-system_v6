@@ -63,16 +63,31 @@ bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, const QString &Par
 }
 
 
+/**
+ * @brief Param_Setting_Write
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, int ParamValue)
 {
     return Param_Setting_Write(ParamName, QString::number(ParamValue));
 }
 
+/**
+ * @brief Param_Setting_Write
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, float ParamValue)
 {
     return Param_Setting_Write(ParamName, QString::number(ParamValue));
 }
 
+/**
+ * @brief Param_Setting_Write
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, double ParamValue)
 {
     return Param_Setting_Write(ParamName, QString::number(ParamValue));
@@ -132,6 +147,11 @@ QString Widget::VectorToString(const QVector<float>& vec){
     return list.join(",");
 }
 
+/**
+ * @brief VectorToString
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 QString Widget::VectorToString(const QVector<double>& vec){
     QStringList list;
     for(double v : vec) {
@@ -140,11 +160,21 @@ QString Widget::VectorToString(const QVector<double>& vec){
     return list.join(",");
 }
 
+/**
+ * @brief CurrentMcuCurrPos
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 int Widget::CurrentMcuCurrPos(void) const
 {
     return 7 - static_cast<int>(Param_used.CurrPos);
 }
 
+/**
+ * @brief CurrentPidParamIndex
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 int Widget::CurrentPidParamIndex(void) const
 {
     if(Param_used.CurrPos == static_cast<int>(CURRENTPOSITION_auto)){
@@ -159,6 +189,11 @@ int Widget::CurrentPidParamIndex(void) const
     return idx;
 }
 
+/**
+ * @brief Load_PIDParamsForCurrentPosition
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Load_PIDParamsForCurrentPosition(void)
 {
     int idx = CurrentPidParamIndex();
@@ -226,6 +261,11 @@ void Widget::Modify_Param_used(ParamName_TypeDef ParamName, double value)
     }
 }
 
+/**
+ * @brief Modify_Param_used
+ * @author 刘嘉诚
+ * @date 2026.06.08
+ */
 void Widget::Modify_Param_used(ParamName_TypeDef ParamName, int value)
 {
     Modify_Param_used(ParamName, static_cast<double>(value));
