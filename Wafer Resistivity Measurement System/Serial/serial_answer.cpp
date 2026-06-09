@@ -250,6 +250,7 @@ void Widget::Answer_CurrentPosition(void)
         ui->Button_CurrPos->setText("---");
         Popup_Window("错误","电流档位切换失败");
     }
+    SyncUserStatusLabels();
 }
 
 /**
@@ -267,6 +268,7 @@ void Widget::Answer_VoltageRange(void)
         ui->Button_VolRange->setText("---");
         Popup_Window("错误","电压档位切换失败");
     }
+    SyncUserStatusLabels();
 }
 
 

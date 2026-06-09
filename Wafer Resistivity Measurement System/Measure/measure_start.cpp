@@ -13,10 +13,13 @@ void Widget::Measure_Start(void)
     ui->ProgressBar_MeasureProgress->setValue(0);
     if(Param_used.MeasureMode == MODE_10TIMES_MULTIPOINT_MAN || Param_used.MeasureMode == MODE_10TIMES_SINGLEPOINT_MAN){
         ui->Label_MeasureProgress->setText("等待探针接触");
+        SyncUserStatusLabels();
         MeasureState_used.MeasureStage = STAGE_MONITOR_CONTACT;
         Timer_ContactMonitor->start(200);   // 200ms轮询
     }else{
         MeasureState_used.MeasureStage = STAGE_MEASURING;
+        ui->Label_MeasureProgress->setText("测量中");
+        SyncUserStatusLabels();
         Command_StartMeasurement();
     }
 }

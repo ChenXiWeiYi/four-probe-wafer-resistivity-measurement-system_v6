@@ -8,6 +8,10 @@
 #include <QTextStream>
 #include <QVBoxLayout>
 #include <QTimer>
+#include <QStackedWidget>
+#include <QPushButton>
+
+static const bool DEBUG_UI_ENABLED = true;
 
 /**
  * @brief Widget
@@ -30,6 +34,7 @@ Widget::Widget(QWidget *parent)
 {
     // 初始化UI
     ui->setupUi(this);
+    Init_PageNavigation();
     connect(ui->Button_MeasStart, &QPushButton::clicked, this, &Widget::onButtonMeasStartClicked);
     connect(ui->Button_SendControlVoltage, &QPushButton::clicked, this, &Widget::onButtonSendControlVoltageClicked);
     connect(ui->Button_ControlVoltage, &QPushButton::clicked, this, &Widget::onButtonControlVoltageClicked);
@@ -130,6 +135,8 @@ Widget::Widget(QWidget *parent)
     ui->ProgressBar_Init->setValue(100);
 
     ui->ProgressBar_MeasureProgress->setValue(0);
+    ui->ToolButton_MeasureMode->setText(Map_MeasureMode.value(Param_used.MeasureMode, "单次测量"));
+    SyncUserStatusLabels();
 
     initLineEditPlaceholder(ui->cin_a, "输入a");
     initLineEditPlaceholder(ui->cin_b, "输入b");
@@ -191,4 +198,85 @@ void Widget::on_pushButton_3_clicked()
     Controller_used.Last_Err = 0.0;      // 上次误差 (用于微分)
     MeasureState_used.cnt_Curr = 0;
     ui->logText_1->append("清理成功");
+}
+
+/**
+ * @brief Init_PageNavigation
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+void Widget::Init_PageNavigation(void)
+{
+    QStackedWidget *stack = findChild<QStackedWidget *>("stackedWidgetMain");
+    if(!stack){
+        return;
+    }
+
+    auto connectPageButton = [this, stack](const char *buttonName, const char *pageName){
+        QPushButton *button = findChild<QPushButton *>(buttonName);
+        QWidget *page = findChild<QWidget *>(pageName);
+        if(button && page){
+            connect(button, &QPushButton::clicked, this, [stack, page](){
+                stack->setCurrentWidget(page);
+            });
+        }
+    };
+
+    connectPageButton("btnPageExperiment", "pageExperiment");
+    connectPageButton("btnPageSample", "pageSample");
+    connectPageButton("btnPageResult", "pageResult");
+    connectPageButton("btnPageDebug", "pageDebug");
+
+    if(QWidget *pageExperiment = findChild<QWidget *>("pageExperiment")){
+        stack->setCurrentWidget(pageExperiment);
+    }
+
+    if(QPushButton *debugButton = findChild<QPushButton *>("btnPageDebug")){
+        debugButton->setVisible(DEBUG_UI_ENABLED);
+    }
+
+    if(!DEBUG_UI_ENABLED){
+        if(QWidget *debugPage = findChild<QWidget *>("pageDebug")){
+            stack->removeWidget(debugPage);
+        }
+    }
+
+    if(QPushButton *stopButton = findChild<QPushButton *>("btnStopMeasure")){
+        stopButton->setEnabled(false);
+        stopButton->setToolTip("当前固件暂未接入中止测量命令");
+    }
+
+    const char *futureButtons[] = {
+        "btnSaveParams",
+        "btnResetParams",
+        "btnImportParams",
+        "btnExportParams",
+        "btnOpenDataFolder",
+        "btnExportCsv",
+        "btnExportExcel",
+        "btnCopyFinalResult"
+    };
+    for(const char *buttonName : futureButtons){
+        if(QPushButton *button = findChild<QPushButton *>(buttonName)){
+            button->setEnabled(false);
+            button->setToolTip("界面已预留，功能后续接入");
+        }
+    }
+
+    if(QPushButton *clearDataButton = findChild<QPushButton *>("btnClearCurrentData")){
+        connect(clearDataButton, &QPushButton::clicked, this, [this](){
+            ui->TableWidget_f->clearContents();
+            ui->TableWidget_r->clearContents();
+            ui->ProgressBar_MeasureProgress->setValue(0);
+            ui->Label_MeasureProgress->setText("空闲");
+            SetOptionalLabelText("lblMeasureState", "空闲");
+        });
+    }
+
+    if(QPushButton *clearResultButton = findChild<QPushButton *>("btnClearResult")){
+        connect(clearResultButton, &QPushButton::clicked, this, [this](){
+            ui->TableWidget_f->clearContents();
+            ui->TableWidget_r->clearContents();
+        });
+    }
 }

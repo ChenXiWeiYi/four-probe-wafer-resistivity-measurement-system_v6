@@ -106,6 +106,34 @@ padding: 2px;                         /* 内边距：避免文字贴边框（可
 #endif
 }
 
+/**
+ * @brief SetOptionalLabelText
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+void Widget::SetOptionalLabelText(const QString &objectName, const QString &text)
+{
+    QLabel *label = findChild<QLabel *>(objectName);
+    if(label){
+        label->setText(text);
+    }
+}
+
+
+/**
+ * @brief SyncUserStatusLabels
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+void Widget::SyncUserStatusLabels(void)
+{
+    SetOptionalLabelText("lblConnectStatus", CommStruct_used.Flag_isSerialConnected ? "已连接" : "未连接");
+    SetOptionalLabelText("lblCurrentRange", ui->Button_CurrPos->text());
+    SetOptionalLabelText("lblVoltageRange", ui->Button_VolRange->text());
+    SetOptionalLabelText("lblMeasureMode", ui->ToolButton_MeasureMode->text());
+    SetOptionalLabelText("lblMeasureState", ui->Label_MeasureProgress->text());
+}
+
 
 
 

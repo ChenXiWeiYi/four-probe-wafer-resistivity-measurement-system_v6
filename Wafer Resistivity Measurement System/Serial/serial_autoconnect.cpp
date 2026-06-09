@@ -105,10 +105,12 @@ bool Widget::Open_SerialPortByName(const QString &portName, bool autoConnect)
     if(!serialPort->open(QIODevice::ReadWrite)){
         ui->logText_1->append(QString("错误: 无法打开 %1 - %2").arg(portName).arg(serialPort->errorString()));
         ui->Button_SelCOM->setText("---");
+        SyncUserStatusLabels();
         return false;
     }
 
     ui->Button_SelCOM->setText(portName);
+    SetOptionalLabelText("lblConnectStatus", "连接中");
 
     if(autoConnect){
         CommStruct_used.Flag_isSerialProbing = true;
@@ -149,6 +151,7 @@ void Widget::Handle_SerialConnected(const QString &portName, bool autoConnect)
 
     Timer_COMScan->start(COM_SCAN_CONNECTED_INTERVAL_MS);
     Timer_Heartbeat->start(HEARTBEAT_INTERVAL_MS);
+    SyncUserStatusLabels();
 }
 
 /**
@@ -181,6 +184,7 @@ void Widget::Handle_SerialDisconnected(const QString &reason, bool showPopup)
 
     ui->Button_SelCOM->setText("---");
     Timer_COMScan->start(COM_SCAN_DISCONNECTED_INTERVAL_MS);
+    SyncUserStatusLabels();
 
     if(wasActive){
         ui->logText_1->append(reason);

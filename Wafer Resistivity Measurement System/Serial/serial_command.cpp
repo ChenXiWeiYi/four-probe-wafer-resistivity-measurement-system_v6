@@ -105,6 +105,7 @@ void Widget::Command_StartMeasurement(void)
         return;
     }
     ui->Label_MeasureProgress->setText(QString("第%1组测量开始").arg(QString::number(MeasureState_used.cnt_MeasureGroup + 1)));
+    SyncUserStatusLabels();
 }
 
 /**

@@ -20,6 +20,7 @@ void Widget::onMenuCurrPosTriggered(QAction *action)
     Param_used.CurrPos = CurrPos_i;
     Load_PIDParamsForCurrentPosition();
     ui->Button_CurrPos->setText("正在切换");
+    SyncUserStatusLabels();
     ui->cin_ControlVoltage->setText("正在切换电流档位");
     Controller_used.Last_uk = Param_used.ControlVoltages[static_cast<int>(Param_used.CurrPos)];
     Command_SwitchCurrPos();
@@ -41,6 +42,7 @@ void Widget::onMenuVolRangeTriggered(QAction *action)
 
     ui->Button_VolRange->setText("正在切换");
     Param_used.VolRange = VolRange_i;
+    SyncUserStatusLabels();
     Command_SwitchVolRange();
 }
 
@@ -62,6 +64,7 @@ void Widget::onMenuMeasureModeTriggered(QAction *action)
     Param_Setting_Write(NAME_MeasureMode, MeasureMode_i);
 
     ui->ToolButton_MeasureMode->setText(action->text());
+    SyncUserStatusLabels();
 }
 
 /**

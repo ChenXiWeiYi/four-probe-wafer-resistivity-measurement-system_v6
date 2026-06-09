@@ -31,6 +31,7 @@ void Widget::Measure_Complete(void)
             Popup_Window("不好意思","该测量模式还没做,当单次测量用.\n测量完成");
             ui->ProgressBar_MeasureProgress->setValue(100);
             ui->Label_MeasureProgress->setText("测量完成");
+            SyncUserStatusLabels();
             break;
         }
     }
@@ -46,6 +47,7 @@ void Widget::Measure_Complete_MODE_SINGLE(void){
     ui->ProgressBar_MeasureProgress->setValue(100);
     MeasureState_used.MeasureStage = STAGE_IDLE;
     ui->Label_MeasureProgress->setText("测量完成");
+    SyncUserStatusLabels();
     Popup_Window("提示","测量完成");
 }
 
@@ -59,10 +61,12 @@ void Widget::Measure_Complete_MODE_10TIMES_SINGLEPOINT_AUTO(void){
         MeasureState_used.cnt_MeasureGroup = 0;
         MeasureState_used.MeasureStage = STAGE_IDLE;
         ui->Label_MeasureProgress->setText("测量完成");
+        SyncUserStatusLabels();
         Popup_Window("提示","测量完成");
     }else{
         ui->ProgressBar_MeasureProgress->setValue(10 * MeasureState_used.cnt_MeasureGroup);
         ui->Label_MeasureProgress->setText(QString("等待第%1次测量").arg(QString::number(MeasureState_used.cnt_MeasureGroup + 1)));
+        SyncUserStatusLabels();
         Timer_MeasureInterval->start(2000);
     }
     ui->ProgressBar_MeasureProgress->setValue(10 * MeasureState_used.cnt_MeasureGroup);
@@ -79,10 +83,12 @@ void Widget::Measure_Complete_MODE_10TIMES_SINGLEPOINT_MAN(void)
     if(MeasureState_used.cnt_MeasureGroup >= 10){
         MeasureState_used.MeasureStage = STAGE_IDLE;
         ui->Label_MeasureProgress->setText("测量完成");
+        SyncUserStatusLabels();
         Popup_Window("提示","测量完成");
     }else{
         ui->Label_MeasureProgress->setText("等待探针抬起");
         MeasureState_used.MeasureStage = STAGE_MONITOR_RELEASE;
+        SyncUserStatusLabels();
         Timer_ContactMonitor->start(200);
     }
     ui->ProgressBar_MeasureProgress->setValue(10 * MeasureState_used.cnt_MeasureGroup);

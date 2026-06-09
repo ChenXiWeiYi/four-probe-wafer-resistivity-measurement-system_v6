@@ -59,6 +59,7 @@ void Widget::Init_Param_Channel(void)
     Param_used.VolRange = volRange;
     ui->Button_CurrPos->setText(Map_CurrPos.value(static_cast<CurrPos_TypeDef>(Param_used.CurrPos)));
     ui->Button_VolRange->setText(Map_VolRange.value(static_cast<VolRange_TypeDef>(Param_used.VolRange)));
+    SyncUserStatusLabels();
 }
 
 /**

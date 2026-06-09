@@ -197,6 +197,10 @@ private:
     void SetStyle_PushButton(QPushButton *btn);
     void SetStyle_ToolButton(QToolButton *btn);
 
+    void Init_PageNavigation(void);
+    void SetOptionalLabelText(const QString &objectName, const QString &text);
+    void SyncUserStatusLabels(void);
+
     /************************ menu_init.cpp **************************/
     void Init_Menu(void);
     void Init_Menu_CurrPos(void);
