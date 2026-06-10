@@ -21,6 +21,7 @@
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolButton>
@@ -191,6 +192,11 @@ public:
     QLabel *lblAckNack;
     QLabel *lblOperationDoneTitle;
     QLabel *lblOperationDone;
+    QTabWidget *tabDebugMeasureDetails;
+    QWidget *tabDebugForwardDetail;
+    QTableWidget *TableWidget_DebugForward;
+    QWidget *tabDebugReverseDetail;
+    QTableWidget *TableWidget_DebugReverse;
 
     void setupUi(QWidget *Widget)
     {
@@ -203,91 +209,94 @@ public:
 "QFrame#frameTopStatus, QFrame#frameSideNav { border: 1px solid #b9b9b9; border-radius: 2px; background-color: #f5f5f5; }\n"
 "QGroupBox { font-weight: 600; margin-top: 8px; padding-top: 12px; }\n"
 "QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 4px; }\n"
-"QPushButton, QToolButton { min-height: 24px; padding: 3px 10px; }\n"
+"QPushButton, QToolButton { min-height: 22px; padding: 2px 10px; }\n"
 "QLineEdit { min-height: 22px; padding: 2px 4px; }\n"
 "QTableWidget, QTextEdit { background-color: white; }\n"
 "QLabel#Label_VoltData, QLabel#Label_CurrData, QLabel#lblRealtimeResistance, QLabel#Label_ResData, QLabel#Label_MeasureProgress, QLabel#Label_Current, QLabel#lblAverageValue, QLabel#lblStdValue, QLabel#lblFinalResistivity, QLabel#lblWS, QLabel#lblSD, QLabel#lblGeometryFactor, QLabel#lblTemperatureFactor, QLabel#lblTotalFactor { font-family: \"Consolas\"; font-size: 13pt; font-weight: 600; }\n"
 "QLabel#lblConnectStatus, QLabel#lblCurrentRange, QLabel#lblVoltageRange, QLabel#lblMeasureM"
                         "ode, QLabel#lblMeasureState { font-weight: 600; }\n"
 "QLabel#lblNavTitle { font-weight: 600; }\n"
-"QPushButton#Button_MeasStart { font-weight: 600; min-height: 30px; }"));
+"QPushButton#Button_MeasStart { font-weight: 600; min-height: 30px; }\n"
+"QPushButton#btnPageExperiment, QPushButton#btnPageSample, QPushButton#btnPageResult, QPushButton#btnPageDebug { min-height: 26px; }\n"
+"QPushButton#btnPageExperiment:checked, QPushButton#btnPageSample:checked, QPushButton#btnPageResult:checked, QPushButton#btnPageDebug:checked { background-color: #cfcfcf; border: 2px solid #606060; font-weight: 700; }\n"
+"QPushButton#btnPageExperiment:checked:hover, QPushButton#btnPageSample:checked:hover, QPushButton#btnPageResult:checked:hover, QPushButton#btnPageDebug:checked:hover { background-color: #c6c6c6; }"));
         frameTopStatus = new QFrame(Widget);
         frameTopStatus->setObjectName(QStringLiteral("frameTopStatus"));
-        frameTopStatus->setGeometry(QRect(20, 10, 1160, 70));
+        frameTopStatus->setGeometry(QRect(20, 8, 1160, 48));
         frameTopStatus->setFrameShape(QFrame::StyledPanel);
         lblComPort = new QLabel(frameTopStatus);
         lblComPort->setObjectName(QStringLiteral("lblComPort"));
-        lblComPort->setGeometry(QRect(20, 21, 50, 28));
+        lblComPort->setGeometry(QRect(20, 10, 50, 28));
         lblComPort->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         Button_SelCOM = new QToolButton(frameTopStatus);
         Button_SelCOM->setObjectName(QStringLiteral("Button_SelCOM"));
-        Button_SelCOM->setGeometry(QRect(72, 18, 120, 32));
+        Button_SelCOM->setGeometry(QRect(72, 8, 120, 30));
         lblConnectStatusTitle = new QLabel(frameTopStatus);
         lblConnectStatusTitle->setObjectName(QStringLiteral("lblConnectStatusTitle"));
-        lblConnectStatusTitle->setGeometry(QRect(215, 21, 70, 28));
+        lblConnectStatusTitle->setGeometry(QRect(215, 10, 70, 28));
         lblConnectStatusTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         lblConnectStatus = new QLabel(frameTopStatus);
         lblConnectStatus->setObjectName(QStringLiteral("lblConnectStatus"));
-        lblConnectStatus->setGeometry(QRect(285, 18, 90, 32));
+        lblConnectStatus->setGeometry(QRect(285, 8, 90, 30));
         lblConnectStatus->setAlignment(Qt::AlignCenter);
         lblCurrentRangeTitle = new QLabel(frameTopStatus);
         lblCurrentRangeTitle->setObjectName(QStringLiteral("lblCurrentRangeTitle"));
-        lblCurrentRangeTitle->setGeometry(QRect(400, 21, 80, 28));
+        lblCurrentRangeTitle->setGeometry(QRect(400, 10, 80, 28));
         lblCurrentRangeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         lblCurrentRange = new QLabel(frameTopStatus);
         lblCurrentRange->setObjectName(QStringLiteral("lblCurrentRange"));
-        lblCurrentRange->setGeometry(QRect(480, 18, 90, 32));
+        lblCurrentRange->setGeometry(QRect(480, 8, 90, 30));
         lblCurrentRange->setAlignment(Qt::AlignCenter);
         lblVoltageRangeTitle = new QLabel(frameTopStatus);
         lblVoltageRangeTitle->setObjectName(QStringLiteral("lblVoltageRangeTitle"));
-        lblVoltageRangeTitle->setGeometry(QRect(595, 21, 80, 28));
+        lblVoltageRangeTitle->setGeometry(QRect(595, 10, 80, 28));
         lblVoltageRangeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         lblVoltageRange = new QLabel(frameTopStatus);
         lblVoltageRange->setObjectName(QStringLiteral("lblVoltageRange"));
-        lblVoltageRange->setGeometry(QRect(675, 18, 90, 32));
+        lblVoltageRange->setGeometry(QRect(675, 8, 90, 30));
         lblVoltageRange->setAlignment(Qt::AlignCenter);
         lblMeasureModeTitle = new QLabel(frameTopStatus);
         lblMeasureModeTitle->setObjectName(QStringLiteral("lblMeasureModeTitle"));
-        lblMeasureModeTitle->setGeometry(QRect(790, 21, 80, 28));
+        lblMeasureModeTitle->setGeometry(QRect(790, 10, 80, 28));
         lblMeasureModeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         lblMeasureMode = new QLabel(frameTopStatus);
         lblMeasureMode->setObjectName(QStringLiteral("lblMeasureMode"));
-        lblMeasureMode->setGeometry(QRect(870, 18, 140, 32));
+        lblMeasureMode->setGeometry(QRect(870, 8, 140, 30));
         lblMeasureMode->setAlignment(Qt::AlignCenter);
         lblMeasureStateTitle = new QLabel(frameTopStatus);
         lblMeasureStateTitle->setObjectName(QStringLiteral("lblMeasureStateTitle"));
-        lblMeasureStateTitle->setGeometry(QRect(1025, 21, 45, 28));
+        lblMeasureStateTitle->setGeometry(QRect(1018, 10, 78, 28));
         lblMeasureStateTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         lblMeasureState = new QLabel(frameTopStatus);
         lblMeasureState->setObjectName(QStringLiteral("lblMeasureState"));
-        lblMeasureState->setGeometry(QRect(1070, 18, 80, 32));
+        lblMeasureState->setGeometry(QRect(1098, 8, 56, 30));
         lblMeasureState->setAlignment(Qt::AlignCenter);
         frameSideNav = new QFrame(Widget);
         frameSideNav->setObjectName(QStringLiteral("frameSideNav"));
-        frameSideNav->setGeometry(QRect(20, 90, 1160, 58));
+        frameSideNav->setGeometry(QRect(20, 64, 1160, 48));
         frameSideNav->setFrameShape(QFrame::StyledPanel);
         lblNavTitle = new QLabel(frameSideNav);
         lblNavTitle->setObjectName(QStringLiteral("lblNavTitle"));
-        lblNavTitle->setGeometry(QRect(20, 14, 90, 30));
+        lblNavTitle->setGeometry(QRect(20, 9, 90, 30));
         lblNavTitle->setAlignment(Qt::AlignCenter);
         btnPageExperiment = new QPushButton(frameSideNav);
         btnPageExperiment->setObjectName(QStringLiteral("btnPageExperiment"));
-        btnPageExperiment->setGeometry(QRect(130, 12, 150, 34));
+        btnPageExperiment->setGeometry(QRect(130, 8, 150, 32));
         btnPageSample = new QPushButton(frameSideNav);
         btnPageSample->setObjectName(QStringLiteral("btnPageSample"));
-        btnPageSample->setGeometry(QRect(295, 12, 150, 34));
+        btnPageSample->setGeometry(QRect(295, 8, 150, 32));
         btnPageResult = new QPushButton(frameSideNav);
         btnPageResult->setObjectName(QStringLiteral("btnPageResult"));
-        btnPageResult->setGeometry(QRect(460, 12, 150, 34));
+        btnPageResult->setGeometry(QRect(460, 8, 150, 32));
         btnPageDebug = new QPushButton(frameSideNav);
         btnPageDebug->setObjectName(QStringLiteral("btnPageDebug"));
-        btnPageDebug->setGeometry(QRect(1000, 12, 140, 34));
+        btnPageDebug->setGeometry(QRect(1000, 8, 140, 32));
         stackedWidgetMain = new QStackedWidget(Widget);
         stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
-        stackedWidgetMain->setGeometry(QRect(20, 160, 1160, 580));
+        stackedWidgetMain->setGeometry(QRect(20, 122, 1160, 620));
         pageExperiment = new QWidget();
         pageExperiment->setObjectName(QStringLiteral("pageExperiment"));
-        pageExperiment->setGeometry(QRect(0, 0, 1160, 580));
+        pageExperiment->setGeometry(QRect(0, 0, 1160, 620));
         grpExperimentControl = new QGroupBox(pageExperiment);
         grpExperimentControl->setObjectName(QStringLiteral("grpExperimentControl"));
         grpExperimentControl->setGeometry(QRect(20, 10, 1120, 130));
@@ -365,7 +374,7 @@ public:
         stackedWidgetMain->addWidget(pageExperiment);
         pageSample = new QWidget();
         pageSample->setObjectName(QStringLiteral("pageSample"));
-        pageSample->setGeometry(QRect(0, 0, 1160, 580));
+        pageSample->setGeometry(QRect(0, 0, 1160, 620));
         grpSampleBasic = new QGroupBox(pageSample);
         grpSampleBasic->setObjectName(QStringLiteral("grpSampleBasic"));
         grpSampleBasic->setGeometry(QRect(20, 10, 540, 430));
@@ -521,22 +530,23 @@ public:
         stackedWidgetMain->addWidget(pageSample);
         pageResult = new QWidget();
         pageResult->setObjectName(QStringLiteral("pageResult"));
-        pageResult->setGeometry(QRect(0, 0, 1160, 580));
+        pageResult->setGeometry(QRect(0, 0, 1160, 620));
         grpForwardData = new QGroupBox(pageResult);
         grpForwardData->setObjectName(QStringLiteral("grpForwardData"));
-        grpForwardData->setGeometry(QRect(20, 10, 1120, 145));
+        grpForwardData->setGeometry(QRect(20, 10, 1120, 220));
         TableWidget_f = new QTableWidget(grpForwardData);
         TableWidget_f->setObjectName(QStringLiteral("TableWidget_f"));
-        TableWidget_f->setGeometry(QRect(20, 30, 1080, 95));
+        TableWidget_f->setGeometry(QRect(20, 30, 1080, 170));
         grpReverseData = new QGroupBox(pageResult);
         grpReverseData->setObjectName(QStringLiteral("grpReverseData"));
-        grpReverseData->setGeometry(QRect(20, 165, 1120, 145));
+        grpReverseData->setGeometry(QRect(0, 0, 1, 1));
+        grpReverseData->setVisible(false);
         TableWidget_r = new QTableWidget(grpReverseData);
         TableWidget_r->setObjectName(QStringLiteral("TableWidget_r"));
-        TableWidget_r->setGeometry(QRect(20, 30, 1080, 95));
+        TableWidget_r->setGeometry(QRect(0, 0, 1, 1));
         grpStatistics = new QGroupBox(pageResult);
         grpStatistics->setObjectName(QStringLiteral("grpStatistics"));
-        grpStatistics->setGeometry(QRect(20, 330, 540, 145));
+        grpStatistics->setGeometry(QRect(20, 250, 540, 145));
         lblAverageTitle = new QLabel(grpStatistics);
         lblAverageTitle->setObjectName(QStringLiteral("lblAverageTitle"));
         lblAverageTitle->setGeometry(QRect(35, 35, 120, 28));
@@ -557,7 +567,7 @@ public:
         lblFinalResistivity->setGeometry(QRect(185, 105, 300, 28));
         grpFileInfo = new QGroupBox(pageResult);
         grpFileInfo->setObjectName(QStringLiteral("grpFileInfo"));
-        grpFileInfo->setGeometry(QRect(580, 330, 560, 145));
+        grpFileInfo->setGeometry(QRect(580, 250, 560, 145));
         lblMeasureStartTimeTitle = new QLabel(grpFileInfo);
         lblMeasureStartTimeTitle->setObjectName(QStringLiteral("lblMeasureStartTimeTitle"));
         lblMeasureStartTimeTitle->setGeometry(QRect(35, 35, 120, 28));
@@ -576,7 +586,7 @@ public:
         btnOpenDataFolder->setGeometry(QRect(35, 112, 150, 28));
         grpResultActions = new QGroupBox(pageResult);
         grpResultActions->setObjectName(QStringLiteral("grpResultActions"));
-        grpResultActions->setGeometry(QRect(20, 490, 1120, 70));
+        grpResultActions->setGeometry(QRect(20, 420, 1120, 70));
         btnExportCsv = new QPushButton(grpResultActions);
         btnExportCsv->setObjectName(QStringLiteral("btnExportCsv"));
         btnExportCsv->setGeometry(QRect(30, 28, 120, 30));
@@ -592,10 +602,10 @@ public:
         stackedWidgetMain->addWidget(pageResult);
         pageDebug = new QWidget();
         pageDebug->setObjectName(QStringLiteral("pageDebug"));
-        pageDebug->setGeometry(QRect(0, 0, 1160, 580));
+        pageDebug->setGeometry(QRect(0, 0, 1160, 620));
         grpPidDebug = new QGroupBox(pageDebug);
         grpPidDebug->setObjectName(QStringLiteral("grpPidDebug"));
-        grpPidDebug->setGeometry(QRect(20, 10, 350, 220));
+        grpPidDebug->setGeometry(QRect(20, 10, 350, 190));
         Label_Name_Kp = new QLabel(grpPidDebug);
         Label_Name_Kp->setObjectName(QStringLiteral("Label_Name_Kp"));
         Label_Name_Kp->setGeometry(QRect(25, 40, 60, 28));
@@ -616,10 +626,10 @@ public:
         cin_Td->setGeometry(QRect(95, 120, 120, 30));
         ToolButton_ControlAlgo = new QToolButton(grpPidDebug);
         ToolButton_ControlAlgo->setObjectName(QStringLiteral("ToolButton_ControlAlgo"));
-        ToolButton_ControlAlgo->setGeometry(QRect(25, 170, 180, 34));
+        ToolButton_ControlAlgo->setGeometry(QRect(25, 150, 180, 30));
         grpVoltageDebug = new QGroupBox(pageDebug);
         grpVoltageDebug->setObjectName(QStringLiteral("grpVoltageDebug"));
-        grpVoltageDebug->setGeometry(QRect(405, 10, 350, 220));
+        grpVoltageDebug->setGeometry(QRect(405, 10, 350, 190));
         lblControlVoltageDebugTitle = new QLabel(grpVoltageDebug);
         lblControlVoltageDebugTitle->setObjectName(QStringLiteral("lblControlVoltageDebugTitle"));
         lblControlVoltageDebugTitle->setGeometry(QRect(25, 45, 90, 28));
@@ -628,40 +638,40 @@ public:
         cin_ControlVoltage->setGeometry(QRect(125, 45, 120, 30));
         Button_SendControlVoltage = new QPushButton(grpVoltageDebug);
         Button_SendControlVoltage->setObjectName(QStringLiteral("Button_SendControlVoltage"));
-        Button_SendControlVoltage->setGeometry(QRect(25, 95, 150, 36));
+        Button_SendControlVoltage->setGeometry(QRect(25, 84, 150, 32));
         Button_ControlVoltage = new QPushButton(grpVoltageDebug);
         Button_ControlVoltage->setObjectName(QStringLiteral("Button_ControlVoltage"));
-        Button_ControlVoltage->setGeometry(QRect(25, 145, 200, 36));
+        Button_ControlVoltage->setGeometry(QRect(25, 124, 200, 32));
         grpManualCommand = new QGroupBox(pageDebug);
         grpManualCommand->setObjectName(QStringLiteral("grpManualCommand"));
-        grpManualCommand->setGeometry(QRect(790, 10, 350, 220));
+        grpManualCommand->setGeometry(QRect(790, 10, 350, 190));
         Button_SendCurrentPosition = new QPushButton(grpManualCommand);
         Button_SendCurrentPosition->setObjectName(QStringLiteral("Button_SendCurrentPosition"));
-        Button_SendCurrentPosition->setGeometry(QRect(25, 45, 180, 36));
+        Button_SendCurrentPosition->setGeometry(QRect(25, 38, 180, 32));
         Button_SendVoltageRange = new QPushButton(grpManualCommand);
         Button_SendVoltageRange->setObjectName(QStringLiteral("Button_SendVoltageRange"));
-        Button_SendVoltageRange->setGeometry(QRect(25, 95, 180, 36));
+        Button_SendVoltageRange->setGeometry(QRect(25, 82, 180, 32));
         pushButton_3 = new QPushButton(grpManualCommand);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(25, 145, 180, 36));
+        pushButton_3->setGeometry(QRect(25, 126, 180, 32));
         grpCurrentReadDebug = new QGroupBox(pageDebug);
         grpCurrentReadDebug->setObjectName(QStringLiteral("grpCurrentReadDebug"));
-        grpCurrentReadDebug->setGeometry(QRect(20, 250, 350, 170));
+        grpCurrentReadDebug->setGeometry(QRect(20, 215, 350, 155));
         pushButton = new QPushButton(grpCurrentReadDebug);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(25, 40, 180, 36));
+        pushButton->setGeometry(QRect(25, 35, 180, 30));
         pushButton_2 = new QPushButton(grpCurrentReadDebug);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(25, 90, 180, 36));
+        pushButton_2->setGeometry(QRect(25, 72, 180, 30));
         Label_Name_Current = new QLabel(grpCurrentReadDebug);
         Label_Name_Current->setObjectName(QStringLiteral("Label_Name_Current"));
-        Label_Name_Current->setGeometry(QRect(25, 130, 80, 28));
+        Label_Name_Current->setGeometry(QRect(25, 102, 80, 26));
         Label_Current = new QLabel(grpCurrentReadDebug);
         Label_Current->setObjectName(QStringLiteral("Label_Current"));
-        Label_Current->setGeometry(QRect(115, 130, 150, 28));
+        Label_Current->setGeometry(QRect(115, 102, 150, 26));
         grpPidState = new QGroupBox(pageDebug);
         grpPidState->setObjectName(QStringLiteral("grpPidState"));
-        grpPidState->setGeometry(QRect(405, 250, 350, 170));
+        grpPidState->setGeometry(QRect(405, 215, 350, 155));
         lblPidSpTitle = new QLabel(grpPidState);
         lblPidSpTitle->setObjectName(QStringLiteral("lblPidSpTitle"));
         lblPidSpTitle->setGeometry(QRect(25, 40, 45, 26));
@@ -700,30 +710,46 @@ public:
         Label_RE_Current->setGeometry(QRect(235, 100, 70, 26));
         grpCommDebug = new QGroupBox(pageDebug);
         grpCommDebug->setObjectName(QStringLiteral("grpCommDebug"));
-        grpCommDebug->setGeometry(QRect(790, 250, 350, 310));
+        grpCommDebug->setGeometry(QRect(790, 215, 350, 170));
         logText_1 = new QTextEdit(grpCommDebug);
         logText_1->setObjectName(QStringLiteral("logText_1"));
-        logText_1->setGeometry(QRect(20, 30, 310, 170));
+        logText_1->setGeometry(QRect(20, 30, 310, 85));
         Button_logText1_CLR = new QPushButton(grpCommDebug);
         Button_logText1_CLR->setObjectName(QStringLiteral("Button_logText1_CLR"));
-        Button_logText1_CLR->setGeometry(QRect(20, 210, 90, 30));
+        Button_logText1_CLR->setGeometry(QRect(20, 120, 90, 26));
         lblAckNackTitle = new QLabel(grpCommDebug);
         lblAckNackTitle->setObjectName(QStringLiteral("lblAckNackTitle"));
-        lblAckNackTitle->setGeometry(QRect(20, 248, 90, 26));
+        lblAckNackTitle->setGeometry(QRect(20, 146, 90, 22));
         lblAckNack = new QLabel(grpCommDebug);
         lblAckNack->setObjectName(QStringLiteral("lblAckNack"));
-        lblAckNack->setGeometry(QRect(120, 248, 160, 26));
+        lblAckNack->setGeometry(QRect(120, 146, 160, 22));
         lblOperationDoneTitle = new QLabel(grpCommDebug);
         lblOperationDoneTitle->setObjectName(QStringLiteral("lblOperationDoneTitle"));
-        lblOperationDoneTitle->setGeometry(QRect(20, 278, 110, 26));
+        lblOperationDoneTitle->setGeometry(QRect(20, 166, 110, 22));
         lblOperationDone = new QLabel(grpCommDebug);
         lblOperationDone->setObjectName(QStringLiteral("lblOperationDone"));
-        lblOperationDone->setGeometry(QRect(135, 278, 160, 26));
+        lblOperationDone->setGeometry(QRect(135, 166, 160, 22));
+        tabDebugMeasureDetails = new QTabWidget(pageDebug);
+        tabDebugMeasureDetails->setObjectName(QStringLiteral("tabDebugMeasureDetails"));
+        tabDebugMeasureDetails->setGeometry(QRect(20, 395, 1120, 210));
+        tabDebugForwardDetail = new QWidget();
+        tabDebugForwardDetail->setObjectName(QStringLiteral("tabDebugForwardDetail"));
+        TableWidget_DebugForward = new QTableWidget(tabDebugForwardDetail);
+        TableWidget_DebugForward->setObjectName(QStringLiteral("TableWidget_DebugForward"));
+        TableWidget_DebugForward->setGeometry(QRect(10, 10, 1095, 165));
+        tabDebugMeasureDetails->addTab(tabDebugForwardDetail, QString());
+        tabDebugReverseDetail = new QWidget();
+        tabDebugReverseDetail->setObjectName(QStringLiteral("tabDebugReverseDetail"));
+        TableWidget_DebugReverse = new QTableWidget(tabDebugReverseDetail);
+        TableWidget_DebugReverse->setObjectName(QStringLiteral("TableWidget_DebugReverse"));
+        TableWidget_DebugReverse->setGeometry(QRect(10, 10, 1095, 165));
+        tabDebugMeasureDetails->addTab(tabDebugReverseDetail, QString());
         stackedWidgetMain->addWidget(pageDebug);
 
         retranslateUi(Widget);
 
         stackedWidgetMain->setCurrentIndex(0);
+        tabDebugMeasureDetails->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -819,7 +845,7 @@ public:
         Button_FspCorrectionFactor->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\344\277\256\346\255\243\347\263\273\346\225\260", Q_NULLPTR));
         Button_ab->setText(QApplication::translate("Widget", "\344\277\235\345\255\230ab", Q_NULLPTR));
         Button_CurrErrorBound->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\257\257\345\267\256\350\214\203\345\233\264", Q_NULLPTR));
-        grpForwardData->setTitle(QApplication::translate("Widget", "\346\255\243\345\220\221\346\265\213\351\207\217\346\225\260\346\215\256", Q_NULLPTR));
+        grpForwardData->setTitle(QApplication::translate("Widget", "\345\235\207\345\200\274\346\265\213\351\207\217\347\273\223\346\236\234", Q_NULLPTR));
         grpReverseData->setTitle(QApplication::translate("Widget", "\345\217\215\345\220\221\346\265\213\351\207\217\346\225\260\346\215\256", Q_NULLPTR));
         grpStatistics->setTitle(QApplication::translate("Widget", "\347\273\237\350\256\241\347\273\223\346\236\234", Q_NULLPTR));
         lblAverageTitle->setText(QApplication::translate("Widget", "\345\271\263\345\235\207\347\224\265\351\230\273\347\216\207", Q_NULLPTR));
@@ -880,6 +906,8 @@ public:
         lblAckNack->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
         lblOperationDoneTitle->setText(QApplication::translate("Widget", "Operation Done", Q_NULLPTR));
         lblOperationDone->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        tabDebugMeasureDetails->setTabText(tabDebugMeasureDetails->indexOf(tabDebugForwardDetail), QApplication::translate("Widget", "\346\255\243\345\220\221\346\265\213\351\207\217\346\230\216\347\273\206", Q_NULLPTR));
+        tabDebugMeasureDetails->setTabText(tabDebugMeasureDetails->indexOf(tabDebugReverseDetail), QApplication::translate("Widget", "\345\217\215\345\220\221\346\265\213\351\207\217\346\230\216\347\273\206", Q_NULLPTR));
     } // retranslateUi
 
 };

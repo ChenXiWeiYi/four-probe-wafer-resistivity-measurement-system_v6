@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QStackedWidget>
 #include <QPushButton>
+#include <QHeaderView>
 
 static const bool DEBUG_UI_ENABLED = true;
 
@@ -116,6 +117,23 @@ Widget::Widget(QWidget *parent)
         ui->TableWidget_r->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i+1)));
     }
     /***************初始化进度条***************/
+    auto initDebugMeasureTable = [](QTableWidget *table){
+        table->setColumnCount(4);
+        table->setRowCount(0);
+        table->setHorizontalHeaderLabels(QStringList()
+                                          << QStringLiteral("组号")
+                                          << QStringLiteral("次数")
+                                          << QStringLiteral("电压(V)")
+                                          << QStringLiteral("电流(A)"));
+        table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        table->verticalHeader()->setDefaultSectionSize(26);
+        table->setWordWrap(false);
+        table->setAlternatingRowColors(true);
+        table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    };
+    initDebugMeasureTable(ui->TableWidget_DebugForward);
+    initDebugMeasureTable(ui->TableWidget_DebugReverse);
+
     Init_Param_Channel();
     ui->ProgressBar_Init->setValue(14);
     Init_Param_ab();
@@ -219,10 +237,13 @@ void Widget::Init_PageNavigation(void)
         return;
     }
 
-    auto connectPageButton = [this, stack](const char *buttonName, const char *pageName){
+    QVector<QPair<QPushButton *, QWidget *>> navButtons;
+    auto connectPageButton = [this, stack, &navButtons](const char *buttonName, const char *pageName){
         QPushButton *button = findChild<QPushButton *>(buttonName);
         QWidget *page = findChild<QWidget *>(pageName);
         if(button && page){
+            button->setCheckable(true);
+            navButtons.append(qMakePair(button, page));
             connect(button, &QPushButton::clicked, this, [stack, page](){
                 stack->setCurrentWidget(page);
             });
@@ -233,6 +254,16 @@ void Widget::Init_PageNavigation(void)
     connectPageButton("btnPageSample", "pageSample");
     connectPageButton("btnPageResult", "pageResult");
     connectPageButton("btnPageDebug", "pageDebug");
+
+    auto syncNavButtons = [navButtons, stack](){
+        QWidget *currentPage = stack->currentWidget();
+        for(const QPair<QPushButton *, QWidget *> &entry : navButtons){
+            entry.first->setChecked(entry.second == currentPage);
+        }
+    };
+    connect(stack, &QStackedWidget::currentChanged, this, [syncNavButtons](int){
+        syncNavButtons();
+    });
 
     if(QWidget *pageExperiment = findChild<QWidget *>("pageExperiment")){
         stack->setCurrentWidget(pageExperiment);
@@ -274,6 +305,8 @@ void Widget::Init_PageNavigation(void)
         connect(clearDataButton, &QPushButton::clicked, this, [this](){
             ui->TableWidget_f->clearContents();
             ui->TableWidget_r->clearContents();
+            ui->TableWidget_DebugForward->setRowCount(0);
+            ui->TableWidget_DebugReverse->setRowCount(0);
             Buffer_MeasureValue_f.clear();
             Buffer_MeasureValue_r.clear();
             Reset_MeasureDisplay();
@@ -287,9 +320,13 @@ void Widget::Init_PageNavigation(void)
         connect(clearResultButton, &QPushButton::clicked, this, [this](){
             ui->TableWidget_f->clearContents();
             ui->TableWidget_r->clearContents();
+            ui->TableWidget_DebugForward->setRowCount(0);
+            ui->TableWidget_DebugReverse->setRowCount(0);
             Buffer_MeasureValue_f.clear();
             Buffer_MeasureValue_r.clear();
             Reset_MeasureDisplay();
         });
     }
+
+    syncNavButtons();
 }

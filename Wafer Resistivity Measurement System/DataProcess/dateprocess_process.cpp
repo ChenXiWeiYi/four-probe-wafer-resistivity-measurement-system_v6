@@ -32,5 +32,5 @@ void Widget::Process_Resistivity(double Voltage, double Current)
     }else{
         Buffer_MeasureValue_r.append(MeasureValueStruct);
     }
-    Add_Resistivity2Table(Resistivity);
+    Add_MeasureValue2Table(MeasureValueStruct);
 }

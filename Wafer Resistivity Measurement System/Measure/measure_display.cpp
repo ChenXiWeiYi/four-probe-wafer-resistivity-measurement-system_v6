@@ -1,7 +1,11 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include <QTableWidget>
+#include <QTableWidgetItem>
 #include <QtMath>
+
+static const int RoleForwardResistivity = Qt::UserRole + 1;
+static const int RoleMeanResistivity = Qt::UserRole + 2;
 
 static QString UnitOhm(void)
 {
@@ -29,14 +33,57 @@ static QString FormatMeasureValue(double value, const QString &unit)
     return FormatMeasureNumber(value) + QStringLiteral(" ") + unit;
 }
 
-static void AppendFiniteResistivity(QVector<double> *values, const QVector<MeasureValueStruct_TypeDef> &buffer)
+static bool ReadFiniteItemData(QTableWidgetItem *item, int role, double *value)
 {
-    for(int i = 0; i < buffer.size(); ++i){
-        const double resistivity = buffer.at(i).Resistivity;
-        if(qIsFinite(resistivity)){
-            values->append(resistivity);
-        }
+    if(!item){
+        return false;
     }
+
+    bool ok = false;
+    const double data = item->data(role).toDouble(&ok);
+    if(!ok || !qIsFinite(data)){
+        return false;
+    }
+
+    *value = data;
+    return true;
+}
+
+static QTableWidgetItem *EnsureTableItem(QTableWidget *table, int row, int column)
+{
+    QTableWidgetItem *item = table->item(row, column);
+    if(!item){
+        item = new QTableWidgetItem();
+        item->setTextAlignment(Qt::AlignCenter);
+        item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+        table->setItem(row, column, item);
+    }
+    return item;
+}
+
+static void SetDebugTableItem(QTableWidget *table, int row, int column, const QString &text)
+{
+    QTableWidgetItem *item = new QTableWidgetItem(text);
+    item->setTextAlignment(Qt::AlignCenter);
+    item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    table->setItem(row, column, item);
+}
+
+static void AppendDebugMeasureRow(QTableWidget *table,
+                                  int groupIndex,
+                                  int measureIndex,
+                                  const MeasureValueStruct_TypeDef &value)
+{
+    if(!table){
+        return;
+    }
+
+    const int row = table->rowCount();
+    table->insertRow(row);
+    SetDebugTableItem(table, row, 0, QString::number(groupIndex + 1));
+    SetDebugTableItem(table, row, 1, QString::number(measureIndex + 1));
+    SetDebugTableItem(table, row, 2, FormatMeasureNumber(value.Voltage));
+    SetDebugTableItem(table, row, 3, FormatMeasureNumber(value.Current));
 }
 
 /**
@@ -60,9 +107,16 @@ void Widget::Update_RealtimeMeasureDisplay(double Voltage, double Current, doubl
 void Widget::Update_ResultStatistics(void)
 {
     QVector<double> values;
-    values.reserve(Buffer_MeasureValue_f.size() + Buffer_MeasureValue_r.size());
-    AppendFiniteResistivity(&values, Buffer_MeasureValue_f);
-    AppendFiniteResistivity(&values, Buffer_MeasureValue_r);
+    values.reserve(ui->TableWidget_f->rowCount() * ui->TableWidget_f->columnCount());
+
+    for(int row = 0; row < ui->TableWidget_f->rowCount(); ++row){
+        for(int column = 0; column < ui->TableWidget_f->columnCount(); ++column){
+            double value = 0.0;
+            if(ReadFiniteItemData(ui->TableWidget_f->item(row, column), RoleMeanResistivity, &value)){
+                values.append(value);
+            }
+        }
+    }
 
     if(values.isEmpty()){
         ui->lblAverageValue->setText(QStringLiteral("--"));
@@ -108,23 +162,47 @@ void Widget::Reset_MeasureDisplay(void)
 }
 
 /**
- * @brief Add_Resistivity2Table
+ * @brief Add_MeasureValue2Table
  * @author 刘嘉诚
- * @date 2026.06.08
+ * @date 2026.06.10
  */
-void Widget::Add_Resistivity2Table(double value)
+void Widget::Add_MeasureValue2Table(const MeasureValueStruct_TypeDef &value)
 {
-    QTableWidget *table = ui->TableWidget_f;
-    if(MeasureState_used.MeasureDirection != MEASUREDIRECTION_FORWARD){
-        table = ui->TableWidget_r;
-    }
+    const bool isForward = (MeasureState_used.MeasureDirection == MEASUREDIRECTION_FORWARD);
+    QTableWidget *debugTable = isForward ? ui->TableWidget_DebugForward : ui->TableWidget_DebugReverse;
+    AppendDebugMeasureRow(debugTable,
+                          MeasureState_used.cnt_MeasureGroup,
+                          MeasureState_used.cnt_MeasureTimes,
+                          value);
 
     const int row = MeasureState_used.cnt_MeasureTimes + 1;
     const int column = MeasureState_used.cnt_MeasureGroup;
-    if(row >= 0 && row < table->rowCount() && column >= 0 && column < table->columnCount()){
-        QTableWidgetItem *item = new QTableWidgetItem(FormatMeasureNumber(value));
+    if(row >= 0 && row < ui->TableWidget_f->rowCount() &&
+       column >= 0 && column < ui->TableWidget_f->columnCount()){
+        QTableWidgetItem *item = EnsureTableItem(ui->TableWidget_f, row, column);
         item->setTextAlignment(Qt::AlignCenter);
-        table->setItem(row, column, item);
+
+        if(isForward){
+            item->setText(QStringLiteral("--"));
+            item->setData(RoleForwardResistivity, value.Resistivity);
+            item->setData(RoleMeanResistivity, QVariant());
+        }else{
+            double forwardResistivity = 0.0;
+            const bool hasForward = ReadFiniteItemData(item, RoleForwardResistivity, &forwardResistivity);
+            const bool hasReverse = qIsFinite(value.Resistivity);
+
+            if(hasForward && hasReverse){
+                const double meanResistivity = (forwardResistivity + value.Resistivity) / 2.0;
+                item->setText(FormatMeasureNumber(meanResistivity));
+                item->setData(RoleMeanResistivity, meanResistivity);
+            }else if(hasReverse){
+                item->setText(FormatMeasureNumber(value.Resistivity));
+                item->setData(RoleMeanResistivity, value.Resistivity);
+            }else{
+                item->setText(QStringLiteral("--"));
+                item->setData(RoleMeanResistivity, QVariant());
+            }
+        }
     }
 
     MeasureState_used.cnt_MeasureTimes++;

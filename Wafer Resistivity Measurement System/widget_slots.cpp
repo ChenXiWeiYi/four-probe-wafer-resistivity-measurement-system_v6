@@ -35,6 +35,8 @@ void Widget::onButtonMeasStartClicked(){
         Update_GeometryCorrectionFactor();  // 更新几何参数,完整的测量就更这一回
         ui->TableWidget_f->clearContents();
         ui->TableWidget_r->clearContents();
+        ui->TableWidget_DebugForward->setRowCount(0);
+        ui->TableWidget_DebugReverse->setRowCount(0);
         Buffer_MeasureValue_f.clear();
         Buffer_MeasureValue_r.clear();
         Reset_MeasureDisplay();

@@ -124,7 +124,7 @@ private:
     void Update_RealtimeMeasureDisplay(double Voltage, double Current, double Resistance, double Resistivity);
     void Update_ResultStatistics(void);
     void Reset_MeasureDisplay(void);
-    void Add_Resistivity2Table(double value);
+    void Add_MeasureValue2Table(const MeasureValueStruct_TypeDef &value);
     /********************** measure_warning.cpp **********************/
     void Measure_Warning(void);
     /*********************** measure_timer.cpp ***********************/
