@@ -32,6 +32,10 @@ McuSimulator_Qt/.qmake.stash
 McuSimulator_Qt/Makefile*
 McuSimulator_Qt/debug/
 McuSimulator_Qt/release/
+Wafer Resistivity Measurement System/tools/.qmake.stash
+Wafer Resistivity Measurement System/tools/Makefile*
+Wafer Resistivity Measurement System/tools/debug/
+Wafer Resistivity Measurement System/tools/release/
 
 # General
 *.log

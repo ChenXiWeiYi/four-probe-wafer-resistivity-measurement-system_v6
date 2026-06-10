@@ -1,2469 +1,2166 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ui version="4.0">
- <class>Widget</class>
- <widget class="QWidget" name="Widget">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1200</width>
-    <height>760</height>
-   </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>1200</width>
-    <height>760</height>
-   </size>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>1200</width>
-    <height>760</height>
-   </size>
-  </property>
-  <property name="windowTitle">
-   <string>四探针晶圆电阻率测量系统</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">QWidget { font-family: &quot;Microsoft YaHei&quot;, &quot;SimHei&quot;; font-size: 10pt; }
-QGroupBox { font-weight: 600; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 10px; background-color: #f8fafc; }
-QGroupBox::title { subcontrol-origin: margin; left: 12px; padding: 0 4px; }
-QPushButton, QToolButton { border: 1px solid #94a3b8; border-radius: 4px; background-color: #f1f5f9; padding: 4px 8px; }
-QPushButton:hover, QToolButton:hover { background-color: #e0f2fe; }
-QLineEdit { border: 1px solid #94a3b8; border-radius: 3px; padding: 3px 6px; background-color: white; }
-QTableWidget, QTextEdit { border: 1px solid #cbd5e1; background-color: white; }
-</string>
-  </property>
-  <widget class="QFrame" name="frameTopStatus">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1200</width>
-     <height>64</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QFrame#frameTopStatus { background-color: #eef2f7; border-bottom: 1px solid #cbd5e1; }</string>
-   </property>
-   <widget class="QLabel" name="lblComPort">
+  <class>Widget</class>
+  <widget class="QWidget" name="Widget">
     <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>18</y>
-      <width>45</width>
-      <height>28</height>
-     </rect>
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>1200</width>
+        <height>760</height>
+      </rect>
     </property>
-    <property name="text">
-     <string>COM口</string>
+    <property name="minimumSize">
+      <size>
+        <width>1200</width>
+        <height>760</height>
+      </size>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    <property name="maximumSize">
+      <size>
+        <width>1200</width>
+        <height>760</height>
+      </size>
     </property>
-   </widget>
-   <widget class="QToolButton" name="Button_SelCOM">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>14</y>
-      <width>110</width>
-      <height>34</height>
-     </rect>
+    <property name="windowTitle">
+      <string>四探针晶圆电阻率测量系统</string>
     </property>
-    <property name="text">
-     <string>COM</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblConnectStatusTitle">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>18</y>
-      <width>70</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>连接状态</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblConnectStatus">
-    <property name="geometry">
-     <rect>
-      <x>275</x>
-      <y>16</y>
-      <width>80</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>未连接</string>
-    </property>
+    <widget class="QFrame" name="frameTopStatus">
+      <property name="geometry">
+        <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>1160</width>
+          <height>70</height>
+        </rect>
+      </property>
+      <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+      </property>
+      <widget class="QLabel" name="lblComPort">
+        <property name="geometry">
+          <rect>
+            <x>20</x>
+            <y>21</y>
+            <width>50</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>COM口</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QToolButton" name="Button_SelCOM">
+        <property name="geometry">
+          <rect>
+            <x>72</x>
+            <y>18</y>
+            <width>120</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>COM</string>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblConnectStatusTitle">
+        <property name="geometry">
+          <rect>
+            <x>215</x>
+            <y>21</y>
+            <width>70</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>连接状态</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblConnectStatus">
+        <property name="geometry">
+          <rect>
+            <x>285</x>
+            <y>18</y>
+            <width>90</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>未连接</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblCurrentRangeTitle">
+        <property name="geometry">
+          <rect>
+            <x>400</x>
+            <y>21</y>
+            <width>80</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>电流档位</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblCurrentRange">
+        <property name="geometry">
+          <rect>
+            <x>480</x>
+            <y>18</y>
+            <width>90</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>--</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblVoltageRangeTitle">
+        <property name="geometry">
+          <rect>
+            <x>595</x>
+            <y>21</y>
+            <width>80</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>电压档位</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblVoltageRange">
+        <property name="geometry">
+          <rect>
+            <x>675</x>
+            <y>18</y>
+            <width>90</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>--</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblMeasureModeTitle">
+        <property name="geometry">
+          <rect>
+            <x>790</x>
+            <y>21</y>
+            <width>80</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>测量模式</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblMeasureMode">
+        <property name="geometry">
+          <rect>
+            <x>870</x>
+            <y>18</y>
+            <width>140</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>--</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblMeasureStateTitle">
+        <property name="geometry">
+          <rect>
+            <x>1025</x>
+            <y>21</y>
+            <width>45</width>
+            <height>28</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>测量状态</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+      </widget>
+      <widget class="QLabel" name="lblMeasureState">
+        <property name="geometry">
+          <rect>
+            <x>1070</x>
+            <y>18</y>
+            <width>80</width>
+            <height>32</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>空闲</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+    </widget>
+    <widget class="QFrame" name="frameSideNav">
+      <property name="geometry">
+        <rect>
+          <x>20</x>
+          <y>90</y>
+          <width>1160</width>
+          <height>58</height>
+        </rect>
+      </property>
+      <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+      </property>
+      <widget class="QLabel" name="lblNavTitle">
+        <property name="geometry">
+          <rect>
+            <x>20</x>
+            <y>14</y>
+            <width>90</width>
+            <height>30</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>功能导航</string>
+        </property>
+        <property name="alignment">
+          <set>Qt::AlignCenter</set>
+        </property>
+      </widget>
+      <widget class="QPushButton" name="btnPageExperiment">
+        <property name="geometry">
+          <rect>
+            <x>130</x>
+            <y>12</y>
+            <width>150</width>
+            <height>34</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>实验测量</string>
+        </property>
+      </widget>
+      <widget class="QPushButton" name="btnPageSample">
+        <property name="geometry">
+          <rect>
+            <x>295</x>
+            <y>12</y>
+            <width>150</width>
+            <height>34</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>样品参数</string>
+        </property>
+      </widget>
+      <widget class="QPushButton" name="btnPageResult">
+        <property name="geometry">
+          <rect>
+            <x>460</x>
+            <y>12</y>
+            <width>150</width>
+            <height>34</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>数据结果</string>
+        </property>
+      </widget>
+      <widget class="QPushButton" name="btnPageDebug">
+        <property name="geometry">
+          <rect>
+            <x>1000</x>
+            <y>12</y>
+            <width>140</width>
+            <height>34</height>
+          </rect>
+        </property>
+        <property name="text">
+          <string>调试页面</string>
+        </property>
+      </widget>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidgetMain">
+      <property name="geometry">
+        <rect>
+          <x>20</x>
+          <y>160</y>
+          <width>1160</width>
+          <height>580</height>
+        </rect>
+      </property>
+      <property name="currentIndex">
+        <number>0</number>
+      </property>
+      <widget class="QWidget" name="pageExperiment">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1160</width>
+            <height>580</height>
+          </rect>
+        </property>
+        <widget class="QGroupBox" name="grpExperimentControl">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>1120</width>
+              <height>130</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>实验控制</string>
+          </property>
+          <widget class="QLabel" name="lblModeSelect">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>34</y>
+                <width>80</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>测量模式</string>
+            </property>
+          </widget>
+          <widget class="QToolButton" name="ToolButton_MeasureMode">
+            <property name="geometry">
+              <rect>
+                <x>115</x>
+                <y>30</y>
+                <width>180</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>单次测量</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblCurrentRangeSelect">
+            <property name="geometry">
+              <rect>
+                <x>330</x>
+                <y>34</y>
+                <width>80</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电流档位</string>
+            </property>
+          </widget>
+          <widget class="QToolButton" name="Button_CurrPos">
+            <property name="geometry">
+              <rect>
+                <x>420</x>
+                <y>30</y>
+                <width>150</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblVoltageRangeSelect">
+            <property name="geometry">
+              <rect>
+                <x>600</x>
+                <y>34</y>
+                <width>80</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电压档位</string>
+            </property>
+          </widget>
+          <widget class="QToolButton" name="Button_VolRange">
+            <property name="geometry">
+              <rect>
+                <x>690</x>
+                <y>30</y>
+                <width>150</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_MeasStart">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>80</y>
+                <width>150</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>开始测量</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnStopMeasure">
+            <property name="geometry">
+              <rect>
+                <x>195</x>
+                <y>80</y>
+                <width>150</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>停止/中止</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnClearCurrentData">
+            <property name="geometry">
+              <rect>
+                <x>365</x>
+                <y>80</y>
+                <width>150</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>清空当前数据</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpRealtimeData">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>155</y>
+              <width>540</width>
+              <height>250</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>实时数据</string>
+          </property>
+          <widget class="QLabel" name="Label_NameDataVoltage">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>40</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电压</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_VoltData">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>40</y>
+                <width>300</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- V</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_NameDataCurrent">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>90</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电流</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_CurrData">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>90</y>
+                <width>300</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- A</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblResistanceTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>140</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电阻</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblRealtimeResistance">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>140</y>
+                <width>300</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- Ω</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_NameDataResistivity">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>190</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电阻率</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_ResData">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>190</y>
+                <width>300</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- Ω·cm</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpMeasureProgress">
+          <property name="geometry">
+            <rect>
+              <x>580</x>
+              <y>155</y>
+              <width>560</width>
+              <height>250</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>测量进度</string>
+          </property>
+          <widget class="QLabel" name="lblStageTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>45</y>
+                <width>100</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>当前阶段</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_MeasureProgress">
+            <property name="geometry">
+              <rect>
+                <x>150</x>
+                <y>45</y>
+                <width>360</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>空闲</string>
+            </property>
+          </widget>
+          <widget class="QProgressBar" name="ProgressBar_MeasureProgress">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>110</y>
+                <width>470</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="value">
+              <number>0</number>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblStageHint">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>165</y>
+                <width>470</width>
+                <height>50</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>测量过程状态会在此同步显示</string>
+            </property>
+            <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+          </widget>
+        </widget>
+      </widget>
+      <widget class="QWidget" name="pageSample">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1160</width>
+            <height>580</height>
+          </rect>
+        </property>
+        <widget class="QGroupBox" name="grpSampleBasic">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>540</width>
+              <height>430</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>样品参数</string>
+          </property>
+          <widget class="QLabel" name="Label_Name_SemiType">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>35</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>半导体类型</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_SelSemiType">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>32</y>
+                <width>110</width>
+                <height>34</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>P</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Temperature">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>85</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>温度</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_Temperature">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>85</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入温度</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Temperature_2">
+            <property name="geometry">
+              <rect>
+                <x>325</x>
+                <y>85</y>
+                <width>40</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>℃</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleThickness">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>135</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>样品厚度</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_Thickness">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>135</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入厚度</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleThickness_2">
+            <property name="geometry">
+              <rect>
+                <x>325</x>
+                <y>135</y>
+                <width>40</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>mm</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleDiameter">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>185</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>样品直径</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_SampleDiameter">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>185</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入样品直径</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleDiameter_2">
+            <property name="geometry">
+              <rect>
+                <x>325</x>
+                <y>185</y>
+                <width>40</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>mm</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleDiameter_3">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>235</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>探针间距</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_ProbeSpacing">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>235</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入探针间距</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleDiameter_4">
+            <property name="geometry">
+              <rect>
+                <x>325</x>
+                <y>235</y>
+                <width>40</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>mm</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_FspCorrectionFactor">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>285</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>修正系数</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_FspCorrectionFactor">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>285</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入修正系数</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Temperature_3">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>335</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>a 参数</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_a">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>335</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入a</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Temperature_4">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>385</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>b 参数</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_b">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>385</y>
+                <width>150</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入b</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpCorrectionFactor">
+          <property name="geometry">
+            <rect>
+              <x>580</x>
+              <y>10</y>
+              <width>560</width>
+              <height>270</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>修正因子</string>
+          </property>
+          <widget class="QLabel" name="lblWsTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>45</y>
+                <width>170</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>WS</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblWS">
+            <property name="geometry">
+              <rect>
+                <x>230</x>
+                <y>45</y>
+                <width>260</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblSdTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>85</y>
+                <width>170</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>SD</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblSD">
+            <property name="geometry">
+              <rect>
+                <x>230</x>
+                <y>85</y>
+                <width>260</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblGeometryFactorTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>125</y>
+                <width>170</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>几何修正</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblGeometryFactor">
+            <property name="geometry">
+              <rect>
+                <x>230</x>
+                <y>125</y>
+                <width>260</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblTemperatureFactorTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>165</y>
+                <width>170</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>温度修正</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblTemperatureFactor">
+            <property name="geometry">
+              <rect>
+                <x>230</x>
+                <y>165</y>
+                <width>260</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblTotalFactorTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>205</y>
+                <width>170</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>综合系数</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblTotalFactor">
+            <property name="geometry">
+              <rect>
+                <x>230</x>
+                <y>205</y>
+                <width>260</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpSampleActions">
+          <property name="geometry">
+            <rect>
+              <x>580</x>
+              <y>300</y>
+              <width>560</width>
+              <height>150</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>参数设置</string>
+          </property>
+          <widget class="QLabel" name="Label_Name_SampleDiameter_5">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>35</y>
+                <width>110</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>电流误差范围</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_CurrErrorBound">
+            <property name="geometry">
+              <rect>
+                <x>160</x>
+                <y>35</y>
+                <width>160</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>输入范围</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_SampleDiameter_6">
+            <property name="geometry">
+              <rect>
+                <x>315</x>
+                <y>35</y>
+                <width>40</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>%</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnSaveParams">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>85</y>
+                <width>120</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>保存参数</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnResetParams">
+            <property name="geometry">
+              <rect>
+                <x>165</x>
+                <y>85</y>
+                <width>90</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>恢复默认</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnImportParams">
+            <property name="geometry">
+              <rect>
+                <x>270</x>
+                <y>85</y>
+                <width>90</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>导入参数</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnExportParams">
+            <property name="geometry">
+              <rect>
+                <x>375</x>
+                <y>85</y>
+                <width>90</width>
+                <height>32</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>导出参数</string>
+            </property>
+          </widget>
+          <widget class="QProgressBar" name="ProgressBar_Init">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>122</y>
+                <width>470</width>
+                <height>22</height>
+              </rect>
+            </property>
+            <property name="value">
+              <number>0</number>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QPushButton" name="Button_Temperature">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存温度</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_Thickness">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>4</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存厚度</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_SampleDiameter">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>8</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存直径</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_ProbeSpacing">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>12</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存间距</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_FspCorrectionFactor">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>16</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存修正系数</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_ab">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>20</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存ab</string>
+          </property>
+        </widget>
+        <widget class="QPushButton" name="Button_CurrErrorBound">
+          <property name="geometry">
+            <rect>
+              <x>0</x>
+              <y>24</y>
+              <width>10</width>
+              <height>10</height>
+            </rect>
+          </property>
+          <property name="visible">
+            <bool>false</bool>
+          </property>
+          <property name="text">
+            <string>保存误差范围</string>
+          </property>
+        </widget>
+      </widget>
+      <widget class="QWidget" name="pageResult">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1160</width>
+            <height>580</height>
+          </rect>
+        </property>
+        <widget class="QGroupBox" name="grpForwardData">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>1120</width>
+              <height>145</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>正向测量数据</string>
+          </property>
+          <widget class="QTableWidget" name="TableWidget_f">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>1080</width>
+                <height>95</height>
+              </rect>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpReverseData">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>165</y>
+              <width>1120</width>
+              <height>145</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>反向测量数据</string>
+          </property>
+          <widget class="QTableWidget" name="TableWidget_r">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>1080</width>
+                <height>95</height>
+              </rect>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpStatistics">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>330</y>
+              <width>540</width>
+              <height>145</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>统计结果</string>
+          </property>
+          <widget class="QLabel" name="lblAverageTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>35</y>
+                <width>120</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>平均电阻率</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblAverageValue">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>35</y>
+                <width>300</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblStdTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>70</y>
+                <width>120</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>标准差</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblStdValue">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>70</y>
+                <width>300</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblFinalResistivityTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>105</y>
+                <width>120</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>最终电阻率</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblFinalResistivity">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>105</y>
+                <width>300</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- Ω·cm</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpFileInfo">
+          <property name="geometry">
+            <rect>
+              <x>580</x>
+              <y>330</y>
+              <width>560</width>
+              <height>145</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>文件信息</string>
+          </property>
+          <widget class="QLabel" name="lblMeasureStartTimeTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>35</y>
+                <width>120</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>测量开始时间</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblMeasureStartTime">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>35</y>
+                <width>320</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblDataPathTitle">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>70</y>
+                <width>120</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>数据保存路径</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblDataSavePath">
+            <property name="geometry">
+              <rect>
+                <x>185</x>
+                <y>70</y>
+                <width>340</width>
+                <height>42</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+            <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnOpenDataFolder">
+            <property name="geometry">
+              <rect>
+                <x>35</x>
+                <y>112</y>
+                <width>150</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>打开数据文件夹</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpResultActions">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>490</y>
+              <width>1120</width>
+              <height>70</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>结果操作</string>
+          </property>
+          <widget class="QPushButton" name="btnExportCsv">
+            <property name="geometry">
+              <rect>
+                <x>30</x>
+                <y>28</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>导出 CSV</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnExportExcel">
+            <property name="geometry">
+              <rect>
+                <x>170</x>
+                <y>28</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>导出 Excel</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnCopyFinalResult">
+            <property name="geometry">
+              <rect>
+                <x>310</x>
+                <y>28</y>
+                <width>140</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>复制最终结果</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="btnClearResult">
+            <property name="geometry">
+              <rect>
+                <x>470</x>
+                <y>28</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>清空结果</string>
+            </property>
+          </widget>
+        </widget>
+      </widget>
+      <widget class="QWidget" name="pageDebug">
+        <property name="geometry">
+          <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>1160</width>
+            <height>580</height>
+          </rect>
+        </property>
+        <widget class="QGroupBox" name="grpPidDebug">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>350</width>
+              <height>220</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>PID 参数</string>
+          </property>
+          <widget class="QLabel" name="Label_Name_Kp">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>40</y>
+                <width>60</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Kp</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_Kp">
+            <property name="geometry">
+              <rect>
+                <x>95</x>
+                <y>40</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>Kp</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Ti">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>80</y>
+                <width>60</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Ti</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_Ti">
+            <property name="geometry">
+              <rect>
+                <x>95</x>
+                <y>80</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>Ti</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Td">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>120</y>
+                <width>60</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Td</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_Td">
+            <property name="geometry">
+              <rect>
+                <x>95</x>
+                <y>120</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>Td</string>
+            </property>
+          </widget>
+          <widget class="QToolButton" name="ToolButton_ControlAlgo">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>170</y>
+                <width>180</width>
+                <height>34</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>PID算法:关闭</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpVoltageDebug">
+          <property name="geometry">
+            <rect>
+              <x>405</x>
+              <y>10</y>
+              <width>350</width>
+              <height>220</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>压控电压调试</string>
+          </property>
+          <widget class="QLabel" name="lblControlVoltageDebugTitle">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>45</y>
+                <width>90</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>控制电压</string>
+            </property>
+          </widget>
+          <widget class="QLineEdit" name="cin_ControlVoltage">
+            <property name="geometry">
+              <rect>
+                <x>125</x>
+                <y>45</y>
+                <width>120</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="placeholderText">
+              <string>0~3V</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_SendControlVoltage">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>95</y>
+                <width>150</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>发送控制电压</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_ControlVoltage">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>145</y>
+                <width>200</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>保存当前档位压控</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpManualCommand">
+          <property name="geometry">
+            <rect>
+              <x>790</x>
+              <y>10</y>
+              <width>350</width>
+              <height>220</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>手动命令</string>
+          </property>
+          <widget class="QPushButton" name="Button_SendCurrentPosition">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>45</y>
+                <width>180</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>发送电流档位</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_SendVoltageRange">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>95</y>
+                <width>180</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>发送电压档位</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_3">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>145</y>
+                <width>180</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>清理测量缓存</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpCurrentReadDebug">
+          <property name="geometry">
+            <rect>
+              <x>20</x>
+              <y>250</y>
+              <width>350</width>
+              <height>170</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>电流读取调试</string>
+          </property>
+          <widget class="QPushButton" name="pushButton">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>40</y>
+                <width>180</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>开始测电流</string>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_2">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>90</y>
+                <width>180</width>
+                <height>36</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>停止测电流</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Current">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>130</y>
+                <width>80</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>当前电流</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Current">
+            <property name="geometry">
+              <rect>
+                <x>115</x>
+                <y>130</y>
+                <width>150</width>
+                <height>28</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>-- A</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpPidState">
+          <property name="geometry">
+            <rect>
+              <x>405</x>
+              <y>250</y>
+              <width>350</width>
+              <height>170</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>PID 状态</string>
+          </property>
+          <widget class="QLabel" name="lblPidSpTitle">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>40</y>
+                <width>45</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>SP</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidSp">
+            <property name="geometry">
+              <rect>
+                <x>75</x>
+                <y>40</y>
+                <width>80</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidPvTitle">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>70</y>
+                <width>45</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>PV</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidPv">
+            <property name="geometry">
+              <rect>
+                <x>75</x>
+                <y>70</y>
+                <width>80</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidErrTitle">
+            <property name="geometry">
+              <rect>
+                <x>25</x>
+                <y>100</y>
+                <width>45</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Err</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidErr">
+            <property name="geometry">
+              <rect>
+                <x>75</x>
+                <y>100</y>
+                <width>80</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidUkTitle">
+            <property name="geometry">
+              <rect>
+                <x>165</x>
+                <y>40</y>
+                <width>55</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>uk</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidUk">
+            <property name="geometry">
+              <rect>
+                <x>225</x>
+                <y>40</y>
+                <width>80</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidLastUkTitle">
+            <property name="geometry">
+              <rect>
+                <x>165</x>
+                <y>70</y>
+                <width>55</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Last uk</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblPidLastUk">
+            <property name="geometry">
+              <rect>
+                <x>225</x>
+                <y>70</y>
+                <width>80</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_Name_Current_2">
+            <property name="geometry">
+              <rect>
+                <x>165</x>
+                <y>100</y>
+                <width>70</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>实测电流</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="Label_RE_Current">
+            <property name="geometry">
+              <rect>
+                <x>235</x>
+                <y>100</y>
+                <width>70</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+        </widget>
+        <widget class="QGroupBox" name="grpCommDebug">
+          <property name="geometry">
+            <rect>
+              <x>790</x>
+              <y>250</y>
+              <width>350</width>
+              <height>310</height>
+            </rect>
+          </property>
+          <property name="title">
+            <string>通信调试</string>
+          </property>
+          <widget class="QTextEdit" name="logText_1">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>30</y>
+                <width>310</width>
+                <height>170</height>
+              </rect>
+            </property>
+          </widget>
+          <widget class="QPushButton" name="Button_logText1_CLR">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>210</y>
+                <width>90</width>
+                <height>30</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>清空</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblAckNackTitle">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>248</y>
+                <width>90</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>ACK/NACK</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblAckNack">
+            <property name="geometry">
+              <rect>
+                <x>120</x>
+                <y>248</y>
+                <width>160</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblOperationDoneTitle">
+            <property name="geometry">
+              <rect>
+                <x>20</x>
+                <y>278</y>
+                <width>110</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>Operation Done</string>
+            </property>
+          </widget>
+          <widget class="QLabel" name="lblOperationDone">
+            <property name="geometry">
+              <rect>
+                <x>135</x>
+                <y>278</y>
+                <width>160</width>
+                <height>26</height>
+              </rect>
+            </property>
+            <property name="text">
+              <string>--</string>
+            </property>
+          </widget>
+        </widget>
+      </widget>
+    </widget>
     <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; font-weight: 600;</string>
+      <string notr="true">QWidget { font-family: "Microsoft YaHei", "SimSun"; font-size: 10pt; }
+QFrame#frameTopStatus, QFrame#frameSideNav { border: 1px solid #b9b9b9; border-radius: 2px; background-color: #f5f5f5; }
+QGroupBox { font-weight: 600; margin-top: 8px; padding-top: 12px; }
+QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 4px; }
+QPushButton, QToolButton { min-height: 24px; padding: 3px 10px; }
+QLineEdit { min-height: 22px; padding: 2px 4px; }
+QTableWidget, QTextEdit { background-color: white; }
+QLabel#Label_VoltData, QLabel#Label_CurrData, QLabel#lblRealtimeResistance, QLabel#Label_ResData, QLabel#Label_MeasureProgress, QLabel#Label_Current, QLabel#lblAverageValue, QLabel#lblStdValue, QLabel#lblFinalResistivity, QLabel#lblWS, QLabel#lblSD, QLabel#lblGeometryFactor, QLabel#lblTemperatureFactor, QLabel#lblTotalFactor { font-family: "Consolas"; font-size: 13pt; font-weight: 600; }
+QLabel#lblConnectStatus, QLabel#lblCurrentRange, QLabel#lblVoltageRange, QLabel#lblMeasureMode, QLabel#lblMeasureState { font-weight: 600; }
+QLabel#lblNavTitle { font-weight: 600; }
+QPushButton#Button_MeasStart { font-weight: 600; min-height: 30px; }</string>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCurrentRangeTitle">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>18</y>
-      <width>70</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电流档位</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCurrentRange">
-    <property name="geometry">
-     <rect>
-      <x>455</x>
-      <y>16</y>
-      <width>80</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; font-weight: 600;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblVoltageRangeTitle">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>18</y>
-      <width>70</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电压档位</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblVoltageRange">
-    <property name="geometry">
-     <rect>
-      <x>635</x>
-      <y>16</y>
-      <width>80</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; font-weight: 600;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblMeasureModeTitle">
-    <property name="geometry">
-     <rect>
-      <x>740</x>
-      <y>18</y>
-      <width>70</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>测量模式</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblMeasureMode">
-    <property name="geometry">
-     <rect>
-      <x>815</x>
-      <y>16</y>
-      <width>130</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; font-weight: 600;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblMeasureStateTitle">
-    <property name="geometry">
-     <rect>
-      <x>970</x>
-      <y>18</y>
-      <width>70</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>测量状态</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblMeasureState">
-    <property name="geometry">
-     <rect>
-      <x>1045</x>
-      <y>16</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>空闲</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; font-weight: 600;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
   </widget>
-  <widget class="QFrame" name="frameSideNav">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>64</y>
-     <width>180</width>
-     <height>696</height>
-    </rect>
-   </property>
-   <property name="frameShape">
-    <enum>QFrame::StyledPanel</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QFrame#frameSideNav { background-color: #f8fafc; border-right: 1px solid #cbd5e1; }</string>
-   </property>
-   <widget class="QLabel" name="lblNavTitle">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>140</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>功能导航</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 15pt &quot;Microsoft YaHei&quot;; font-weight: 700;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPageExperiment">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>96</y>
-      <width>140</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>实验测量</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPageSample">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>156</y>
-      <width>140</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>样品参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPageResult">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>216</y>
-      <width>140</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>数据结果</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnPageDebug">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>650</y>
-      <width>140</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>调试页面</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-  </widget>
-   <widget class="QStackedWidget" name="stackedWidgetMain">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>84</y>
-      <width>980</width>
-      <height>656</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="pageExperiment">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>980</width>
-       <height>656</height>
-      </rect>
-     </property>
-   <widget class="QGroupBox" name="grpExperimentControl">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>940</width>
-      <height>170</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>实验控制</string>
-    </property>
-   <widget class="QLabel" name="lblModeSelect">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>35</y>
-      <width>80</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>测量模式</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="ToolButton_MeasureMode">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>30</y>
-      <width>180</width>
-      <height>38</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>单次测量</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblCurrentRangeSelect">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>35</y>
-      <width>80</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电流档位</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="Button_CurrPos">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>30</y>
-      <width>150</width>
-      <height>38</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblVoltageRangeSelect">
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>35</y>
-      <width>80</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电压档位</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="Button_VolRange">
-    <property name="geometry">
-     <rect>
-      <x>690</x>
-      <y>30</y>
-      <width>150</width>
-      <height>38</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_MeasStart">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>100</y>
-      <width>150</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>开始测量</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 13pt &quot;Microsoft YaHei&quot;; font-weight: 700; background-color: #dbeafe;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnStopMeasure">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>100</y>
-      <width>150</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>停止/中止</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnClearCurrentData">
-    <property name="geometry">
-     <rect>
-      <x>375</x>
-      <y>100</y>
-      <width>150</width>
-      <height>44</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清空当前数据</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpRealtimeData">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>210</y>
-      <width>460</width>
-      <height>290</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>实时数据</string>
-    </property>
-   <widget class="QLabel" name="Label_NameDataVoltage">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>38</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电压</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_VoltData">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>38</y>
-      <width>220</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- V</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_NameDataCurrent">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>93</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电流</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_CurrData">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>93</y>
-      <width>220</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- A</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblResistanceTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>148</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电阻</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblRealtimeResistance">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>148</y>
-      <width>220</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- Ω</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_NameDataResistivity">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>203</y>
-      <width>120</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电阻率</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_ResData">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>203</y>
-      <width>220</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- Ω·cm</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpMeasureProgress">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>210</y>
-      <width>460</width>
-      <height>290</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>测量进度</string>
-    </property>
-   <widget class="QLabel" name="lblStageTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>45</y>
-      <width>100</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>当前阶段</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_MeasureProgress">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>45</y>
-      <width>300</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>空闲</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="ProgressBar_MeasureProgress">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>115</y>
-      <width>380</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblStageHint">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>175</y>
-      <width>380</width>
-      <height>60</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>测量过程状态会在此同步显示</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 11pt &quot;Microsoft YaHei&quot;; color: #374151;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-   </widget>
-   </widget>
-    </widget>
-    <widget class="QWidget" name="pageSample">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>980</width>
-       <height>656</height>
-      </rect>
-     </property>
-   <widget class="QGroupBox" name="grpSampleBasic">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>460</width>
-      <height>430</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>样品参数</string>
-    </property>
-   <widget class="QLabel" name="Label_Name_SemiType">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>35</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>半导体类型</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_SelSemiType">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>32</y>
-      <width>110</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>P</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Temperature">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>85</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>温度</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_Temperature">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>85</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入温度</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Temperature_2">
-    <property name="geometry">
-     <rect>
-      <x>325</x>
-      <y>85</y>
-      <width>40</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>℃</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleThickness">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>135</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>样品厚度</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_Thickness">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>135</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入厚度</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleThickness_2">
-    <property name="geometry">
-     <rect>
-      <x>325</x>
-      <y>135</y>
-      <width>40</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>mm</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleDiameter">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>185</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>样品直径</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_SampleDiameter">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>185</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入样品直径</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleDiameter_2">
-    <property name="geometry">
-     <rect>
-      <x>325</x>
-      <y>185</y>
-      <width>40</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>mm</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleDiameter_3">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>235</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>探针间距</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_ProbeSpacing">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>235</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入探针间距</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleDiameter_4">
-    <property name="geometry">
-     <rect>
-      <x>325</x>
-      <y>235</y>
-      <width>40</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>mm</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_FspCorrectionFactor">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>285</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>修正系数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_FspCorrectionFactor">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>285</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入修正系数</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Temperature_3">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>335</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>a 参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_a">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>335</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入a</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Temperature_4">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>385</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>b 参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_b">
-    <property name="geometry">
-     <rect>
-      <x>160</x>
-      <y>385</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入b</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpCorrectionFactor">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>20</y>
-      <width>460</width>
-      <height>300</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>修正因子</string>
-    </property>
-   <widget class="QLabel" name="lblWsTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>45</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>WS</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblWS">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>45</y>
-      <width>180</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblSdTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>85</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SD</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblSD">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>85</y>
-      <width>180</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblGeometryFactorTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>125</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>几何修正</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblGeometryFactor">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>125</y>
-      <width>180</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTemperatureFactorTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>165</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>温度修正</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTemperatureFactor">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>165</y>
-      <width>180</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTotalFactorTitle">
-    <property name="geometry">
-     <rect>
-      <x>35</x>
-      <y>205</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>综合系数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblTotalFactor">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>205</y>
-      <width>180</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpSampleActions">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>350</y>
-      <width>460</width>
-      <height>170</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>参数设置</string>
-    </property>
-   <widget class="QLabel" name="Label_Name_SampleDiameter_5">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>35</y>
-      <width>110</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>电流误差范围</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_CurrErrorBound">
-    <property name="geometry">
-     <rect>
-      <x>150</x>
-      <y>35</y>
-      <width>150</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>输入范围</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_SampleDiameter_6">
-    <property name="geometry">
-     <rect>
-      <x>315</x>
-      <y>35</y>
-      <width>40</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>%</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSaveParams">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>85</y>
-      <width>120</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>保存参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnResetParams">
-    <property name="geometry">
-     <rect>
-      <x>165</x>
-      <y>85</y>
-      <width>90</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>恢复默认</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnImportParams">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>85</y>
-      <width>90</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导入参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnExportParams">
-    <property name="geometry">
-     <rect>
-      <x>375</x>
-      <y>85</y>
-      <width>90</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>导出参数</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QProgressBar" name="ProgressBar_Init">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>130</y>
-      <width>390</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="value">
-     <number>0</number>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QPushButton" name="Button_Temperature">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存温度</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_Thickness">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>4</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存厚度</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_SampleDiameter">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>8</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存直径</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_ProbeSpacing">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>12</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存间距</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_FspCorrectionFactor">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>16</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存修正系数</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_ab">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>20</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存ab</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_CurrErrorBound">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>24</y>
-      <width>10</width>
-      <height>10</height>
-     </rect>
-    </property>
-    <property name="visible">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>保存误差范围</string>
-    </property>
-   </widget>
-    </widget>
-    <widget class="QWidget" name="pageResult">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>980</width>
-       <height>656</height>
-      </rect>
-     </property>
-   <widget class="QGroupBox" name="grpForwardData">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>940</width>
-       <height>175</height>
-      </rect>
-    </property>
-    <property name="title">
-     <string>正向测量数据</string>
-    </property>
-   <widget class="QTableWidget" name="TableWidget_f">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>900</width>
-       <height>125</height>
-      </rect>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpReverseData">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>205</y>
-       <width>940</width>
-       <height>175</height>
-      </rect>
-    </property>
-    <property name="title">
-     <string>反向测量数据</string>
-    </property>
-   <widget class="QTableWidget" name="TableWidget_r">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>30</y>
-       <width>900</width>
-       <height>125</height>
-      </rect>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpStatistics">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>400</y>
-       <width>460</width>
-       <height>165</height>
-      </rect>
-    </property>
-    <property name="title">
-     <string>统计结果</string>
-    </property>
-   <widget class="QLabel" name="lblAverageTitle">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>35</y>
-       <width>120</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>平均电阻率</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblAverageValue">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>35</y>
-       <width>240</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblStdTitle">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>75</y>
-       <width>120</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>标准差</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblStdValue">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>75</y>
-       <width>240</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblFinalResistivityTitle">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>115</y>
-       <width>120</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>最终电阻率</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblFinalResistivity">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>115</y>
-       <width>240</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- Ω·cm</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpFileInfo">
-    <property name="geometry">
-      <rect>
-       <x>500</x>
-       <y>400</y>
-       <width>460</width>
-       <height>165</height>
-      </rect>
-    </property>
-    <property name="title">
-     <string>文件信息</string>
-    </property>
-   <widget class="QLabel" name="lblMeasureStartTimeTitle">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>35</y>
-       <width>120</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>测量开始时间</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblMeasureStartTime">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>35</y>
-       <width>260</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblDataPathTitle">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>75</y>
-       <width>120</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>数据保存路径</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblDataSavePath">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>75</y>
-       <width>260</width>
-       <height>40</height>
-      </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnOpenDataFolder">
-    <property name="geometry">
-      <rect>
-       <x>35</x>
-       <y>120</y>
-       <width>150</width>
-       <height>30</height>
-      </rect>
-    </property>
-    <property name="text">
-     <string>打开数据文件夹</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpResultActions">
-    <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>575</y>
-       <width>940</width>
-       <height>65</height>
-      </rect>
-    </property>
-    <property name="title">
-     <string>结果操作</string>
-    </property>
-   <widget class="QPushButton" name="btnExportCsv">
-    <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>25</y>
-       <width>120</width>
-       <height>30</height>
-      </rect>
-    </property>
-    <property name="text">
-     <string>导出 CSV</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnExportExcel">
-    <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>25</y>
-       <width>120</width>
-       <height>30</height>
-      </rect>
-    </property>
-    <property name="text">
-     <string>导出 Excel</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCopyFinalResult">
-    <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>25</y>
-       <width>140</width>
-       <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>复制最终结果</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnClearResult">
-    <property name="geometry">
-      <rect>
-       <x>470</x>
-       <y>25</y>
-       <width>120</width>
-       <height>30</height>
-      </rect>
-    </property>
-    <property name="text">
-     <string>清空结果</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   </widget>
-    </widget>
-    <widget class="QWidget" name="pageDebug">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>980</width>
-       <height>656</height>
-      </rect>
-     </property>
-   <widget class="QGroupBox" name="grpPidDebug">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>300</width>
-      <height>240</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>PID 参数</string>
-    </property>
-   <widget class="QLabel" name="Label_Name_Kp">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>40</y>
-      <width>60</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Kp</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_Kp">
-    <property name="geometry">
-     <rect>
-      <x>95</x>
-      <y>40</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Kp</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Ti">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>80</y>
-      <width>60</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ti</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_Ti">
-    <property name="geometry">
-     <rect>
-      <x>95</x>
-      <y>80</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Ti</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Td">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>120</y>
-      <width>60</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Td</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_Td">
-    <property name="geometry">
-     <rect>
-      <x>95</x>
-      <y>120</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Td</string>
-    </property>
-   </widget>
-   <widget class="QToolButton" name="ToolButton_ControlAlgo">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>170</y>
-      <width>180</width>
-      <height>34</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PID算法:关闭</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpVoltageDebug">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>20</y>
-      <width>300</width>
-      <height>240</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>压控电压调试</string>
-    </property>
-   <widget class="QLabel" name="lblControlVoltageDebugTitle">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>45</y>
-      <width>90</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>控制电压</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="cin_ControlVoltage">
-    <property name="geometry">
-     <rect>
-      <x>125</x>
-      <y>45</y>
-      <width>120</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>0~3V</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_SendControlVoltage">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>95</y>
-      <width>150</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>发送控制电压</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_ControlVoltage">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>145</y>
-      <width>200</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>保存当前档位压控</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpManualCommand">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>20</y>
-      <width>300</width>
-      <height>240</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>手动命令</string>
-    </property>
-   <widget class="QPushButton" name="Button_SendCurrentPosition">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>45</y>
-      <width>180</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>发送电流档位</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_SendVoltageRange">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>95</y>
-      <width>180</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>发送电压档位</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>145</y>
-      <width>180</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清理测量缓存</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpCurrentReadDebug">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>280</y>
-      <width>300</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>电流读取调试</string>
-    </property>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>40</y>
-      <width>180</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>开始测电流</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>90</y>
-      <width>180</width>
-      <height>36</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>停止测电流</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Current">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>130</y>
-      <width>80</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>当前电流</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Current">
-    <property name="geometry">
-     <rect>
-      <x>115</x>
-      <y>130</y>
-      <width>150</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>-- A</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 16pt &quot;Consolas&quot;; font-weight: 600; color: #1f2937;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpPidState">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>280</y>
-      <width>300</width>
-      <height>180</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>PID 状态</string>
-    </property>
-   <widget class="QLabel" name="lblPidSpTitle">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>40</y>
-      <width>45</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>SP</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidSp">
-    <property name="geometry">
-     <rect>
-      <x>75</x>
-      <y>40</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidPvTitle">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>70</y>
-      <width>45</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PV</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidPv">
-    <property name="geometry">
-     <rect>
-      <x>75</x>
-      <y>70</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidErrTitle">
-    <property name="geometry">
-     <rect>
-      <x>25</x>
-      <y>100</y>
-      <width>45</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Err</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidErr">
-    <property name="geometry">
-     <rect>
-      <x>75</x>
-      <y>100</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidUkTitle">
-    <property name="geometry">
-     <rect>
-      <x>165</x>
-      <y>40</y>
-      <width>55</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>uk</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidUk">
-    <property name="geometry">
-     <rect>
-      <x>225</x>
-      <y>40</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidLastUkTitle">
-    <property name="geometry">
-     <rect>
-      <x>165</x>
-      <y>70</y>
-      <width>55</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Last uk</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblPidLastUk">
-    <property name="geometry">
-     <rect>
-      <x>225</x>
-      <y>70</y>
-      <width>80</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_Name_Current_2">
-    <property name="geometry">
-     <rect>
-      <x>165</x>
-      <y>100</y>
-      <width>70</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>实测电流</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Label_RE_Current">
-    <property name="geometry">
-     <rect>
-      <x>235</x>
-      <y>100</y>
-      <width>70</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   </widget>
-   <widget class="QGroupBox" name="grpCommDebug">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>280</y>
-      <width>300</width>
-      <height>330</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>通信调试</string>
-    </property>
-   <widget class="QTextEdit" name="logText_1">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>260</width>
-      <height>180</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Button_logText1_CLR">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>220</y>
-      <width>90</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清空</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblAckNackTitle">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>260</y>
-      <width>90</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ACK/NACK</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblAckNack">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>260</y>
-      <width>130</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblOperationDoneTitle">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>290</y>
-      <width>110</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Operation Done</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="lblOperationDone">
-    <property name="geometry">
-     <rect>
-      <x>135</x>
-      <y>290</y>
-      <width>100</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>--</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Microsoft YaHei&quot;; color: #4b5563;</string>
-    </property>
-   </widget>
-   </widget>
-    </widget>
-   </widget>
- </widget>
- <resources/>
- <connections/>
+  <resources />
+  <connections />
 </ui>
