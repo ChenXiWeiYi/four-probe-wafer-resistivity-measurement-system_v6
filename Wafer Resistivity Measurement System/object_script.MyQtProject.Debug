@@ -22,13 +22,15 @@ INPUT(
 ./debug\controlloop.o
 ./debug\answer_read_current_only.o
 ./debug\answer_modify_control_voltage.o
+./debug\menu_init.o
 ./debug\slot_cin_kp.o
 ./debug\slot_cin_ti.o
 ./debug\slot_cin_td.o
 ./debug\measure_start.o
 ./debug\serial_readserialdata.o
 ./debug\serial_calculate_crc16.o
-./debug\serial_protocol_sendpacket.o
+./debug\serial_autoconnect.o
+./debug\serial_frame.o
 ./debug\serial_send_controlbyte.o
 ./debug\serial_answer.o
 ./debug\serial_command.o

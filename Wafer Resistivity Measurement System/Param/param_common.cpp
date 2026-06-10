@@ -1,13 +1,280 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "global_struct_define.h"
+#include <QCoreApplication>
 #include <QDebug>
 #include <QDataStream>
+#include <QDir>
 #include <QMessageBox>
 #include <QFile>
+#include <QSettings>
 #include <QTextStream>
 #include <QMap>
 #include <QString>
+
+namespace {
+struct ParamDefaultItem
+{
+    ParamName_TypeDef name;
+    const char *value;
+};
+
+static const ParamDefaultItem kDefaultParamItems[] = {
+    { NAME_SemiType,            "0" },
+    { NAME_Temperature,         "18" },
+    { NAME_SampleThickness,     "0.551" },
+    { NAME_SampleDiameter,      "150" },
+    { NAME_ProbeSpacing,        "1.59" },
+    { NAME_FspCorrectionFactor, "1.008" },
+    { NAME_a,                   "5" },
+    { NAME_b,                   "1" },
+    { NAME_CurrErrorBound,      "10" },
+    { NAME_ControlVoltages,     "0.000000,2.502300,2.498200,2.496600,2.496370,2.496340,2.496300,0.244000" },
+    { NAME_PID_Kp,              "750.000000,750.000000,750.000000,750.000000,750.000000,750.000000,750.000000" },
+    { NAME_PID_Ti,              "20.000000,20.000000,20.000000,20.000000,20.000000,20.000000,20.000000" },
+    { NAME_PID_Td,              "0.000000,0.000000,0.000000,0.000000,0.000000,0.000000,0.000000" },
+    { NAME_PIDControlEnabled,   "0" },
+    { NAME_CurrPos,             "3" },
+    { NAME_VolRange,            "2" },
+    { NAME_MeasureMode,         "0" }
+};
+
+/**
+ * @brief ParamSettingKey
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+QString ParamSettingKey(ParamName_TypeDef ParamName)
+{
+    switch(ParamName){
+    case NAME_SemiType:            return "Sample/SemiType";
+    case NAME_Temperature:         return "Sample/Temperature";
+    case NAME_SampleThickness:     return "Sample/SampleThickness";
+    case NAME_SampleDiameter:      return "Sample/SampleDiameter";
+    case NAME_ProbeSpacing:        return "Sample/ProbeSpacing";
+    case NAME_FspCorrectionFactor: return "Sample/FspCorrectionFactor";
+    case NAME_a:                   return "Sample/a";
+    case NAME_b:                   return "Sample/b";
+    case NAME_CurrPos:             return "Range/CurrentPosition";
+    case NAME_VolRange:            return "Range/VoltageRange";
+    case NAME_MeasureMode:         return "Range/MeasureMode";
+    case NAME_CurrErrorBound:      return "Factory/CurrentErrorBound";
+    case NAME_ControlVoltages:     return "Factory/ControlVoltages";
+    case NAME_PID_Kp:              return "Factory/PID_Kp";
+    case NAME_PID_Ti:              return "Factory/PID_Ti";
+    case NAME_PID_Td:              return "Factory/PID_Td";
+    case NAME_PIDControlEnabled:   return "Factory/PIDControlEnabled";
+    }
+    return QString();
+}
+
+/**
+ * @brief DefaultParamValue
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+QVariant DefaultParamValue(ParamName_TypeDef ParamName)
+{
+    for(const ParamDefaultItem &item : kDefaultParamItems){
+        if(item.name == ParamName){
+            return QString(item.value);
+        }
+    }
+    return QVariant();
+}
+
+/**
+ * @brief ConfigDirPath
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+QString ConfigDirPath(void)
+{
+    return QDir(QCoreApplication::applicationDirPath()).filePath("config");
+}
+
+/**
+ * @brief ParamIniPath
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+QString ParamIniPath(void)
+{
+    return QDir(ConfigDirPath()).filePath("Param.ini");
+}
+
+/**
+ * @brief DefaultParamIniPath
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+QString DefaultParamIniPath(void)
+{
+    return QDir(ConfigDirPath()).filePath("default_param.ini");
+}
+
+/**
+ * @brief PrepareSettings
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+void PrepareSettings(QSettings *settings)
+{
+    settings->setIniCodec("UTF-8");
+}
+
+/**
+ * @brief WriteDefaultParamValues
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+void WriteDefaultParamValues(QSettings *settings)
+{
+    for(const ParamDefaultItem &item : kDefaultParamItems){
+        settings->setValue(ParamSettingKey(item.name), QString(item.value));
+    }
+}
+
+/**
+ * @brief WriteDefaultParamIni
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+bool WriteDefaultParamIni(const QString &filePath)
+{
+    QSettings settings(filePath, QSettings::IniFormat);
+    PrepareSettings(&settings);
+    settings.clear();
+    WriteDefaultParamValues(&settings);
+    settings.sync();
+    return settings.status() == QSettings::NoError;
+}
+
+/**
+ * @brief LegacyParamName
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+ParamName_TypeDef LegacyParamName(const QString &legacyName, bool *ok)
+{
+    for(const ParamDefaultItem &item : kDefaultParamItems){
+        QString key = Map_ParamName.value(item.name);
+        if(key.endsWith(":")){
+            key.chop(1);
+        }
+        if(key == legacyName){
+            *ok = true;
+            return item.name;
+        }
+    }
+    *ok = false;
+    return NAME_Temperature;
+}
+
+/**
+ * @brief MigrateLegacyParamSetting
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+bool MigrateLegacyParamSetting(const QString &legacyPath, const QString &paramPath)
+{
+    QFile file(legacyPath);
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        return false;
+    }
+
+    QSettings settings(paramPath, QSettings::IniFormat);
+    PrepareSettings(&settings);
+    settings.clear();
+    WriteDefaultParamValues(&settings);
+
+    QTextStream in(&file);
+    while(!in.atEnd()){
+        QString line = in.readLine().trimmed();
+        int colonIndex = line.indexOf(":");
+        int semicolonIndex = line.indexOf(";");
+        if(colonIndex <= 0){
+            continue;
+        }
+        if(semicolonIndex < 0){
+            semicolonIndex = line.length();
+        }
+
+        QString legacyName = line.left(colonIndex).trimmed();
+        QString value = line.mid(colonIndex + 1, semicolonIndex - colonIndex - 1).trimmed();
+        bool ok = false;
+        ParamName_TypeDef paramName = LegacyParamName(legacyName, &ok);
+        if(ok){
+            settings.setValue(ParamSettingKey(paramName), value);
+        }
+    }
+
+    file.close();
+    settings.sync();
+    return settings.status() == QSettings::NoError;
+}
+
+/**
+ * @brief FillMissingParamKeys
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+bool FillMissingParamKeys(const QString &paramPath, const QString &defaultPath)
+{
+    QSettings settings(paramPath, QSettings::IniFormat);
+    QSettings defaultSettings(defaultPath, QSettings::IniFormat);
+    PrepareSettings(&settings);
+    PrepareSettings(&defaultSettings);
+
+    bool changed = false;
+    for(const ParamDefaultItem &item : kDefaultParamItems){
+        QString key = ParamSettingKey(item.name);
+        if(!settings.contains(key)){
+            settings.setValue(key, defaultSettings.value(key, DefaultParamValue(item.name)));
+            changed = true;
+        }
+    }
+
+    if(changed){
+        settings.sync();
+    }
+    return settings.status() == QSettings::NoError;
+}
+
+/**
+ * @brief EnsureParamIniReady
+ * @author 刘嘉诚
+ * @date 2026.06.09
+ */
+bool EnsureParamIniReady(void)
+{
+    QDir configDir(ConfigDirPath());
+    if(!configDir.exists() && !QDir(QCoreApplication::applicationDirPath()).mkpath("config")){
+        return false;
+    }
+
+    QString defaultPath = DefaultParamIniPath();
+    if(!QFile::exists(defaultPath) && !WriteDefaultParamIni(defaultPath)){
+        return false;
+    }
+
+    QString paramPath = ParamIniPath();
+    if(!QFile::exists(paramPath)){
+        QString legacyPath = QDir(QCoreApplication::applicationDirPath()).filePath("Param.Setting");
+        if(QFile::exists(legacyPath)){
+            if(!MigrateLegacyParamSetting(legacyPath, paramPath)){
+                return false;
+            }
+        }else if(!QFile::copy(defaultPath, paramPath)){
+            if(!WriteDefaultParamIni(paramPath)){
+                return false;
+            }
+        }
+    }
+
+    return FillMissingParamKeys(paramPath, defaultPath);
+}
+}
 
 
 
@@ -21,45 +288,26 @@
  */
 bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, const QString &ParamValue)
 {
-    QString Dir_App = QCoreApplication::applicationDirPath();
-    QString FilePath = Dir_App + "/Param.Setting";
-    QFile file(FilePath);
-    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
-        Popup_Window("错误","参数文件打开失败!");
+    static bool warningShown = false;
+    if(!EnsureParamIniReady()){
+        if(!warningShown){
+            Popup_Window("错误", "参数配置文件初始化失败，请检查软件目录下的config文件夹权限。");
+            warningShown = true;
+        }
         return false;
     }
-    QTextStream in(&file);
-    QStringList lines;
-    while (!in.atEnd()){
-        lines.append(in.readLine());
-    }
-    file.close();
-    QString ParamName_QS = Map_ParamName.value(ParamName);
-    if (ParamName_QS.isEmpty()){
+
+    QString key = ParamSettingKey(ParamName);
+    if(key.isEmpty()){
         Popup_Window("严重错误", "参数映射表缺失，请检查代码！");
         return false;
     }
-    bool found = false;
-    for(int i = 0; i < lines.size(); ++i){
-        if(lines[i].startsWith(ParamName_QS)){
-            lines[i] = ParamName_QS + ParamValue + ";";
-            found = true;
-            break;
-        }
-    }
-    if(!found){
-        lines.append(ParamName_QS + ParamValue + ";");
-    }
-    if(!file.open(QIODevice::WriteOnly | QIODevice::Text)){
-        Popup_Window("错误","参数文件打开失败(无法写入)!");
-        return false;
-    }
-    QTextStream out(&file);
-    for (const QString &line : lines){
-        out << line << "\n";
-    }
-    file.close();
-    return true;
+
+    QSettings settings(ParamIniPath(), QSettings::IniFormat);
+    PrepareSettings(&settings);
+    settings.setValue(key, ParamValue);
+    settings.sync();
+    return settings.status() == QSettings::NoError;
 }
 
 
@@ -102,34 +350,30 @@ bool Widget::Param_Setting_Write(ParamName_TypeDef ParamName, double ParamValue)
  */
 QVariant Widget::Param_Setting_Read(ParamName_TypeDef ParamName)
 {
-    QString Dir_App = QCoreApplication::applicationDirPath();
-    QString FilePath = Dir_App + "/Param.Setting";
-    QFile file(FilePath);
-    QString ParamValue_QS;
-    QVariant ParamValue_QV;
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
-        Popup_Window("错误","读取参数失败");
+    static bool warningShown = false;
+    if(!EnsureParamIniReady()){
+        if(!warningShown){
+            Popup_Window("错误", "读取参数失败，请检查软件目录下的config文件夹权限。");
+            warningShown = true;
+        }
         return QVariant();
     }
-    QString ParamName_QS = Map_ParamName.value(ParamName);
-    if (ParamName_QS.isEmpty()){
+
+    QString key = ParamSettingKey(ParamName);
+    if(key.isEmpty()){
         Popup_Window("严重错误", "参数映射表缺失，请检查代码！");
         return QVariant();
     }
-    QTextStream in(&file);
-    while(!in.atEnd()){
-        QString line = in.readLine();
-        if (line.startsWith(ParamName_QS)){
-            QStringList parts = line.split(":");
-            if (parts.size() > 1) {
-                ParamValue_QS = parts[1].split(";").first().trimmed();
-                ParamValue_QV = ParamValue_QS;
-            }
-            break;
-        }
+
+    QSettings settings(ParamIniPath(), QSettings::IniFormat);
+    PrepareSettings(&settings);
+    if(!settings.contains(key)){
+        QVariant defaultValue = DefaultParamValue(ParamName);
+        settings.setValue(key, defaultValue);
+        settings.sync();
+        return defaultValue;
     }
-    file.close();
-    return ParamValue_QV;
+    return settings.value(key);
 }
 
 /**

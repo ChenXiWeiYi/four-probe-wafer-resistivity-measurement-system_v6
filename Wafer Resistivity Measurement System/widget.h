@@ -121,6 +121,9 @@ private:
     void Measure_Complete_MODE_10TIMES_SINGLEPOINT_AUTO(void);
     void Measure_Complete_MODE_10TIMES_SINGLEPOINT_MAN(void);
     /*********************** measure_display.cpp *********************/
+    void Update_RealtimeMeasureDisplay(double Voltage, double Current, double Resistance, double Resistivity);
+    void Update_ResultStatistics(void);
+    void Reset_MeasureDisplay(void);
     void Add_Resistivity2Table(double value);
     /********************** measure_warning.cpp **********************/
     void Measure_Warning(void);

@@ -33,8 +33,11 @@ void Widget::onButtonMeasStartClicked(){
         Popup_Window("错误","正在测量,请勿重复点击!");
     }else if(Measure_CheckParam()){ // 检查参数合不合理
         Update_GeometryCorrectionFactor();  // 更新几何参数,完整的测量就更这一回
-        ui->TableWidget_f->clear();
-        ui->TableWidget_r->clear();
+        ui->TableWidget_f->clearContents();
+        ui->TableWidget_r->clearContents();
+        Buffer_MeasureValue_f.clear();
+        Buffer_MeasureValue_r.clear();
+        Reset_MeasureDisplay();
         Measure_Start();
     }
 }

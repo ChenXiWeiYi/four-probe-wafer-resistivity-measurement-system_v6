@@ -14,14 +14,13 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolButton>
@@ -32,1326 +31,797 @@ QT_BEGIN_NAMESPACE
 class Ui_Widget
 {
 public:
-    QTabWidget *tabWidget;
-    QWidget *tab;
-    QPushButton *Button_SendVoltageRange;
-    QPushButton *Button_SendControlVoltage;
-    QPushButton *Button_ControlVoltage;
-    QPushButton *Button_MeasStart;
-    QLineEdit *cin_ControlVoltage;
-    QPushButton *Button_SendCurrentPosition;
-    QFrame *frame;
-    QWidget *gridLayoutWidget_2;
-    QGridLayout *gridLayout_2;
-    QToolButton *Button_VolRange;
+    QFrame *frameTopStatus;
+    QLabel *lblComPort;
+    QToolButton *Button_SelCOM;
+    QLabel *lblConnectStatusTitle;
+    QLabel *lblConnectStatus;
+    QLabel *lblCurrentRangeTitle;
+    QLabel *lblCurrentRange;
+    QLabel *lblVoltageRangeTitle;
+    QLabel *lblVoltageRange;
+    QLabel *lblMeasureModeTitle;
+    QLabel *lblMeasureMode;
+    QLabel *lblMeasureStateTitle;
+    QLabel *lblMeasureState;
+    QFrame *frameSideNav;
+    QLabel *lblNavTitle;
+    QPushButton *btnPageExperiment;
+    QPushButton *btnPageSample;
+    QPushButton *btnPageResult;
+    QPushButton *btnPageDebug;
+    QStackedWidget *stackedWidgetMain;
+    QWidget *pageExperiment;
+    QGroupBox *grpExperimentControl;
+    QLabel *lblModeSelect;
     QToolButton *ToolButton_MeasureMode;
-    QLabel *Label_name2_3;
-    QProgressBar *ProgressBar_Init;
-    QLabel *Label_name1;
-    QLabel *Label_name2;
-    QLabel *Label_name5;
-    QSpacerItem *horizontalSpacer_2;
-    QFrame *frame_2;
-    QWidget *gridLayoutWidget_4;
-    QGridLayout *gridLayout_4;
-    QLabel *Label_name4;
-    QSpacerItem *verticalSpacer_2;
-    QSpacerItem *horizontalSpacer_3;
-    QFrame *frame_3;
-    QWidget *gridLayoutWidget_3;
-    QGridLayout *gridLayout_3;
+    QLabel *lblCurrentRangeSelect;
+    QToolButton *Button_CurrPos;
+    QLabel *lblVoltageRangeSelect;
+    QToolButton *Button_VolRange;
+    QPushButton *Button_MeasStart;
+    QPushButton *btnStopMeasure;
+    QPushButton *btnClearCurrentData;
+    QGroupBox *grpRealtimeData;
     QLabel *Label_NameDataVoltage;
-    QLabel *Label_ResData;
+    QLabel *Label_VoltData;
     QLabel *Label_NameDataCurrent;
     QLabel *Label_CurrData;
-    QLabel *Label_VoltData;
-    QProgressBar *ProgressBar_MeasureProgress;
-    QLabel *Label_name5_2;
+    QLabel *lblResistanceTitle;
+    QLabel *lblRealtimeResistance;
     QLabel *Label_NameDataResistivity;
+    QLabel *Label_ResData;
+    QGroupBox *grpMeasureProgress;
+    QLabel *lblStageTitle;
     QLabel *Label_MeasureProgress;
-    QWidget *Tab_ParamSetting;
-    QWidget *gridLayoutWidget;
-    QGridLayout *gridLayout;
+    QProgressBar *ProgressBar_MeasureProgress;
+    QLabel *lblStageHint;
+    QWidget *pageSample;
+    QGroupBox *grpSampleBasic;
+    QLabel *Label_Name_SemiType;
+    QPushButton *Button_SelSemiType;
     QLabel *Label_Name_Temperature;
     QLineEdit *cin_Temperature;
-    QLabel *Label_Name_SampleDiameter_3;
-    QLabel *Label_Name_SampleDiameter_4;
-    QLabel *Label_Name_SampleDiameter_2;
-    QLineEdit *cin_ProbeSpacing;
-    QPushButton *Button_SelSemiType;
+    QLabel *Label_Name_Temperature_2;
     QLabel *Label_Name_SampleThickness;
+    QLineEdit *cin_Thickness;
     QLabel *Label_Name_SampleThickness_2;
-    QLabel *Label_Name_SemiType;
-    QLineEdit *cin_SampleDiameter;
     QLabel *Label_Name_SampleDiameter;
+    QLineEdit *cin_SampleDiameter;
+    QLabel *Label_Name_SampleDiameter_2;
+    QLabel *Label_Name_SampleDiameter_3;
+    QLineEdit *cin_ProbeSpacing;
+    QLabel *Label_Name_SampleDiameter_4;
     QLabel *Label_Name_FspCorrectionFactor;
     QLineEdit *cin_FspCorrectionFactor;
+    QLabel *Label_Name_Temperature_3;
+    QLineEdit *cin_a;
+    QLabel *Label_Name_Temperature_4;
+    QLineEdit *cin_b;
+    QGroupBox *grpCorrectionFactor;
+    QLabel *lblWsTitle;
+    QLabel *lblWS;
+    QLabel *lblSdTitle;
+    QLabel *lblSD;
+    QLabel *lblGeometryFactorTitle;
+    QLabel *lblGeometryFactor;
+    QLabel *lblTemperatureFactorTitle;
+    QLabel *lblTemperatureFactor;
+    QLabel *lblTotalFactorTitle;
+    QLabel *lblTotalFactor;
+    QGroupBox *grpSampleActions;
     QLabel *Label_Name_SampleDiameter_5;
     QLineEdit *cin_CurrErrorBound;
-    QLabel *Label_Name_Temperature_4;
     QLabel *Label_Name_SampleDiameter_6;
-    QLineEdit *cin_a;
-    QLabel *Label_Name_Temperature_3;
-    QLabel *Label_Name_Temperature_2;
-    QLineEdit *cin_b;
-    QLineEdit *cin_Thickness;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *verticalSpacer;
-    QWidget *tab_2;
-    QLineEdit *cin_Kp;
-    QLineEdit *cin_Ti;
+    QPushButton *btnSaveParams;
+    QPushButton *btnResetParams;
+    QPushButton *btnImportParams;
+    QPushButton *btnExportParams;
+    QProgressBar *ProgressBar_Init;
+    QPushButton *Button_Temperature;
+    QPushButton *Button_Thickness;
+    QPushButton *Button_SampleDiameter;
+    QPushButton *Button_ProbeSpacing;
+    QPushButton *Button_FspCorrectionFactor;
+    QPushButton *Button_ab;
+    QPushButton *Button_CurrErrorBound;
+    QWidget *pageResult;
+    QGroupBox *grpForwardData;
+    QTableWidget *TableWidget_f;
+    QGroupBox *grpReverseData;
+    QTableWidget *TableWidget_r;
+    QGroupBox *grpStatistics;
+    QLabel *lblAverageTitle;
+    QLabel *lblAverageValue;
+    QLabel *lblStdTitle;
+    QLabel *lblStdValue;
+    QLabel *lblFinalResistivityTitle;
+    QLabel *lblFinalResistivity;
+    QGroupBox *grpFileInfo;
+    QLabel *lblMeasureStartTimeTitle;
+    QLabel *lblMeasureStartTime;
+    QLabel *lblDataPathTitle;
+    QLabel *lblDataSavePath;
+    QPushButton *btnOpenDataFolder;
+    QGroupBox *grpResultActions;
+    QPushButton *btnExportCsv;
+    QPushButton *btnExportExcel;
+    QPushButton *btnCopyFinalResult;
+    QPushButton *btnClearResult;
+    QWidget *pageDebug;
+    QGroupBox *grpPidDebug;
     QLabel *Label_Name_Kp;
+    QLineEdit *cin_Kp;
     QLabel *Label_Name_Ti;
-    QLabel *Label_Current;
-    QLabel *Label_Name_Current;
+    QLineEdit *cin_Ti;
+    QLabel *Label_Name_Td;
+    QLineEdit *cin_Td;
+    QToolButton *ToolButton_ControlAlgo;
+    QGroupBox *grpVoltageDebug;
+    QLabel *lblControlVoltageDebugTitle;
+    QLineEdit *cin_ControlVoltage;
+    QPushButton *Button_SendControlVoltage;
+    QPushButton *Button_ControlVoltage;
+    QGroupBox *grpManualCommand;
+    QPushButton *Button_SendCurrentPosition;
+    QPushButton *Button_SendVoltageRange;
+    QPushButton *pushButton_3;
+    QGroupBox *grpCurrentReadDebug;
     QPushButton *pushButton;
     QPushButton *pushButton_2;
-    QLabel *Label_RE_Current;
+    QLabel *Label_Name_Current;
+    QLabel *Label_Current;
+    QGroupBox *grpPidState;
+    QLabel *lblPidSpTitle;
+    QLabel *lblPidSp;
+    QLabel *lblPidPvTitle;
+    QLabel *lblPidPv;
+    QLabel *lblPidErrTitle;
+    QLabel *lblPidErr;
+    QLabel *lblPidUkTitle;
+    QLabel *lblPidUk;
+    QLabel *lblPidLastUkTitle;
+    QLabel *lblPidLastUk;
     QLabel *Label_Name_Current_2;
-    QToolButton *Button_CurrPos;
-    QToolButton *ToolButton_ControlAlgo;
-    QPushButton *pushButton_3;
-    QToolButton *Button_SelCOM;
+    QLabel *Label_RE_Current;
+    QGroupBox *grpCommDebug;
     QTextEdit *logText_1;
     QPushButton *Button_logText1_CLR;
-    QLineEdit *cin_Td;
-    QLabel *Label_Name_Td;
-    QWidget *tab_54545;
-    QTableWidget *TableWidget_f;
-    QWidget *tab_6;
-    QTableWidget *TableWidget_r;
+    QLabel *lblAckNackTitle;
+    QLabel *lblAckNack;
+    QLabel *lblOperationDoneTitle;
+    QLabel *lblOperationDone;
 
     void setupUi(QWidget *Widget)
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
-        Widget->setEnabled(true);
-        Widget->resize(800, 600);
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(Widget->sizePolicy().hasHeightForWidth());
-        Widget->setSizePolicy(sizePolicy);
-        Widget->setMinimumSize(QSize(725, 600));
-        Widget->setMaximumSize(QSize(10000, 600));
-        Widget->setAutoFillBackground(false);
-        tabWidget = new QTabWidget(Widget);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        tabWidget->setGeometry(QRect(0, 0, 800, 600));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(tabWidget->sizePolicy().hasHeightForWidth());
-        tabWidget->setSizePolicy(sizePolicy1);
-        tabWidget->setStyleSheet(QStringLiteral("background-color: rgb(236, 236, 236);"));
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        Button_SendVoltageRange = new QPushButton(tab);
-        Button_SendVoltageRange->setObjectName(QStringLiteral("Button_SendVoltageRange"));
-        Button_SendVoltageRange->setGeometry(QRect(260, 340, 111, 28));
-        Button_SendControlVoltage = new QPushButton(tab);
-        Button_SendControlVoltage->setObjectName(QStringLiteral("Button_SendControlVoltage"));
-        Button_SendControlVoltage->setGeometry(QRect(260, 450, 111, 28));
-        Button_ControlVoltage = new QPushButton(tab);
-        Button_ControlVoltage->setObjectName(QStringLiteral("Button_ControlVoltage"));
-        Button_ControlVoltage->setGeometry(QRect(260, 410, 111, 28));
-        Button_MeasStart = new QPushButton(tab);
-        Button_MeasStart->setObjectName(QStringLiteral("Button_MeasStart"));
-        Button_MeasStart->setGeometry(QRect(650, 480, 90, 80));
-        Button_MeasStart->setStyleSheet(QLatin1String("border: 2px solid rgb(85, 170, 255);\n"
-"font: 12pt \"Consolas\",\"SimHei\";\n"
-"background-color: rgb(194, 224, 255);"));
-        cin_ControlVoltage = new QLineEdit(tab);
-        cin_ControlVoltage->setObjectName(QStringLiteral("cin_ControlVoltage"));
-        cin_ControlVoltage->setGeometry(QRect(250, 380, 113, 21));
-        Button_SendCurrentPosition = new QPushButton(tab);
-        Button_SendCurrentPosition->setObjectName(QStringLiteral("Button_SendCurrentPosition"));
-        Button_SendCurrentPosition->setGeometry(QRect(260, 300, 111, 28));
-        frame = new QFrame(tab);
-        frame->setObjectName(QStringLiteral("frame"));
-        frame->setGeometry(QRect(10, 10, 411, 281));
-        frame->setStyleSheet(QLatin1String("QFrame{\n"
-"	border-radius: 12px;\n"
-"	border: 2px solid\n"
-"}"));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
-        gridLayoutWidget_2 = new QWidget(frame);
-        gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(10, 20, 391, 247));
-        gridLayout_2 = new QGridLayout(gridLayoutWidget_2);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        gridLayout_2->setVerticalSpacing(15);
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        Button_VolRange = new QToolButton(gridLayoutWidget_2);
-        Button_VolRange->setObjectName(QStringLiteral("Button_VolRange"));
-        sizePolicy.setHeightForWidth(Button_VolRange->sizePolicy().hasHeightForWidth());
-        Button_VolRange->setSizePolicy(sizePolicy);
-        Button_VolRange->setMinimumSize(QSize(230, 50));
-        Button_VolRange->setMaximumSize(QSize(230, 50));
-        Button_VolRange->setLayoutDirection(Qt::LeftToRight);
-        Button_VolRange->setStyleSheet(QString::fromUtf8("QToolButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(225, 225, 225);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:hover {\n"
-""
-                        "    background-color: rgb(240, 240, 240); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:pressed {\n"
-"    background-color: rgb(200, 200, 200); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-
-        gridLayout_2->addWidget(Button_VolRange, 1, 1, 1, 1);
-
-        ToolButton_MeasureMode = new QToolButton(gridLayoutWidget_2);
-        ToolButton_MeasureMode->setObjectName(QStringLiteral("ToolButton_MeasureMode"));
-        sizePolicy.setHeightForWidth(ToolButton_MeasureMode->sizePolicy().hasHeightForWidth());
-        ToolButton_MeasureMode->setSizePolicy(sizePolicy);
-        ToolButton_MeasureMode->setMinimumSize(QSize(230, 50));
-        ToolButton_MeasureMode->setMaximumSize(QSize(230, 50));
-        ToolButton_MeasureMode->setStyleSheet(QString::fromUtf8("QToolButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(225, 225, 225);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:hover {\n"
-""
-                        "    background-color: rgb(240, 240, 240); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:pressed {\n"
-"    background-color: rgb(200, 200, 200); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-
-        gridLayout_2->addWidget(ToolButton_MeasureMode, 2, 1, 1, 1);
-
-        Label_name2_3 = new QLabel(gridLayoutWidget_2);
-        Label_name2_3->setObjectName(QStringLiteral("Label_name2_3"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(Label_name2_3->sizePolicy().hasHeightForWidth());
-        Label_name2_3->setSizePolicy(sizePolicy2);
-        Label_name2_3->setMinimumSize(QSize(0, 0));
-        Label_name2_3->setMaximumSize(QSize(300, 50));
-        Label_name2_3->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_name2_3->setLineWidth(0);
-        Label_name2_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_2->addWidget(Label_name2_3, 2, 0, 1, 1);
-
-        ProgressBar_Init = new QProgressBar(gridLayoutWidget_2);
-        ProgressBar_Init->setObjectName(QStringLiteral("ProgressBar_Init"));
-        sizePolicy.setHeightForWidth(ProgressBar_Init->sizePolicy().hasHeightForWidth());
-        ProgressBar_Init->setSizePolicy(sizePolicy);
-        ProgressBar_Init->setMinimumSize(QSize(230, 0));
-        ProgressBar_Init->setMaximumSize(QSize(230, 40));
-        ProgressBar_Init->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(225, 225, 225);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        ProgressBar_Init->setValue(24);
-        ProgressBar_Init->setAlignment(Qt::AlignCenter);
-
-        gridLayout_2->addWidget(ProgressBar_Init, 3, 1, 1, 1);
-
-        Label_name1 = new QLabel(gridLayoutWidget_2);
-        Label_name1->setObjectName(QStringLiteral("Label_name1"));
-        sizePolicy2.setHeightForWidth(Label_name1->sizePolicy().hasHeightForWidth());
-        Label_name1->setSizePolicy(sizePolicy2);
-        Label_name1->setMinimumSize(QSize(0, 0));
-        Label_name1->setMaximumSize(QSize(300, 50));
-        Label_name1->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_name1->setLineWidth(0);
-        Label_name1->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_2->addWidget(Label_name1, 0, 0, 1, 1);
-
-        Label_name2 = new QLabel(gridLayoutWidget_2);
-        Label_name2->setObjectName(QStringLiteral("Label_name2"));
-        sizePolicy2.setHeightForWidth(Label_name2->sizePolicy().hasHeightForWidth());
-        Label_name2->setSizePolicy(sizePolicy2);
-        Label_name2->setMinimumSize(QSize(0, 0));
-        Label_name2->setMaximumSize(QSize(300, 50));
-        Label_name2->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_name2->setLineWidth(0);
-        Label_name2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_2->addWidget(Label_name2, 1, 0, 1, 1);
-
-        Label_name5 = new QLabel(gridLayoutWidget_2);
-        Label_name5->setObjectName(QStringLiteral("Label_name5"));
-        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(Label_name5->sizePolicy().hasHeightForWidth());
-        Label_name5->setSizePolicy(sizePolicy3);
-        Label_name5->setMinimumSize(QSize(0, 50));
-        Label_name5->setMaximumSize(QSize(300, 50));
-        Label_name5->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font: 14pt bold \"Consolas\",\"SimHei\";"));
-        Label_name5->setLineWidth(0);
-        Label_name5->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_2->addWidget(Label_name5, 3, 0, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_2->addItem(horizontalSpacer_2, 1, 2, 1, 1);
-
-        frame_2 = new QFrame(tab);
-        frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setGeometry(QRect(430, 10, 331, 81));
-        frame_2->setStyleSheet(QLatin1String("QFrame{\n"
-"	border-radius: 12px;\n"
-"	border: 2px solid\n"
-"}"));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
-        gridLayoutWidget_4 = new QWidget(frame_2);
-        gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(20, 10, 303, 59));
-        gridLayout_4 = new QGridLayout(gridLayoutWidget_4);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        gridLayout_4->setContentsMargins(0, 0, 0, 0);
-        Label_name4 = new QLabel(gridLayoutWidget_4);
-        Label_name4->setObjectName(QStringLiteral("Label_name4"));
-        sizePolicy3.setHeightForWidth(Label_name4->sizePolicy().hasHeightForWidth());
-        Label_name4->setSizePolicy(sizePolicy3);
-        Label_name4->setMinimumSize(QSize(0, 50));
-        Label_name4->setMaximumSize(QSize(1000000, 50));
-        Label_name4->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_name4->setLineWidth(0);
-        Label_name4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_4->addWidget(Label_name4, 0, 0, 1, 1);
-
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_4->addItem(verticalSpacer_2, 1, 0, 1, 1);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_4->addItem(horizontalSpacer_3, 0, 1, 1, 1);
-
-        frame_3 = new QFrame(tab);
-        frame_3->setObjectName(QStringLiteral("frame_3"));
-        frame_3->setGeometry(QRect(430, 100, 331, 321));
-        frame_3->setStyleSheet(QLatin1String("QFrame{\n"
-"	border-radius: 12px;\n"
-"	border: 2px solid\n"
-"}"));
-        frame_3->setFrameShape(QFrame::StyledPanel);
-        frame_3->setFrameShadow(QFrame::Raised);
-        gridLayoutWidget_3 = new QWidget(frame_3);
-        gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(10, 20, 309, 280));
-        gridLayout_3 = new QGridLayout(gridLayoutWidget_3);
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setContentsMargins(11, 11, 11, 11);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        gridLayout_3->setContentsMargins(0, 0, 0, 0);
-        Label_NameDataVoltage = new QLabel(gridLayoutWidget_3);
-        Label_NameDataVoltage->setObjectName(QStringLiteral("Label_NameDataVoltage"));
-        sizePolicy.setHeightForWidth(Label_NameDataVoltage->sizePolicy().hasHeightForWidth());
-        Label_NameDataVoltage->setSizePolicy(sizePolicy);
-        Label_NameDataVoltage->setMinimumSize(QSize(120, 0));
-        Label_NameDataVoltage->setMaximumSize(QSize(16777215, 40));
-        Label_NameDataVoltage->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_NameDataVoltage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_3->addWidget(Label_NameDataVoltage, 0, 0, 1, 1);
-
-        Label_ResData = new QLabel(gridLayoutWidget_3);
-        Label_ResData->setObjectName(QStringLiteral("Label_ResData"));
-        Label_ResData->setEnabled(true);
-        sizePolicy.setHeightForWidth(Label_ResData->sizePolicy().hasHeightForWidth());
-        Label_ResData->setSizePolicy(sizePolicy);
-        Label_ResData->setMinimumSize(QSize(150, 50));
-        Label_ResData->setStyleSheet(QLatin1String("font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;\n"
-"border: none;"));
-
-        gridLayout_3->addWidget(Label_ResData, 2, 1, 1, 1);
-
-        Label_NameDataCurrent = new QLabel(gridLayoutWidget_3);
-        Label_NameDataCurrent->setObjectName(QStringLiteral("Label_NameDataCurrent"));
-        sizePolicy.setHeightForWidth(Label_NameDataCurrent->sizePolicy().hasHeightForWidth());
-        Label_NameDataCurrent->setSizePolicy(sizePolicy);
-        Label_NameDataCurrent->setMinimumSize(QSize(120, 0));
-        Label_NameDataCurrent->setMaximumSize(QSize(16777215, 40));
-        Label_NameDataCurrent->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_NameDataCurrent->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_3->addWidget(Label_NameDataCurrent, 1, 0, 1, 1);
-
-        Label_CurrData = new QLabel(gridLayoutWidget_3);
-        Label_CurrData->setObjectName(QStringLiteral("Label_CurrData"));
-        Label_CurrData->setEnabled(true);
-        sizePolicy.setHeightForWidth(Label_CurrData->sizePolicy().hasHeightForWidth());
-        Label_CurrData->setSizePolicy(sizePolicy);
-        Label_CurrData->setMinimumSize(QSize(150, 50));
-        Label_CurrData->setStyleSheet(QLatin1String("font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;\n"
-"border: none;"));
-
-        gridLayout_3->addWidget(Label_CurrData, 0, 1, 1, 1);
-
-        Label_VoltData = new QLabel(gridLayoutWidget_3);
-        Label_VoltData->setObjectName(QStringLiteral("Label_VoltData"));
-        Label_VoltData->setEnabled(true);
-        sizePolicy.setHeightForWidth(Label_VoltData->sizePolicy().hasHeightForWidth());
-        Label_VoltData->setSizePolicy(sizePolicy);
-        Label_VoltData->setMinimumSize(QSize(150, 50));
-        Label_VoltData->setStyleSheet(QLatin1String("font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;\n"
-"border: none;"));
-
-        gridLayout_3->addWidget(Label_VoltData, 1, 1, 1, 1);
-
-        ProgressBar_MeasureProgress = new QProgressBar(gridLayoutWidget_3);
-        ProgressBar_MeasureProgress->setObjectName(QStringLiteral("ProgressBar_MeasureProgress"));
-        sizePolicy.setHeightForWidth(ProgressBar_MeasureProgress->sizePolicy().hasHeightForWidth());
-        ProgressBar_MeasureProgress->setSizePolicy(sizePolicy);
-        ProgressBar_MeasureProgress->setMinimumSize(QSize(150, 50));
-        ProgressBar_MeasureProgress->setMaximumSize(QSize(150, 50));
-        ProgressBar_MeasureProgress->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(225, 225, 225);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        ProgressBar_MeasureProgress->setValue(24);
-        ProgressBar_MeasureProgress->setAlignment(Qt::AlignCenter);
-
-        gridLayout_3->addWidget(ProgressBar_MeasureProgress, 3, 1, 1, 1);
-
-        Label_name5_2 = new QLabel(gridLayoutWidget_3);
-        Label_name5_2->setObjectName(QStringLiteral("Label_name5_2"));
-        sizePolicy3.setHeightForWidth(Label_name5_2->sizePolicy().hasHeightForWidth());
-        Label_name5_2->setSizePolicy(sizePolicy3);
-        Label_name5_2->setMinimumSize(QSize(120, 50));
-        Label_name5_2->setMaximumSize(QSize(300, 50));
-        Label_name5_2->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font: 14pt bold \"Consolas\",\"SimHei\";"));
-        Label_name5_2->setLineWidth(0);
-        Label_name5_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_3->addWidget(Label_name5_2, 3, 0, 1, 1);
-
-        Label_NameDataResistivity = new QLabel(gridLayoutWidget_3);
-        Label_NameDataResistivity->setObjectName(QStringLiteral("Label_NameDataResistivity"));
-        sizePolicy.setHeightForWidth(Label_NameDataResistivity->sizePolicy().hasHeightForWidth());
-        Label_NameDataResistivity->setSizePolicy(sizePolicy);
-        Label_NameDataResistivity->setMinimumSize(QSize(120, 0));
-        Label_NameDataResistivity->setMaximumSize(QSize(16777215, 40));
-        Label_NameDataResistivity->setStyleSheet(QLatin1String("border: 0px;\n"
-"font: 14pt \"Consolas\",\"SimHei\";\n"
-"background-color: none;"));
-        Label_NameDataResistivity->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout_3->addWidget(Label_NameDataResistivity, 2, 0, 1, 1);
-
-        Label_MeasureProgress = new QLabel(gridLayoutWidget_3);
-        Label_MeasureProgress->setObjectName(QStringLiteral("Label_MeasureProgress"));
-        sizePolicy3.setHeightForWidth(Label_MeasureProgress->sizePolicy().hasHeightForWidth());
-        Label_MeasureProgress->setSizePolicy(sizePolicy3);
-        Label_MeasureProgress->setMinimumSize(QSize(120, 50));
-        Label_MeasureProgress->setMaximumSize(QSize(300, 50));
-        Label_MeasureProgress->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font: 14pt bold \"Consolas\",\"SimHei\";"));
-        Label_MeasureProgress->setLineWidth(0);
-        Label_MeasureProgress->setAlignment(Qt::AlignCenter);
-
-        gridLayout_3->addWidget(Label_MeasureProgress, 4, 1, 1, 1);
-
-        tabWidget->addTab(tab, QString());
-        Tab_ParamSetting = new QWidget();
-        Tab_ParamSetting->setObjectName(QStringLiteral("Tab_ParamSetting"));
-        Tab_ParamSetting->setStyleSheet(QStringLiteral(""));
-        gridLayoutWidget = new QWidget(Tab_ParamSetting);
-        gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(30, 10, 321, 499));
-        gridLayout = new QGridLayout(gridLayoutWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        gridLayout->setHorizontalSpacing(5);
-        gridLayout->setVerticalSpacing(15);
-        gridLayout->setContentsMargins(0, 0, 0, 0);
-        Label_Name_Temperature = new QLabel(gridLayoutWidget);
-        Label_Name_Temperature->setObjectName(QStringLiteral("Label_Name_Temperature"));
-        Label_Name_Temperature->setMinimumSize(QSize(130, 0));
-        Label_Name_Temperature->setMaximumSize(QSize(130, 50));
-        Label_Name_Temperature->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Temperature->setLineWidth(0);
-        Label_Name_Temperature->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_Temperature, 5, 0, 1, 1);
-
-        cin_Temperature = new QLineEdit(gridLayoutWidget);
-        cin_Temperature->setObjectName(QStringLiteral("cin_Temperature"));
-        QSizePolicy sizePolicy4(QSizePolicy::Fixed, QSizePolicy::Preferred);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(cin_Temperature->sizePolicy().hasHeightForWidth());
-        cin_Temperature->setSizePolicy(sizePolicy4);
-        cin_Temperature->setMinimumSize(QSize(120, 40));
-        cin_Temperature->setMaximumSize(QSize(120, 40));
-        cin_Temperature->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_Temperature->setAlignment(Qt::AlignCenter);
-        cin_Temperature->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_Temperature, 5, 1, 1, 1);
-
-        Label_Name_SampleDiameter_3 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter_3->setObjectName(QStringLiteral("Label_Name_SampleDiameter_3"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleDiameter_3->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter_3->setSizePolicy(sizePolicy2);
-        Label_Name_SampleDiameter_3->setMinimumSize(QSize(30, 0));
-        Label_Name_SampleDiameter_3->setMaximumSize(QSize(30, 16777215));
-        Label_Name_SampleDiameter_3->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter_3->setLineWidth(0);
-        Label_Name_SampleDiameter_3->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter_3, 3, 2, 1, 1);
-
-        Label_Name_SampleDiameter_4 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter_4->setObjectName(QStringLiteral("Label_Name_SampleDiameter_4"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleDiameter_4->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter_4->setSizePolicy(sizePolicy2);
-        Label_Name_SampleDiameter_4->setMinimumSize(QSize(30, 0));
-        Label_Name_SampleDiameter_4->setMaximumSize(QSize(30, 16777215));
-        Label_Name_SampleDiameter_4->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter_4->setLineWidth(0);
-        Label_Name_SampleDiameter_4->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter_4, 4, 2, 1, 1);
-
-        Label_Name_SampleDiameter_2 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter_2->setObjectName(QStringLiteral("Label_Name_SampleDiameter_2"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleDiameter_2->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter_2->setSizePolicy(sizePolicy2);
-        Label_Name_SampleDiameter_2->setMinimumSize(QSize(30, 0));
-        Label_Name_SampleDiameter_2->setMaximumSize(QSize(30, 16777215));
-        Label_Name_SampleDiameter_2->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter_2->setLineWidth(0);
-        Label_Name_SampleDiameter_2->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter_2, 2, 2, 1, 1);
-
-        cin_ProbeSpacing = new QLineEdit(gridLayoutWidget);
-        cin_ProbeSpacing->setObjectName(QStringLiteral("cin_ProbeSpacing"));
-        QSizePolicy sizePolicy5(QSizePolicy::Expanding, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(cin_ProbeSpacing->sizePolicy().hasHeightForWidth());
-        cin_ProbeSpacing->setSizePolicy(sizePolicy5);
-        cin_ProbeSpacing->setMinimumSize(QSize(120, 40));
-        cin_ProbeSpacing->setMaximumSize(QSize(120, 40));
-        cin_ProbeSpacing->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_ProbeSpacing->setAlignment(Qt::AlignCenter);
-        cin_ProbeSpacing->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_ProbeSpacing, 3, 1, 1, 1);
-
-        Button_SelSemiType = new QPushButton(gridLayoutWidget);
-        Button_SelSemiType->setObjectName(QStringLiteral("Button_SelSemiType"));
-        sizePolicy4.setHeightForWidth(Button_SelSemiType->sizePolicy().hasHeightForWidth());
-        Button_SelSemiType->setSizePolicy(sizePolicy4);
-        Button_SelSemiType->setMinimumSize(QSize(120, 40));
-        Button_SelSemiType->setMaximumSize(QSize(120, 40));
-        Button_SelSemiType->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(215, 215, 215);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QPushButton:hover {\n"
-""
-                        "    background-color: rgb(230, 230, 230); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(190, 190, 190); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-        Button_SelSemiType->setProperty("fixedSize", QVariant(QSize(100, 50)));
-
-        gridLayout->addWidget(Button_SelSemiType, 1, 1, 1, 1);
-
-        Label_Name_SampleThickness = new QLabel(gridLayoutWidget);
-        Label_Name_SampleThickness->setObjectName(QStringLiteral("Label_Name_SampleThickness"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleThickness->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleThickness->setSizePolicy(sizePolicy2);
-        Label_Name_SampleThickness->setMinimumSize(QSize(130, 0));
-        Label_Name_SampleThickness->setMaximumSize(QSize(130, 16777215));
-        Label_Name_SampleThickness->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleThickness->setLineWidth(0);
-        Label_Name_SampleThickness->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_SampleThickness, 4, 0, 1, 1);
-
-        Label_Name_SampleThickness_2 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleThickness_2->setObjectName(QStringLiteral("Label_Name_SampleThickness_2"));
-        sizePolicy3.setHeightForWidth(Label_Name_SampleThickness_2->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleThickness_2->setSizePolicy(sizePolicy3);
-        Label_Name_SampleThickness_2->setMinimumSize(QSize(130, 0));
-        Label_Name_SampleThickness_2->setMaximumSize(QSize(130, 16777215));
-        Label_Name_SampleThickness_2->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleThickness_2->setLineWidth(0);
-        Label_Name_SampleThickness_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_SampleThickness_2, 3, 0, 1, 1);
-
-        Label_Name_SemiType = new QLabel(gridLayoutWidget);
-        Label_Name_SemiType->setObjectName(QStringLiteral("Label_Name_SemiType"));
-        Label_Name_SemiType->setMinimumSize(QSize(130, 0));
-        Label_Name_SemiType->setMaximumSize(QSize(130, 16777215));
-        Label_Name_SemiType->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SemiType->setLineWidth(0);
-        Label_Name_SemiType->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_SemiType, 1, 0, 1, 1);
-
-        cin_SampleDiameter = new QLineEdit(gridLayoutWidget);
-        cin_SampleDiameter->setObjectName(QStringLiteral("cin_SampleDiameter"));
-        sizePolicy4.setHeightForWidth(cin_SampleDiameter->sizePolicy().hasHeightForWidth());
-        cin_SampleDiameter->setSizePolicy(sizePolicy4);
-        cin_SampleDiameter->setMinimumSize(QSize(120, 40));
-        cin_SampleDiameter->setMaximumSize(QSize(120, 40));
-        cin_SampleDiameter->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_SampleDiameter->setAlignment(Qt::AlignCenter);
-        cin_SampleDiameter->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_SampleDiameter, 2, 1, 1, 1);
-
-        Label_Name_SampleDiameter = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter->setObjectName(QStringLiteral("Label_Name_SampleDiameter"));
-        sizePolicy3.setHeightForWidth(Label_Name_SampleDiameter->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter->setSizePolicy(sizePolicy3);
-        Label_Name_SampleDiameter->setMinimumSize(QSize(130, 0));
-        Label_Name_SampleDiameter->setMaximumSize(QSize(130, 50));
-        Label_Name_SampleDiameter->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter->setLineWidth(0);
-        Label_Name_SampleDiameter->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter, 2, 0, 1, 1);
-
-        Label_Name_FspCorrectionFactor = new QLabel(gridLayoutWidget);
-        Label_Name_FspCorrectionFactor->setObjectName(QStringLiteral("Label_Name_FspCorrectionFactor"));
-        Label_Name_FspCorrectionFactor->setMinimumSize(QSize(130, 0));
-        Label_Name_FspCorrectionFactor->setMaximumSize(QSize(130, 16777215));
-        Label_Name_FspCorrectionFactor->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_FspCorrectionFactor->setLineWidth(0);
-        Label_Name_FspCorrectionFactor->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_FspCorrectionFactor, 0, 0, 1, 1);
-
-        cin_FspCorrectionFactor = new QLineEdit(gridLayoutWidget);
-        cin_FspCorrectionFactor->setObjectName(QStringLiteral("cin_FspCorrectionFactor"));
-        sizePolicy5.setHeightForWidth(cin_FspCorrectionFactor->sizePolicy().hasHeightForWidth());
-        cin_FspCorrectionFactor->setSizePolicy(sizePolicy5);
-        cin_FspCorrectionFactor->setMinimumSize(QSize(120, 40));
-        cin_FspCorrectionFactor->setMaximumSize(QSize(120, 40));
-        cin_FspCorrectionFactor->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_FspCorrectionFactor->setAlignment(Qt::AlignCenter);
-        cin_FspCorrectionFactor->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_FspCorrectionFactor, 0, 1, 1, 1);
-
-        Label_Name_SampleDiameter_5 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter_5->setObjectName(QStringLiteral("Label_Name_SampleDiameter_5"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleDiameter_5->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter_5->setSizePolicy(sizePolicy2);
-        Label_Name_SampleDiameter_5->setMinimumSize(QSize(30, 0));
-        Label_Name_SampleDiameter_5->setMaximumSize(QSize(30, 16777215));
-        Label_Name_SampleDiameter_5->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter_5->setLineWidth(0);
-        Label_Name_SampleDiameter_5->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter_5, 5, 2, 1, 1);
-
-        cin_CurrErrorBound = new QLineEdit(gridLayoutWidget);
-        cin_CurrErrorBound->setObjectName(QStringLiteral("cin_CurrErrorBound"));
-        QSizePolicy sizePolicy6(QSizePolicy::Ignored, QSizePolicy::Preferred);
-        sizePolicy6.setHorizontalStretch(0);
-        sizePolicy6.setVerticalStretch(0);
-        sizePolicy6.setHeightForWidth(cin_CurrErrorBound->sizePolicy().hasHeightForWidth());
-        cin_CurrErrorBound->setSizePolicy(sizePolicy6);
-        cin_CurrErrorBound->setMinimumSize(QSize(120, 40));
-        cin_CurrErrorBound->setMaximumSize(QSize(120, 40));
-        cin_CurrErrorBound->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_CurrErrorBound->setAlignment(Qt::AlignCenter);
-        cin_CurrErrorBound->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_CurrErrorBound, 8, 1, 1, 1);
-
-        Label_Name_Temperature_4 = new QLabel(gridLayoutWidget);
-        Label_Name_Temperature_4->setObjectName(QStringLiteral("Label_Name_Temperature_4"));
-        Label_Name_Temperature_4->setMinimumSize(QSize(130, 0));
-        Label_Name_Temperature_4->setMaximumSize(QSize(130, 50));
-        Label_Name_Temperature_4->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Temperature_4->setLineWidth(0);
-        Label_Name_Temperature_4->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_Temperature_4, 8, 0, 1, 1);
-
-        Label_Name_SampleDiameter_6 = new QLabel(gridLayoutWidget);
-        Label_Name_SampleDiameter_6->setObjectName(QStringLiteral("Label_Name_SampleDiameter_6"));
-        sizePolicy2.setHeightForWidth(Label_Name_SampleDiameter_6->sizePolicy().hasHeightForWidth());
-        Label_Name_SampleDiameter_6->setSizePolicy(sizePolicy2);
-        Label_Name_SampleDiameter_6->setMinimumSize(QSize(30, 0));
-        Label_Name_SampleDiameter_6->setMaximumSize(QSize(30, 16777215));
-        Label_Name_SampleDiameter_6->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_SampleDiameter_6->setLineWidth(0);
-        Label_Name_SampleDiameter_6->setAlignment(Qt::AlignCenter);
-
-        gridLayout->addWidget(Label_Name_SampleDiameter_6, 8, 2, 1, 1);
-
-        cin_a = new QLineEdit(gridLayoutWidget);
-        cin_a->setObjectName(QStringLiteral("cin_a"));
-        sizePolicy6.setHeightForWidth(cin_a->sizePolicy().hasHeightForWidth());
-        cin_a->setSizePolicy(sizePolicy6);
-        cin_a->setMinimumSize(QSize(120, 40));
-        cin_a->setMaximumSize(QSize(120, 40));
-        cin_a->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_a->setAlignment(Qt::AlignCenter);
-        cin_a->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_a, 6, 1, 1, 1);
-
-        Label_Name_Temperature_3 = new QLabel(gridLayoutWidget);
-        Label_Name_Temperature_3->setObjectName(QStringLiteral("Label_Name_Temperature_3"));
-        Label_Name_Temperature_3->setMinimumSize(QSize(130, 0));
-        Label_Name_Temperature_3->setMaximumSize(QSize(130, 50));
-        Label_Name_Temperature_3->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Temperature_3->setLineWidth(0);
-        Label_Name_Temperature_3->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_Temperature_3, 7, 0, 1, 1);
-
-        Label_Name_Temperature_2 = new QLabel(gridLayoutWidget);
-        Label_Name_Temperature_2->setObjectName(QStringLiteral("Label_Name_Temperature_2"));
-        Label_Name_Temperature_2->setMinimumSize(QSize(130, 0));
-        Label_Name_Temperature_2->setMaximumSize(QSize(130, 50));
-        Label_Name_Temperature_2->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Temperature_2->setLineWidth(0);
-        Label_Name_Temperature_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(Label_Name_Temperature_2, 6, 0, 1, 1);
-
-        cin_b = new QLineEdit(gridLayoutWidget);
-        cin_b->setObjectName(QStringLiteral("cin_b"));
-        sizePolicy6.setHeightForWidth(cin_b->sizePolicy().hasHeightForWidth());
-        cin_b->setSizePolicy(sizePolicy6);
-        cin_b->setMinimumSize(QSize(120, 40));
-        cin_b->setMaximumSize(QSize(120, 40));
-        cin_b->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_b->setAlignment(Qt::AlignCenter);
-        cin_b->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_b, 7, 1, 1, 1);
-
-        cin_Thickness = new QLineEdit(gridLayoutWidget);
-        cin_Thickness->setObjectName(QStringLiteral("cin_Thickness"));
-        sizePolicy4.setHeightForWidth(cin_Thickness->sizePolicy().hasHeightForWidth());
-        cin_Thickness->setSizePolicy(sizePolicy4);
-        cin_Thickness->setMinimumSize(QSize(120, 40));
-        cin_Thickness->setMaximumSize(QSize(120, 40));
-        cin_Thickness->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_Thickness->setAlignment(Qt::AlignCenter);
-        cin_Thickness->setProperty("fixedSize", QVariant(QSize(70, 23)));
-
-        gridLayout->addWidget(cin_Thickness, 4, 1, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(1, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 2, 3, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 9, 1, 1, 1);
-
-        tabWidget->addTab(Tab_ParamSetting, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QStringLiteral("tab_2"));
-        cin_Kp = new QLineEdit(tab_2);
-        cin_Kp->setObjectName(QStringLiteral("cin_Kp"));
-        cin_Kp->setGeometry(QRect(140, 30, 120, 40));
-        sizePolicy5.setHeightForWidth(cin_Kp->sizePolicy().hasHeightForWidth());
-        cin_Kp->setSizePolicy(sizePolicy5);
-        cin_Kp->setMinimumSize(QSize(120, 40));
-        cin_Kp->setMaximumSize(QSize(120, 40));
-        cin_Kp->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_Kp->setAlignment(Qt::AlignCenter);
-        cin_Kp->setProperty("fixedSize", QVariant(QSize(70, 23)));
-        cin_Ti = new QLineEdit(tab_2);
-        cin_Ti->setObjectName(QStringLiteral("cin_Ti"));
-        cin_Ti->setGeometry(QRect(140, 80, 120, 40));
-        sizePolicy5.setHeightForWidth(cin_Ti->sizePolicy().hasHeightForWidth());
-        cin_Ti->setSizePolicy(sizePolicy5);
-        cin_Ti->setMinimumSize(QSize(120, 40));
-        cin_Ti->setMaximumSize(QSize(120, 40));
-        cin_Ti->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_Ti->setAlignment(Qt::AlignCenter);
-        cin_Ti->setProperty("fixedSize", QVariant(QSize(70, 23)));
-        Label_Name_Kp = new QLabel(tab_2);
-        Label_Name_Kp->setObjectName(QStringLiteral("Label_Name_Kp"));
-        Label_Name_Kp->setGeometry(QRect(0, 30, 130, 40));
-        Label_Name_Kp->setMinimumSize(QSize(130, 0));
-        Label_Name_Kp->setMaximumSize(QSize(130, 16777215));
-        Label_Name_Kp->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Kp->setLineWidth(0);
-        Label_Name_Kp->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        Label_Name_Ti = new QLabel(tab_2);
-        Label_Name_Ti->setObjectName(QStringLiteral("Label_Name_Ti"));
-        Label_Name_Ti->setGeometry(QRect(0, 80, 130, 40));
-        Label_Name_Ti->setMinimumSize(QSize(130, 0));
-        Label_Name_Ti->setMaximumSize(QSize(130, 16777215));
-        Label_Name_Ti->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Ti->setLineWidth(0);
-        Label_Name_Ti->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        Label_Current = new QLabel(tab_2);
-        Label_Current->setObjectName(QStringLiteral("Label_Current"));
-        Label_Current->setEnabled(true);
-        Label_Current->setGeometry(QRect(420, 40, 150, 50));
-        sizePolicy.setHeightForWidth(Label_Current->sizePolicy().hasHeightForWidth());
-        Label_Current->setSizePolicy(sizePolicy);
-        Label_Current->setMinimumSize(QSize(150, 50));
-        Label_Current->setStyleSheet(QLatin1String("font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;\n"
-"border: none;"));
-        Label_Name_Current = new QLabel(tab_2);
-        Label_Name_Current->setObjectName(QStringLiteral("Label_Name_Current"));
-        Label_Name_Current->setGeometry(QRect(260, 40, 130, 40));
-        Label_Name_Current->setMinimumSize(QSize(130, 0));
-        Label_Name_Current->setMaximumSize(QSize(130, 16777215));
-        Label_Name_Current->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Current->setLineWidth(0);
-        Label_Name_Current->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        pushButton = new QPushButton(tab_2);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(90, 210, 93, 28));
-        pushButton_2 = new QPushButton(tab_2);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(90, 260, 93, 28));
-        Label_RE_Current = new QLabel(tab_2);
-        Label_RE_Current->setObjectName(QStringLiteral("Label_RE_Current"));
-        Label_RE_Current->setEnabled(true);
-        Label_RE_Current->setGeometry(QRect(420, 100, 150, 50));
-        sizePolicy.setHeightForWidth(Label_RE_Current->sizePolicy().hasHeightForWidth());
-        Label_RE_Current->setSizePolicy(sizePolicy);
-        Label_RE_Current->setMinimumSize(QSize(150, 50));
-        Label_RE_Current->setStyleSheet(QLatin1String("font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;\n"
-"border: none;"));
-        Label_Name_Current_2 = new QLabel(tab_2);
-        Label_Name_Current_2->setObjectName(QStringLiteral("Label_Name_Current_2"));
-        Label_Name_Current_2->setGeometry(QRect(580, 110, 130, 40));
-        Label_Name_Current_2->setMinimumSize(QSize(130, 0));
-        Label_Name_Current_2->setMaximumSize(QSize(130, 16777215));
-        Label_Name_Current_2->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Current_2->setLineWidth(0);
-        Label_Name_Current_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
-        Button_CurrPos = new QToolButton(tab_2);
-        Button_CurrPos->setObjectName(QStringLiteral("Button_CurrPos"));
-        Button_CurrPos->setGeometry(QRect(480, 330, 230, 50));
-        sizePolicy.setHeightForWidth(Button_CurrPos->sizePolicy().hasHeightForWidth());
-        Button_CurrPos->setSizePolicy(sizePolicy);
-        Button_CurrPos->setMinimumSize(QSize(230, 50));
-        Button_CurrPos->setMaximumSize(QSize(230, 50));
-        Button_CurrPos->setLayoutDirection(Qt::LeftToRight);
-        Button_CurrPos->setStyleSheet(QString::fromUtf8("QToolButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(225, 225, 225);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:hover {\n"
-""
-                        "    background-color: rgb(240, 240, 240); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:pressed {\n"
-"    background-color: rgb(200, 200, 200); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-        ToolButton_ControlAlgo = new QToolButton(tab_2);
-        ToolButton_ControlAlgo->setObjectName(QStringLiteral("ToolButton_ControlAlgo"));
-        ToolButton_ControlAlgo->setGeometry(QRect(460, 400, 300, 50));
-        sizePolicy.setHeightForWidth(ToolButton_ControlAlgo->sizePolicy().hasHeightForWidth());
-        ToolButton_ControlAlgo->setSizePolicy(sizePolicy);
-        ToolButton_ControlAlgo->setMinimumSize(QSize(300, 50));
-        ToolButton_ControlAlgo->setMaximumSize(QSize(300, 50));
-        ToolButton_ControlAlgo->setStyleSheet(QString::fromUtf8("QToolButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(225, 225, 225);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:hover {\n"
-""
-                        "    background-color: rgb(240, 240, 240); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:pressed {\n"
-"    background-color: rgb(200, 200, 200); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-        pushButton_3 = new QPushButton(tab_2);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-        pushButton_3->setGeometry(QRect(310, 330, 93, 28));
-        Button_SelCOM = new QToolButton(tab_2);
-        Button_SelCOM->setObjectName(QStringLiteral("Button_SelCOM"));
-        Button_SelCOM->setGeometry(QRect(470, 250, 200, 50));
-        sizePolicy.setHeightForWidth(Button_SelCOM->sizePolicy().hasHeightForWidth());
-        Button_SelCOM->setSizePolicy(sizePolicy);
-        Button_SelCOM->setMinimumSize(QSize(200, 50));
-        Button_SelCOM->setMaximumSize(QSize(200, 50));
-        Button_SelCOM->setLayoutDirection(Qt::LeftToRight);
-        Button_SelCOM->setStyleSheet(QString::fromUtf8("QToolButton {\n"
-"    /* --- \345\216\237\346\234\211\346\240\267\345\274\217 --- */\n"
-"    border-color: rgb(100, 100, 100);\n"
-"    border-width: 2px;\n"
-"    border-style: solid;\n"
-"    background-color: rgb(225, 225, 225);\n"
-"    font-family: \"Consolas\", \"Courier New\";\n"
-"    font-size: 14pt;\n"
-"    font-weight: bold;\n"
-"    color: black;\n"
-"\n"
-"    /* --- \346\216\250\350\215\220\344\274\230\345\214\226\346\240\267\345\274\217 --- */\n"
-"    padding: 5px 15px;       /* \344\270\212\344\270\213 5px\357\274\214\345\267\246\345\217\263 15px \345\206\205\350\276\271\350\267\235\357\274\214\351\230\262\346\255\242\346\226\207\345\255\227\350\264\264\350\276\271 */\n"
-"    border-radius: 4px;      /* 4 \345\203\217\347\264\240\345\234\206\350\247\222\357\274\214\350\256\251\346\214\211\351\222\256\344\270\215\351\202\243\344\271\210\347\224\237\347\241\254 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\347\247\273\344\270\212\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:hover {\n"
-""
-                        "    background-color: rgb(240, 240, 240); /* \350\203\214\346\231\257\345\217\230\344\272\256\357\274\214\346\217\220\347\244\272\345\217\257\344\272\244\344\272\222 */\n"
-"    border-color: rgb(80, 80, 80);        /* \350\276\271\346\241\206\347\250\215\345\276\256\345\212\240\346\267\261 */\n"
-"}\n"
-"\n"
-"/* \351\274\240\346\240\207\346\214\211\344\270\213\345\216\273\347\232\204\346\225\210\346\236\234 */\n"
-"QToolButton:pressed {\n"
-"    background-color: rgb(200, 200, 200); /* \350\203\214\346\231\257\345\217\230\346\232\227\357\274\214\346\250\241\346\213\237\345\207\271\351\231\267 */\n"
-"    border-color: rgb(60, 60, 60);        /* \350\276\271\346\241\206\346\233\264\346\267\261 */\n"
-"    \n"
-"    /* \346\250\241\346\213\237\346\214\211\351\222\256\350\242\253\346\214\211\344\270\213\347\232\204\344\275\215\347\247\273\346\204\237 (\345\217\257\351\200\211) */\n"
-"    padding-top: 6px;     \n"
-"    padding-left: 16px;   \n"
-"}"));
-        logText_1 = new QTextEdit(tab_2);
-        logText_1->setObjectName(QStringLiteral("logText_1"));
-        logText_1->setGeometry(QRect(50, 300, 231, 261));
-        sizePolicy.setHeightForWidth(logText_1->sizePolicy().hasHeightForWidth());
-        logText_1->setSizePolicy(sizePolicy);
-        logText_1->setMinimumSize(QSize(0, 100));
-        logText_1->setMaximumSize(QSize(10000, 10200));
-        logText_1->setSizeIncrement(QSize(0, 0));
-        logText_1->setBaseSize(QSize(0, 0));
-        logText_1->setLayoutDirection(Qt::LeftToRight);
-        logText_1->setStyleSheet(QLatin1String("font: 10pt \"Consolas\",\"SimHei\";\n"
-"background-color: rgb(255, 255, 255);\n"
-"border-radius: 12px;\n"
-"border: 1px solid rgb(0, 0, 255);\n"
+        Widget->resize(1200, 760);
+        Widget->setMinimumSize(QSize(1200, 760));
+        Widget->setMaximumSize(QSize(1200, 760));
+        Widget->setStyleSheet(QLatin1String("QWidget { font-family: \"Microsoft YaHei\", \"SimHei\"; font-size: 10pt; }\n"
+"QGroupBox { font-weight: 600; border: 1px solid #cbd5e1; border-radius: 6px; margin-top: 10px; background-color: #f8fafc; }\n"
+"QGroupBox::title { subcontrol-origin: margin; left: 12px; padding: 0 4px; }\n"
+"QPushButton, QToolButton { border: 1px solid #94a3b8; border-radius: 4px; background-color: #f1f5f9; padding: 4px 8px; }\n"
+"QPushButton:hover, QToolButton:hover { background-color: #e0f2fe; }\n"
+"QLineEdit { border: 1px solid #94a3b8; border-radius: 3px; padding: 3px 6px; background-color: white; }\n"
+"QTableWidget, QTextEdit { border: 1px solid #cbd5e1; background-color: white; }\n"
 ""));
-        logText_1->setReadOnly(true);
-        Button_logText1_CLR = new QPushButton(tab_2);
-        Button_logText1_CLR->setObjectName(QStringLiteral("Button_logText1_CLR"));
-        Button_logText1_CLR->setGeometry(QRect(320, 440, 90, 80));
-        sizePolicy.setHeightForWidth(Button_logText1_CLR->sizePolicy().hasHeightForWidth());
-        Button_logText1_CLR->setSizePolicy(sizePolicy);
-        Button_logText1_CLR->setMinimumSize(QSize(0, 0));
-        Button_logText1_CLR->setMaximumSize(QSize(90, 16777215));
-        Button_logText1_CLR->setStyleSheet(QLatin1String("border: 2px solid rgb(85, 170, 255);\n"
-"font: 12pt \"Consolas\",\"SimHei\";\n"
-"background-color: rgb(194, 224, 255);"));
-        Button_logText1_CLR->setProperty("fixedSize", QVariant(QSize(100, 50)));
-        cin_Td = new QLineEdit(tab_2);
-        cin_Td->setObjectName(QStringLiteral("cin_Td"));
-        cin_Td->setGeometry(QRect(140, 140, 120, 40));
-        sizePolicy5.setHeightForWidth(cin_Td->sizePolicy().hasHeightForWidth());
-        cin_Td->setSizePolicy(sizePolicy5);
-        cin_Td->setMinimumSize(QSize(120, 40));
-        cin_Td->setMaximumSize(QSize(120, 40));
-        cin_Td->setStyleSheet(QString::fromUtf8("/* \346\241\206 */\n"
-"border-color: rgb(100, 100, 100);\n"
-"border-width: 2px;\n"
-"border-style: solid;\n"
-"border-radius: 4px;\n"
-"/* \350\203\214\346\231\257 */\n"
-"background-color: rgb(255, 255, 255);\n"
-"/* \345\255\227 */\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;\n"
-"color: black;"));
-        cin_Td->setAlignment(Qt::AlignCenter);
-        cin_Td->setProperty("fixedSize", QVariant(QSize(70, 23)));
-        Label_Name_Td = new QLabel(tab_2);
-        Label_Name_Td->setObjectName(QStringLiteral("Label_Name_Td"));
-        Label_Name_Td->setGeometry(QRect(0, 130, 130, 40));
-        Label_Name_Td->setMinimumSize(QSize(130, 0));
-        Label_Name_Td->setMaximumSize(QSize(130, 16777215));
-        Label_Name_Td->setStyleSheet(QLatin1String("border: none;\n"
-"background-color: none;\n"
-"font-family: \"Consolas\", \"Courier New\";\n"
-"font-size: 14pt;\n"
-"font-weight: bold;"));
-        Label_Name_Td->setLineWidth(0);
-        Label_Name_Td->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        tabWidget->addTab(tab_2, QString());
-        tab_54545 = new QWidget();
-        tab_54545->setObjectName(QStringLiteral("tab_54545"));
-        TableWidget_f = new QTableWidget(tab_54545);
-        if (TableWidget_f->columnCount() < 8)
-            TableWidget_f->setColumnCount(8);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        QTableWidgetItem *__qtablewidgetitem2 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(2, __qtablewidgetitem2);
-        QTableWidgetItem *__qtablewidgetitem3 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(3, __qtablewidgetitem3);
-        QTableWidgetItem *__qtablewidgetitem4 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(4, __qtablewidgetitem4);
-        QTableWidgetItem *__qtablewidgetitem5 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(5, __qtablewidgetitem5);
-        QTableWidgetItem *__qtablewidgetitem6 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(6, __qtablewidgetitem6);
-        QTableWidgetItem *__qtablewidgetitem7 = new QTableWidgetItem();
-        TableWidget_f->setHorizontalHeaderItem(7, __qtablewidgetitem7);
+        frameTopStatus = new QFrame(Widget);
+        frameTopStatus->setObjectName(QStringLiteral("frameTopStatus"));
+        frameTopStatus->setGeometry(QRect(0, 0, 1200, 64));
+        frameTopStatus->setFrameShape(QFrame::StyledPanel);
+        frameTopStatus->setStyleSheet(QStringLiteral("QFrame#frameTopStatus { background-color: #eef2f7; border-bottom: 1px solid #cbd5e1; }"));
+        lblComPort = new QLabel(frameTopStatus);
+        lblComPort->setObjectName(QStringLiteral("lblComPort"));
+        lblComPort->setGeometry(QRect(20, 18, 45, 28));
+        lblComPort->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        Button_SelCOM = new QToolButton(frameTopStatus);
+        Button_SelCOM->setObjectName(QStringLiteral("Button_SelCOM"));
+        Button_SelCOM->setGeometry(QRect(70, 14, 110, 34));
+        lblConnectStatusTitle = new QLabel(frameTopStatus);
+        lblConnectStatusTitle->setObjectName(QStringLiteral("lblConnectStatusTitle"));
+        lblConnectStatusTitle->setGeometry(QRect(200, 18, 70, 28));
+        lblConnectStatusTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblConnectStatus = new QLabel(frameTopStatus);
+        lblConnectStatus->setObjectName(QStringLiteral("lblConnectStatus"));
+        lblConnectStatus->setGeometry(QRect(275, 16, 80, 32));
+        lblConnectStatus->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; font-weight: 600;"));
+        lblConnectStatus->setAlignment(Qt::AlignCenter);
+        lblCurrentRangeTitle = new QLabel(frameTopStatus);
+        lblCurrentRangeTitle->setObjectName(QStringLiteral("lblCurrentRangeTitle"));
+        lblCurrentRangeTitle->setGeometry(QRect(380, 18, 70, 28));
+        lblCurrentRangeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblCurrentRange = new QLabel(frameTopStatus);
+        lblCurrentRange->setObjectName(QStringLiteral("lblCurrentRange"));
+        lblCurrentRange->setGeometry(QRect(455, 16, 80, 32));
+        lblCurrentRange->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; font-weight: 600;"));
+        lblCurrentRange->setAlignment(Qt::AlignCenter);
+        lblVoltageRangeTitle = new QLabel(frameTopStatus);
+        lblVoltageRangeTitle->setObjectName(QStringLiteral("lblVoltageRangeTitle"));
+        lblVoltageRangeTitle->setGeometry(QRect(560, 18, 70, 28));
+        lblVoltageRangeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblVoltageRange = new QLabel(frameTopStatus);
+        lblVoltageRange->setObjectName(QStringLiteral("lblVoltageRange"));
+        lblVoltageRange->setGeometry(QRect(635, 16, 80, 32));
+        lblVoltageRange->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; font-weight: 600;"));
+        lblVoltageRange->setAlignment(Qt::AlignCenter);
+        lblMeasureModeTitle = new QLabel(frameTopStatus);
+        lblMeasureModeTitle->setObjectName(QStringLiteral("lblMeasureModeTitle"));
+        lblMeasureModeTitle->setGeometry(QRect(740, 18, 70, 28));
+        lblMeasureModeTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblMeasureMode = new QLabel(frameTopStatus);
+        lblMeasureMode->setObjectName(QStringLiteral("lblMeasureMode"));
+        lblMeasureMode->setGeometry(QRect(815, 16, 130, 32));
+        lblMeasureMode->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; font-weight: 600;"));
+        lblMeasureMode->setAlignment(Qt::AlignCenter);
+        lblMeasureStateTitle = new QLabel(frameTopStatus);
+        lblMeasureStateTitle->setObjectName(QStringLiteral("lblMeasureStateTitle"));
+        lblMeasureStateTitle->setGeometry(QRect(970, 18, 70, 28));
+        lblMeasureStateTitle->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        lblMeasureState = new QLabel(frameTopStatus);
+        lblMeasureState->setObjectName(QStringLiteral("lblMeasureState"));
+        lblMeasureState->setGeometry(QRect(1045, 16, 120, 32));
+        lblMeasureState->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; font-weight: 600;"));
+        lblMeasureState->setAlignment(Qt::AlignCenter);
+        frameSideNav = new QFrame(Widget);
+        frameSideNav->setObjectName(QStringLiteral("frameSideNav"));
+        frameSideNav->setGeometry(QRect(0, 64, 180, 696));
+        frameSideNav->setFrameShape(QFrame::StyledPanel);
+        frameSideNav->setStyleSheet(QStringLiteral("QFrame#frameSideNav { background-color: #f8fafc; border-right: 1px solid #cbd5e1; }"));
+        lblNavTitle = new QLabel(frameSideNav);
+        lblNavTitle->setObjectName(QStringLiteral("lblNavTitle"));
+        lblNavTitle->setGeometry(QRect(20, 20, 140, 36));
+        lblNavTitle->setStyleSheet(QStringLiteral("font: 15pt \"Microsoft YaHei\"; font-weight: 700;"));
+        lblNavTitle->setAlignment(Qt::AlignCenter);
+        btnPageExperiment = new QPushButton(frameSideNav);
+        btnPageExperiment->setObjectName(QStringLiteral("btnPageExperiment"));
+        btnPageExperiment->setGeometry(QRect(20, 96, 140, 44));
+        btnPageExperiment->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnPageSample = new QPushButton(frameSideNav);
+        btnPageSample->setObjectName(QStringLiteral("btnPageSample"));
+        btnPageSample->setGeometry(QRect(20, 156, 140, 44));
+        btnPageSample->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnPageResult = new QPushButton(frameSideNav);
+        btnPageResult->setObjectName(QStringLiteral("btnPageResult"));
+        btnPageResult->setGeometry(QRect(20, 216, 140, 44));
+        btnPageResult->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnPageDebug = new QPushButton(frameSideNav);
+        btnPageDebug->setObjectName(QStringLiteral("btnPageDebug"));
+        btnPageDebug->setGeometry(QRect(20, 650, 140, 36));
+        btnPageDebug->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        stackedWidgetMain = new QStackedWidget(Widget);
+        stackedWidgetMain->setObjectName(QStringLiteral("stackedWidgetMain"));
+        stackedWidgetMain->setGeometry(QRect(200, 84, 980, 656));
+        pageExperiment = new QWidget();
+        pageExperiment->setObjectName(QStringLiteral("pageExperiment"));
+        pageExperiment->setGeometry(QRect(0, 0, 980, 656));
+        grpExperimentControl = new QGroupBox(pageExperiment);
+        grpExperimentControl->setObjectName(QStringLiteral("grpExperimentControl"));
+        grpExperimentControl->setGeometry(QRect(20, 20, 940, 170));
+        lblModeSelect = new QLabel(grpExperimentControl);
+        lblModeSelect->setObjectName(QStringLiteral("lblModeSelect"));
+        lblModeSelect->setGeometry(QRect(25, 35, 80, 28));
+        lblModeSelect->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        ToolButton_MeasureMode = new QToolButton(grpExperimentControl);
+        ToolButton_MeasureMode->setObjectName(QStringLiteral("ToolButton_MeasureMode"));
+        ToolButton_MeasureMode->setGeometry(QRect(115, 30, 180, 38));
+        lblCurrentRangeSelect = new QLabel(grpExperimentControl);
+        lblCurrentRangeSelect->setObjectName(QStringLiteral("lblCurrentRangeSelect"));
+        lblCurrentRangeSelect->setGeometry(QRect(330, 35, 80, 28));
+        lblCurrentRangeSelect->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Button_CurrPos = new QToolButton(grpExperimentControl);
+        Button_CurrPos->setObjectName(QStringLiteral("Button_CurrPos"));
+        Button_CurrPos->setGeometry(QRect(420, 30, 150, 38));
+        lblVoltageRangeSelect = new QLabel(grpExperimentControl);
+        lblVoltageRangeSelect->setObjectName(QStringLiteral("lblVoltageRangeSelect"));
+        lblVoltageRangeSelect->setGeometry(QRect(600, 35, 80, 28));
+        lblVoltageRangeSelect->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Button_VolRange = new QToolButton(grpExperimentControl);
+        Button_VolRange->setObjectName(QStringLiteral("Button_VolRange"));
+        Button_VolRange->setGeometry(QRect(690, 30, 150, 38));
+        Button_MeasStart = new QPushButton(grpExperimentControl);
+        Button_MeasStart->setObjectName(QStringLiteral("Button_MeasStart"));
+        Button_MeasStart->setGeometry(QRect(25, 100, 150, 44));
+        Button_MeasStart->setStyleSheet(QStringLiteral("font: 13pt \"Microsoft YaHei\"; font-weight: 700; background-color: #dbeafe;"));
+        btnStopMeasure = new QPushButton(grpExperimentControl);
+        btnStopMeasure->setObjectName(QStringLiteral("btnStopMeasure"));
+        btnStopMeasure->setGeometry(QRect(200, 100, 150, 44));
+        btnStopMeasure->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnClearCurrentData = new QPushButton(grpExperimentControl);
+        btnClearCurrentData->setObjectName(QStringLiteral("btnClearCurrentData"));
+        btnClearCurrentData->setGeometry(QRect(375, 100, 150, 44));
+        btnClearCurrentData->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        grpRealtimeData = new QGroupBox(pageExperiment);
+        grpRealtimeData->setObjectName(QStringLiteral("grpRealtimeData"));
+        grpRealtimeData->setGeometry(QRect(20, 210, 460, 290));
+        Label_NameDataVoltage = new QLabel(grpRealtimeData);
+        Label_NameDataVoltage->setObjectName(QStringLiteral("Label_NameDataVoltage"));
+        Label_NameDataVoltage->setGeometry(QRect(35, 38, 120, 32));
+        Label_NameDataVoltage->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_VoltData = new QLabel(grpRealtimeData);
+        Label_VoltData->setObjectName(QStringLiteral("Label_VoltData"));
+        Label_VoltData->setGeometry(QRect(180, 38, 220, 32));
+        Label_VoltData->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        Label_NameDataCurrent = new QLabel(grpRealtimeData);
+        Label_NameDataCurrent->setObjectName(QStringLiteral("Label_NameDataCurrent"));
+        Label_NameDataCurrent->setGeometry(QRect(35, 93, 120, 32));
+        Label_NameDataCurrent->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_CurrData = new QLabel(grpRealtimeData);
+        Label_CurrData->setObjectName(QStringLiteral("Label_CurrData"));
+        Label_CurrData->setGeometry(QRect(180, 93, 220, 32));
+        Label_CurrData->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblResistanceTitle = new QLabel(grpRealtimeData);
+        lblResistanceTitle->setObjectName(QStringLiteral("lblResistanceTitle"));
+        lblResistanceTitle->setGeometry(QRect(35, 148, 120, 32));
+        lblResistanceTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblRealtimeResistance = new QLabel(grpRealtimeData);
+        lblRealtimeResistance->setObjectName(QStringLiteral("lblRealtimeResistance"));
+        lblRealtimeResistance->setGeometry(QRect(180, 148, 220, 32));
+        lblRealtimeResistance->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        Label_NameDataResistivity = new QLabel(grpRealtimeData);
+        Label_NameDataResistivity->setObjectName(QStringLiteral("Label_NameDataResistivity"));
+        Label_NameDataResistivity->setGeometry(QRect(35, 203, 120, 32));
+        Label_NameDataResistivity->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_ResData = new QLabel(grpRealtimeData);
+        Label_ResData->setObjectName(QStringLiteral("Label_ResData"));
+        Label_ResData->setGeometry(QRect(180, 203, 220, 32));
+        Label_ResData->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        grpMeasureProgress = new QGroupBox(pageExperiment);
+        grpMeasureProgress->setObjectName(QStringLiteral("grpMeasureProgress"));
+        grpMeasureProgress->setGeometry(QRect(500, 210, 460, 290));
+        lblStageTitle = new QLabel(grpMeasureProgress);
+        lblStageTitle->setObjectName(QStringLiteral("lblStageTitle"));
+        lblStageTitle->setGeometry(QRect(35, 45, 100, 32));
+        lblStageTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_MeasureProgress = new QLabel(grpMeasureProgress);
+        Label_MeasureProgress->setObjectName(QStringLiteral("Label_MeasureProgress"));
+        Label_MeasureProgress->setGeometry(QRect(150, 45, 300, 32));
+        Label_MeasureProgress->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        ProgressBar_MeasureProgress = new QProgressBar(grpMeasureProgress);
+        ProgressBar_MeasureProgress->setObjectName(QStringLiteral("ProgressBar_MeasureProgress"));
+        ProgressBar_MeasureProgress->setGeometry(QRect(35, 115, 380, 34));
+        ProgressBar_MeasureProgress->setValue(0);
+        lblStageHint = new QLabel(grpMeasureProgress);
+        lblStageHint->setObjectName(QStringLiteral("lblStageHint"));
+        lblStageHint->setGeometry(QRect(35, 175, 380, 60));
+        lblStageHint->setStyleSheet(QStringLiteral("font: 11pt \"Microsoft YaHei\"; color: #374151;"));
+        lblStageHint->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        stackedWidgetMain->addWidget(pageExperiment);
+        pageSample = new QWidget();
+        pageSample->setObjectName(QStringLiteral("pageSample"));
+        pageSample->setGeometry(QRect(0, 0, 980, 656));
+        grpSampleBasic = new QGroupBox(pageSample);
+        grpSampleBasic->setObjectName(QStringLiteral("grpSampleBasic"));
+        grpSampleBasic->setGeometry(QRect(20, 20, 460, 430));
+        Label_Name_SemiType = new QLabel(grpSampleBasic);
+        Label_Name_SemiType->setObjectName(QStringLiteral("Label_Name_SemiType"));
+        Label_Name_SemiType->setGeometry(QRect(30, 35, 110, 30));
+        Label_Name_SemiType->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Button_SelSemiType = new QPushButton(grpSampleBasic);
+        Button_SelSemiType->setObjectName(QStringLiteral("Button_SelSemiType"));
+        Button_SelSemiType->setGeometry(QRect(160, 32, 110, 34));
+        Label_Name_Temperature = new QLabel(grpSampleBasic);
+        Label_Name_Temperature->setObjectName(QStringLiteral("Label_Name_Temperature"));
+        Label_Name_Temperature->setGeometry(QRect(30, 85, 110, 30));
+        Label_Name_Temperature->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_Temperature = new QLineEdit(grpSampleBasic);
+        cin_Temperature->setObjectName(QStringLiteral("cin_Temperature"));
+        cin_Temperature->setGeometry(QRect(160, 85, 150, 30));
+        Label_Name_Temperature_2 = new QLabel(grpSampleBasic);
+        Label_Name_Temperature_2->setObjectName(QStringLiteral("Label_Name_Temperature_2"));
+        Label_Name_Temperature_2->setGeometry(QRect(325, 85, 40, 30));
+        Label_Name_Temperature_2->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Name_SampleThickness = new QLabel(grpSampleBasic);
+        Label_Name_SampleThickness->setObjectName(QStringLiteral("Label_Name_SampleThickness"));
+        Label_Name_SampleThickness->setGeometry(QRect(30, 135, 110, 30));
+        Label_Name_SampleThickness->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_Thickness = new QLineEdit(grpSampleBasic);
+        cin_Thickness->setObjectName(QStringLiteral("cin_Thickness"));
+        cin_Thickness->setGeometry(QRect(160, 135, 150, 30));
+        Label_Name_SampleThickness_2 = new QLabel(grpSampleBasic);
+        Label_Name_SampleThickness_2->setObjectName(QStringLiteral("Label_Name_SampleThickness_2"));
+        Label_Name_SampleThickness_2->setGeometry(QRect(325, 135, 40, 30));
+        Label_Name_SampleThickness_2->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Name_SampleDiameter = new QLabel(grpSampleBasic);
+        Label_Name_SampleDiameter->setObjectName(QStringLiteral("Label_Name_SampleDiameter"));
+        Label_Name_SampleDiameter->setGeometry(QRect(30, 185, 110, 30));
+        Label_Name_SampleDiameter->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_SampleDiameter = new QLineEdit(grpSampleBasic);
+        cin_SampleDiameter->setObjectName(QStringLiteral("cin_SampleDiameter"));
+        cin_SampleDiameter->setGeometry(QRect(160, 185, 150, 30));
+        Label_Name_SampleDiameter_2 = new QLabel(grpSampleBasic);
+        Label_Name_SampleDiameter_2->setObjectName(QStringLiteral("Label_Name_SampleDiameter_2"));
+        Label_Name_SampleDiameter_2->setGeometry(QRect(325, 185, 40, 30));
+        Label_Name_SampleDiameter_2->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Name_SampleDiameter_3 = new QLabel(grpSampleBasic);
+        Label_Name_SampleDiameter_3->setObjectName(QStringLiteral("Label_Name_SampleDiameter_3"));
+        Label_Name_SampleDiameter_3->setGeometry(QRect(30, 235, 110, 30));
+        Label_Name_SampleDiameter_3->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_ProbeSpacing = new QLineEdit(grpSampleBasic);
+        cin_ProbeSpacing->setObjectName(QStringLiteral("cin_ProbeSpacing"));
+        cin_ProbeSpacing->setGeometry(QRect(160, 235, 150, 30));
+        Label_Name_SampleDiameter_4 = new QLabel(grpSampleBasic);
+        Label_Name_SampleDiameter_4->setObjectName(QStringLiteral("Label_Name_SampleDiameter_4"));
+        Label_Name_SampleDiameter_4->setGeometry(QRect(325, 235, 40, 30));
+        Label_Name_SampleDiameter_4->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Name_FspCorrectionFactor = new QLabel(grpSampleBasic);
+        Label_Name_FspCorrectionFactor->setObjectName(QStringLiteral("Label_Name_FspCorrectionFactor"));
+        Label_Name_FspCorrectionFactor->setGeometry(QRect(30, 285, 120, 30));
+        Label_Name_FspCorrectionFactor->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_FspCorrectionFactor = new QLineEdit(grpSampleBasic);
+        cin_FspCorrectionFactor->setObjectName(QStringLiteral("cin_FspCorrectionFactor"));
+        cin_FspCorrectionFactor->setGeometry(QRect(160, 285, 150, 30));
+        Label_Name_Temperature_3 = new QLabel(grpSampleBasic);
+        Label_Name_Temperature_3->setObjectName(QStringLiteral("Label_Name_Temperature_3"));
+        Label_Name_Temperature_3->setGeometry(QRect(30, 335, 110, 30));
+        Label_Name_Temperature_3->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_a = new QLineEdit(grpSampleBasic);
+        cin_a->setObjectName(QStringLiteral("cin_a"));
+        cin_a->setGeometry(QRect(160, 335, 150, 30));
+        Label_Name_Temperature_4 = new QLabel(grpSampleBasic);
+        Label_Name_Temperature_4->setObjectName(QStringLiteral("Label_Name_Temperature_4"));
+        Label_Name_Temperature_4->setGeometry(QRect(30, 385, 110, 30));
+        Label_Name_Temperature_4->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_b = new QLineEdit(grpSampleBasic);
+        cin_b->setObjectName(QStringLiteral("cin_b"));
+        cin_b->setGeometry(QRect(160, 385, 150, 30));
+        grpCorrectionFactor = new QGroupBox(pageSample);
+        grpCorrectionFactor->setObjectName(QStringLiteral("grpCorrectionFactor"));
+        grpCorrectionFactor->setGeometry(QRect(500, 20, 460, 300));
+        lblWsTitle = new QLabel(grpCorrectionFactor);
+        lblWsTitle->setObjectName(QStringLiteral("lblWsTitle"));
+        lblWsTitle->setGeometry(QRect(35, 45, 150, 30));
+        lblWsTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblWS = new QLabel(grpCorrectionFactor);
+        lblWS->setObjectName(QStringLiteral("lblWS"));
+        lblWS->setGeometry(QRect(210, 45, 180, 30));
+        lblWS->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblSdTitle = new QLabel(grpCorrectionFactor);
+        lblSdTitle->setObjectName(QStringLiteral("lblSdTitle"));
+        lblSdTitle->setGeometry(QRect(35, 85, 150, 30));
+        lblSdTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblSD = new QLabel(grpCorrectionFactor);
+        lblSD->setObjectName(QStringLiteral("lblSD"));
+        lblSD->setGeometry(QRect(210, 85, 180, 30));
+        lblSD->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblGeometryFactorTitle = new QLabel(grpCorrectionFactor);
+        lblGeometryFactorTitle->setObjectName(QStringLiteral("lblGeometryFactorTitle"));
+        lblGeometryFactorTitle->setGeometry(QRect(35, 125, 150, 30));
+        lblGeometryFactorTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblGeometryFactor = new QLabel(grpCorrectionFactor);
+        lblGeometryFactor->setObjectName(QStringLiteral("lblGeometryFactor"));
+        lblGeometryFactor->setGeometry(QRect(210, 125, 180, 30));
+        lblGeometryFactor->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblTemperatureFactorTitle = new QLabel(grpCorrectionFactor);
+        lblTemperatureFactorTitle->setObjectName(QStringLiteral("lblTemperatureFactorTitle"));
+        lblTemperatureFactorTitle->setGeometry(QRect(35, 165, 150, 30));
+        lblTemperatureFactorTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblTemperatureFactor = new QLabel(grpCorrectionFactor);
+        lblTemperatureFactor->setObjectName(QStringLiteral("lblTemperatureFactor"));
+        lblTemperatureFactor->setGeometry(QRect(210, 165, 180, 30));
+        lblTemperatureFactor->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblTotalFactorTitle = new QLabel(grpCorrectionFactor);
+        lblTotalFactorTitle->setObjectName(QStringLiteral("lblTotalFactorTitle"));
+        lblTotalFactorTitle->setGeometry(QRect(35, 205, 150, 30));
+        lblTotalFactorTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblTotalFactor = new QLabel(grpCorrectionFactor);
+        lblTotalFactor->setObjectName(QStringLiteral("lblTotalFactor"));
+        lblTotalFactor->setGeometry(QRect(210, 205, 180, 30));
+        lblTotalFactor->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        grpSampleActions = new QGroupBox(pageSample);
+        grpSampleActions->setObjectName(QStringLiteral("grpSampleActions"));
+        grpSampleActions->setGeometry(QRect(500, 350, 460, 170));
+        Label_Name_SampleDiameter_5 = new QLabel(grpSampleActions);
+        Label_Name_SampleDiameter_5->setObjectName(QStringLiteral("Label_Name_SampleDiameter_5"));
+        Label_Name_SampleDiameter_5->setGeometry(QRect(30, 35, 110, 30));
+        Label_Name_SampleDiameter_5->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_CurrErrorBound = new QLineEdit(grpSampleActions);
+        cin_CurrErrorBound->setObjectName(QStringLiteral("cin_CurrErrorBound"));
+        cin_CurrErrorBound->setGeometry(QRect(150, 35, 150, 30));
+        Label_Name_SampleDiameter_6 = new QLabel(grpSampleActions);
+        Label_Name_SampleDiameter_6->setObjectName(QStringLiteral("Label_Name_SampleDiameter_6"));
+        Label_Name_SampleDiameter_6->setGeometry(QRect(315, 35, 40, 30));
+        Label_Name_SampleDiameter_6->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        btnSaveParams = new QPushButton(grpSampleActions);
+        btnSaveParams->setObjectName(QStringLiteral("btnSaveParams"));
+        btnSaveParams->setGeometry(QRect(30, 85, 120, 34));
+        btnSaveParams->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnResetParams = new QPushButton(grpSampleActions);
+        btnResetParams->setObjectName(QStringLiteral("btnResetParams"));
+        btnResetParams->setGeometry(QRect(165, 85, 90, 34));
+        btnResetParams->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnImportParams = new QPushButton(grpSampleActions);
+        btnImportParams->setObjectName(QStringLiteral("btnImportParams"));
+        btnImportParams->setGeometry(QRect(270, 85, 90, 34));
+        btnImportParams->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnExportParams = new QPushButton(grpSampleActions);
+        btnExportParams->setObjectName(QStringLiteral("btnExportParams"));
+        btnExportParams->setGeometry(QRect(375, 85, 90, 34));
+        btnExportParams->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        ProgressBar_Init = new QProgressBar(grpSampleActions);
+        ProgressBar_Init->setObjectName(QStringLiteral("ProgressBar_Init"));
+        ProgressBar_Init->setGeometry(QRect(30, 130, 390, 22));
+        ProgressBar_Init->setValue(0);
+        Button_Temperature = new QPushButton(pageSample);
+        Button_Temperature->setObjectName(QStringLiteral("Button_Temperature"));
+        Button_Temperature->setGeometry(QRect(0, 0, 10, 10));
+        Button_Temperature->setVisible(false);
+        Button_Thickness = new QPushButton(pageSample);
+        Button_Thickness->setObjectName(QStringLiteral("Button_Thickness"));
+        Button_Thickness->setGeometry(QRect(0, 4, 10, 10));
+        Button_Thickness->setVisible(false);
+        Button_SampleDiameter = new QPushButton(pageSample);
+        Button_SampleDiameter->setObjectName(QStringLiteral("Button_SampleDiameter"));
+        Button_SampleDiameter->setGeometry(QRect(0, 8, 10, 10));
+        Button_SampleDiameter->setVisible(false);
+        Button_ProbeSpacing = new QPushButton(pageSample);
+        Button_ProbeSpacing->setObjectName(QStringLiteral("Button_ProbeSpacing"));
+        Button_ProbeSpacing->setGeometry(QRect(0, 12, 10, 10));
+        Button_ProbeSpacing->setVisible(false);
+        Button_FspCorrectionFactor = new QPushButton(pageSample);
+        Button_FspCorrectionFactor->setObjectName(QStringLiteral("Button_FspCorrectionFactor"));
+        Button_FspCorrectionFactor->setGeometry(QRect(0, 16, 10, 10));
+        Button_FspCorrectionFactor->setVisible(false);
+        Button_ab = new QPushButton(pageSample);
+        Button_ab->setObjectName(QStringLiteral("Button_ab"));
+        Button_ab->setGeometry(QRect(0, 20, 10, 10));
+        Button_ab->setVisible(false);
+        Button_CurrErrorBound = new QPushButton(pageSample);
+        Button_CurrErrorBound->setObjectName(QStringLiteral("Button_CurrErrorBound"));
+        Button_CurrErrorBound->setGeometry(QRect(0, 24, 10, 10));
+        Button_CurrErrorBound->setVisible(false);
+        stackedWidgetMain->addWidget(pageSample);
+        pageResult = new QWidget();
+        pageResult->setObjectName(QStringLiteral("pageResult"));
+        pageResult->setGeometry(QRect(0, 0, 980, 656));
+        grpForwardData = new QGroupBox(pageResult);
+        grpForwardData->setObjectName(QStringLiteral("grpForwardData"));
+        grpForwardData->setGeometry(QRect(20, 20, 940, 175));
+        TableWidget_f = new QTableWidget(grpForwardData);
         TableWidget_f->setObjectName(QStringLiteral("TableWidget_f"));
-        TableWidget_f->setGeometry(QRect(0, 0, 800, 600));
-        tabWidget->addTab(tab_54545, QString());
-        tab_6 = new QWidget();
-        tab_6->setObjectName(QStringLiteral("tab_6"));
-        TableWidget_r = new QTableWidget(tab_6);
+        TableWidget_f->setGeometry(QRect(20, 30, 900, 125));
+        grpReverseData = new QGroupBox(pageResult);
+        grpReverseData->setObjectName(QStringLiteral("grpReverseData"));
+        grpReverseData->setGeometry(QRect(20, 205, 940, 175));
+        TableWidget_r = new QTableWidget(grpReverseData);
         TableWidget_r->setObjectName(QStringLiteral("TableWidget_r"));
-        TableWidget_r->setGeometry(QRect(0, 0, 800, 600));
-        tabWidget->addTab(tab_6, QString());
+        TableWidget_r->setGeometry(QRect(20, 30, 900, 125));
+        grpStatistics = new QGroupBox(pageResult);
+        grpStatistics->setObjectName(QStringLiteral("grpStatistics"));
+        grpStatistics->setGeometry(QRect(20, 400, 460, 165));
+        lblAverageTitle = new QLabel(grpStatistics);
+        lblAverageTitle->setObjectName(QStringLiteral("lblAverageTitle"));
+        lblAverageTitle->setGeometry(QRect(35, 35, 120, 30));
+        lblAverageTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblAverageValue = new QLabel(grpStatistics);
+        lblAverageValue->setObjectName(QStringLiteral("lblAverageValue"));
+        lblAverageValue->setGeometry(QRect(170, 35, 240, 30));
+        lblAverageValue->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblStdTitle = new QLabel(grpStatistics);
+        lblStdTitle->setObjectName(QStringLiteral("lblStdTitle"));
+        lblStdTitle->setGeometry(QRect(35, 75, 120, 30));
+        lblStdTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblStdValue = new QLabel(grpStatistics);
+        lblStdValue->setObjectName(QStringLiteral("lblStdValue"));
+        lblStdValue->setGeometry(QRect(170, 75, 240, 30));
+        lblStdValue->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        lblFinalResistivityTitle = new QLabel(grpStatistics);
+        lblFinalResistivityTitle->setObjectName(QStringLiteral("lblFinalResistivityTitle"));
+        lblFinalResistivityTitle->setGeometry(QRect(35, 115, 120, 30));
+        lblFinalResistivityTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblFinalResistivity = new QLabel(grpStatistics);
+        lblFinalResistivity->setObjectName(QStringLiteral("lblFinalResistivity"));
+        lblFinalResistivity->setGeometry(QRect(170, 115, 240, 30));
+        lblFinalResistivity->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        grpFileInfo = new QGroupBox(pageResult);
+        grpFileInfo->setObjectName(QStringLiteral("grpFileInfo"));
+        grpFileInfo->setGeometry(QRect(500, 400, 460, 165));
+        lblMeasureStartTimeTitle = new QLabel(grpFileInfo);
+        lblMeasureStartTimeTitle->setObjectName(QStringLiteral("lblMeasureStartTimeTitle"));
+        lblMeasureStartTimeTitle->setGeometry(QRect(35, 35, 120, 30));
+        lblMeasureStartTimeTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblMeasureStartTime = new QLabel(grpFileInfo);
+        lblMeasureStartTime->setObjectName(QStringLiteral("lblMeasureStartTime"));
+        lblMeasureStartTime->setGeometry(QRect(170, 35, 260, 30));
+        lblMeasureStartTime->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblDataPathTitle = new QLabel(grpFileInfo);
+        lblDataPathTitle->setObjectName(QStringLiteral("lblDataPathTitle"));
+        lblDataPathTitle->setGeometry(QRect(35, 75, 120, 30));
+        lblDataPathTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblDataSavePath = new QLabel(grpFileInfo);
+        lblDataSavePath->setObjectName(QStringLiteral("lblDataSavePath"));
+        lblDataSavePath->setGeometry(QRect(170, 75, 260, 40));
+        lblDataSavePath->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblDataSavePath->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        btnOpenDataFolder = new QPushButton(grpFileInfo);
+        btnOpenDataFolder->setObjectName(QStringLiteral("btnOpenDataFolder"));
+        btnOpenDataFolder->setGeometry(QRect(35, 120, 150, 30));
+        btnOpenDataFolder->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        grpResultActions = new QGroupBox(pageResult);
+        grpResultActions->setObjectName(QStringLiteral("grpResultActions"));
+        grpResultActions->setGeometry(QRect(20, 575, 940, 65));
+        btnExportCsv = new QPushButton(grpResultActions);
+        btnExportCsv->setObjectName(QStringLiteral("btnExportCsv"));
+        btnExportCsv->setGeometry(QRect(30, 25, 120, 30));
+        btnExportCsv->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnExportExcel = new QPushButton(grpResultActions);
+        btnExportExcel->setObjectName(QStringLiteral("btnExportExcel"));
+        btnExportExcel->setGeometry(QRect(170, 25, 120, 30));
+        btnExportExcel->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnCopyFinalResult = new QPushButton(grpResultActions);
+        btnCopyFinalResult->setObjectName(QStringLiteral("btnCopyFinalResult"));
+        btnCopyFinalResult->setGeometry(QRect(310, 25, 140, 30));
+        btnCopyFinalResult->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        btnClearResult = new QPushButton(grpResultActions);
+        btnClearResult->setObjectName(QStringLiteral("btnClearResult"));
+        btnClearResult->setGeometry(QRect(470, 25, 120, 30));
+        btnClearResult->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        stackedWidgetMain->addWidget(pageResult);
+        pageDebug = new QWidget();
+        pageDebug->setObjectName(QStringLiteral("pageDebug"));
+        pageDebug->setGeometry(QRect(0, 0, 980, 656));
+        grpPidDebug = new QGroupBox(pageDebug);
+        grpPidDebug->setObjectName(QStringLiteral("grpPidDebug"));
+        grpPidDebug->setGeometry(QRect(20, 20, 300, 240));
+        Label_Name_Kp = new QLabel(grpPidDebug);
+        Label_Name_Kp->setObjectName(QStringLiteral("Label_Name_Kp"));
+        Label_Name_Kp->setGeometry(QRect(25, 40, 60, 28));
+        Label_Name_Kp->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_Kp = new QLineEdit(grpPidDebug);
+        cin_Kp->setObjectName(QStringLiteral("cin_Kp"));
+        cin_Kp->setGeometry(QRect(95, 40, 120, 30));
+        Label_Name_Ti = new QLabel(grpPidDebug);
+        Label_Name_Ti->setObjectName(QStringLiteral("Label_Name_Ti"));
+        Label_Name_Ti->setGeometry(QRect(25, 80, 60, 28));
+        Label_Name_Ti->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_Ti = new QLineEdit(grpPidDebug);
+        cin_Ti->setObjectName(QStringLiteral("cin_Ti"));
+        cin_Ti->setGeometry(QRect(95, 80, 120, 30));
+        Label_Name_Td = new QLabel(grpPidDebug);
+        Label_Name_Td->setObjectName(QStringLiteral("Label_Name_Td"));
+        Label_Name_Td->setGeometry(QRect(25, 120, 60, 28));
+        Label_Name_Td->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_Td = new QLineEdit(grpPidDebug);
+        cin_Td->setObjectName(QStringLiteral("cin_Td"));
+        cin_Td->setGeometry(QRect(95, 120, 120, 30));
+        ToolButton_ControlAlgo = new QToolButton(grpPidDebug);
+        ToolButton_ControlAlgo->setObjectName(QStringLiteral("ToolButton_ControlAlgo"));
+        ToolButton_ControlAlgo->setGeometry(QRect(25, 170, 180, 34));
+        grpVoltageDebug = new QGroupBox(pageDebug);
+        grpVoltageDebug->setObjectName(QStringLiteral("grpVoltageDebug"));
+        grpVoltageDebug->setGeometry(QRect(340, 20, 300, 240));
+        lblControlVoltageDebugTitle = new QLabel(grpVoltageDebug);
+        lblControlVoltageDebugTitle->setObjectName(QStringLiteral("lblControlVoltageDebugTitle"));
+        lblControlVoltageDebugTitle->setGeometry(QRect(25, 45, 90, 28));
+        lblControlVoltageDebugTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        cin_ControlVoltage = new QLineEdit(grpVoltageDebug);
+        cin_ControlVoltage->setObjectName(QStringLiteral("cin_ControlVoltage"));
+        cin_ControlVoltage->setGeometry(QRect(125, 45, 120, 30));
+        Button_SendControlVoltage = new QPushButton(grpVoltageDebug);
+        Button_SendControlVoltage->setObjectName(QStringLiteral("Button_SendControlVoltage"));
+        Button_SendControlVoltage->setGeometry(QRect(25, 95, 150, 36));
+        Button_SendControlVoltage->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        Button_ControlVoltage = new QPushButton(grpVoltageDebug);
+        Button_ControlVoltage->setObjectName(QStringLiteral("Button_ControlVoltage"));
+        Button_ControlVoltage->setGeometry(QRect(25, 145, 200, 36));
+        Button_ControlVoltage->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        grpManualCommand = new QGroupBox(pageDebug);
+        grpManualCommand->setObjectName(QStringLiteral("grpManualCommand"));
+        grpManualCommand->setGeometry(QRect(660, 20, 300, 240));
+        Button_SendCurrentPosition = new QPushButton(grpManualCommand);
+        Button_SendCurrentPosition->setObjectName(QStringLiteral("Button_SendCurrentPosition"));
+        Button_SendCurrentPosition->setGeometry(QRect(25, 45, 180, 36));
+        Button_SendCurrentPosition->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        Button_SendVoltageRange = new QPushButton(grpManualCommand);
+        Button_SendVoltageRange->setObjectName(QStringLiteral("Button_SendVoltageRange"));
+        Button_SendVoltageRange->setGeometry(QRect(25, 95, 180, 36));
+        Button_SendVoltageRange->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        pushButton_3 = new QPushButton(grpManualCommand);
+        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        pushButton_3->setGeometry(QRect(25, 145, 180, 36));
+        pushButton_3->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        grpCurrentReadDebug = new QGroupBox(pageDebug);
+        grpCurrentReadDebug->setObjectName(QStringLiteral("grpCurrentReadDebug"));
+        grpCurrentReadDebug->setGeometry(QRect(20, 280, 300, 180));
+        pushButton = new QPushButton(grpCurrentReadDebug);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(25, 40, 180, 36));
+        pushButton->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        pushButton_2 = new QPushButton(grpCurrentReadDebug);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(25, 90, 180, 36));
+        pushButton_2->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        Label_Name_Current = new QLabel(grpCurrentReadDebug);
+        Label_Name_Current->setObjectName(QStringLiteral("Label_Name_Current"));
+        Label_Name_Current->setGeometry(QRect(25, 130, 80, 28));
+        Label_Name_Current->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Current = new QLabel(grpCurrentReadDebug);
+        Label_Current->setObjectName(QStringLiteral("Label_Current"));
+        Label_Current->setGeometry(QRect(115, 130, 150, 28));
+        Label_Current->setStyleSheet(QStringLiteral("font: 16pt \"Consolas\"; font-weight: 600; color: #1f2937;"));
+        grpPidState = new QGroupBox(pageDebug);
+        grpPidState->setObjectName(QStringLiteral("grpPidState"));
+        grpPidState->setGeometry(QRect(340, 280, 300, 180));
+        lblPidSpTitle = new QLabel(grpPidState);
+        lblPidSpTitle->setObjectName(QStringLiteral("lblPidSpTitle"));
+        lblPidSpTitle->setGeometry(QRect(25, 40, 45, 26));
+        lblPidSpTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidSp = new QLabel(grpPidState);
+        lblPidSp->setObjectName(QStringLiteral("lblPidSp"));
+        lblPidSp->setGeometry(QRect(75, 40, 80, 26));
+        lblPidSp->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidPvTitle = new QLabel(grpPidState);
+        lblPidPvTitle->setObjectName(QStringLiteral("lblPidPvTitle"));
+        lblPidPvTitle->setGeometry(QRect(25, 70, 45, 26));
+        lblPidPvTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidPv = new QLabel(grpPidState);
+        lblPidPv->setObjectName(QStringLiteral("lblPidPv"));
+        lblPidPv->setGeometry(QRect(75, 70, 80, 26));
+        lblPidPv->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidErrTitle = new QLabel(grpPidState);
+        lblPidErrTitle->setObjectName(QStringLiteral("lblPidErrTitle"));
+        lblPidErrTitle->setGeometry(QRect(25, 100, 45, 26));
+        lblPidErrTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidErr = new QLabel(grpPidState);
+        lblPidErr->setObjectName(QStringLiteral("lblPidErr"));
+        lblPidErr->setGeometry(QRect(75, 100, 80, 26));
+        lblPidErr->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidUkTitle = new QLabel(grpPidState);
+        lblPidUkTitle->setObjectName(QStringLiteral("lblPidUkTitle"));
+        lblPidUkTitle->setGeometry(QRect(165, 40, 55, 26));
+        lblPidUkTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidUk = new QLabel(grpPidState);
+        lblPidUk->setObjectName(QStringLiteral("lblPidUk"));
+        lblPidUk->setGeometry(QRect(225, 40, 80, 26));
+        lblPidUk->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidLastUkTitle = new QLabel(grpPidState);
+        lblPidLastUkTitle->setObjectName(QStringLiteral("lblPidLastUkTitle"));
+        lblPidLastUkTitle->setGeometry(QRect(165, 70, 55, 26));
+        lblPidLastUkTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblPidLastUk = new QLabel(grpPidState);
+        lblPidLastUk->setObjectName(QStringLiteral("lblPidLastUk"));
+        lblPidLastUk->setGeometry(QRect(225, 70, 80, 26));
+        lblPidLastUk->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_Name_Current_2 = new QLabel(grpPidState);
+        Label_Name_Current_2->setObjectName(QStringLiteral("Label_Name_Current_2"));
+        Label_Name_Current_2->setGeometry(QRect(165, 100, 70, 26));
+        Label_Name_Current_2->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        Label_RE_Current = new QLabel(grpPidState);
+        Label_RE_Current->setObjectName(QStringLiteral("Label_RE_Current"));
+        Label_RE_Current->setGeometry(QRect(235, 100, 70, 26));
+        Label_RE_Current->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        grpCommDebug = new QGroupBox(pageDebug);
+        grpCommDebug->setObjectName(QStringLiteral("grpCommDebug"));
+        grpCommDebug->setGeometry(QRect(660, 280, 300, 330));
+        logText_1 = new QTextEdit(grpCommDebug);
+        logText_1->setObjectName(QStringLiteral("logText_1"));
+        logText_1->setGeometry(QRect(20, 30, 260, 180));
+        Button_logText1_CLR = new QPushButton(grpCommDebug);
+        Button_logText1_CLR->setObjectName(QStringLiteral("Button_logText1_CLR"));
+        Button_logText1_CLR->setGeometry(QRect(20, 220, 90, 30));
+        Button_logText1_CLR->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\";"));
+        lblAckNackTitle = new QLabel(grpCommDebug);
+        lblAckNackTitle->setObjectName(QStringLiteral("lblAckNackTitle"));
+        lblAckNackTitle->setGeometry(QRect(20, 260, 90, 26));
+        lblAckNackTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblAckNack = new QLabel(grpCommDebug);
+        lblAckNack->setObjectName(QStringLiteral("lblAckNack"));
+        lblAckNack->setGeometry(QRect(120, 260, 130, 26));
+        lblAckNack->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblOperationDoneTitle = new QLabel(grpCommDebug);
+        lblOperationDoneTitle->setObjectName(QStringLiteral("lblOperationDoneTitle"));
+        lblOperationDoneTitle->setGeometry(QRect(20, 290, 110, 26));
+        lblOperationDoneTitle->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        lblOperationDone = new QLabel(grpCommDebug);
+        lblOperationDone->setObjectName(QStringLiteral("lblOperationDone"));
+        lblOperationDone->setGeometry(QRect(135, 290, 100, 26));
+        lblOperationDone->setStyleSheet(QStringLiteral("font: 10pt \"Microsoft YaHei\"; color: #4b5563;"));
+        stackedWidgetMain->addWidget(pageDebug);
 
         retranslateUi(Widget);
 
-        tabWidget->setCurrentIndex(0);
+        stackedWidgetMain->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -1359,89 +829,155 @@ public:
 
     void retranslateUi(QWidget *Widget)
     {
-        Widget->setWindowTitle(QApplication::translate("Widget", "\345\233\233\346\216\242\351\222\210\346\265\213\347\224\265\351\230\273\347\216\207\347\263\273\347\273\237", Q_NULLPTR));
-        Button_SendVoltageRange->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\347\224\265\345\216\213\346\241\243\344\275\215", Q_NULLPTR));
-        Button_SendControlVoltage->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\345\216\213\346\216\247", Q_NULLPTR));
-        Button_ControlVoltage->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\257\245\346\241\243\344\275\215\345\216\213\346\216\247", Q_NULLPTR));
-        Button_MeasStart->setText(QApplication::translate("Widget", "\346\265\213 \351\207\217", Q_NULLPTR));
-        Button_SendCurrentPosition->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\347\224\265\346\265\201\346\241\243\344\275\215", Q_NULLPTR));
-        Button_VolRange->setText(QApplication::translate("Widget", "\347\224\265\345\216\213\346\241\243\344\275\215", Q_NULLPTR));
-        ToolButton_MeasureMode->setText(QApplication::translate("Widget", "\346\211\213\345\212\250\345\215\225\347\202\27110\346\254\241\346\265\213\351\207\217", Q_NULLPTR));
-        Label_name2_3->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\346\250\241\345\274\217\357\274\232", Q_NULLPTR));
-        Label_name1->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\346\241\243\344\275\215\357\274\232", Q_NULLPTR));
-        Label_name2->setText(QApplication::translate("Widget", "\347\224\265\345\216\213\346\241\243\344\275\215\357\274\232", Q_NULLPTR));
-        Label_name5->setText(QApplication::translate("Widget", "\345\210\235\345\247\213\345\214\226\350\277\233\345\272\246\357\274\232", Q_NULLPTR));
-        Label_name4->setText(QApplication::translate("Widget", "COM\345\217\243\357\274\232", Q_NULLPTR));
-        Label_NameDataVoltage->setText(QApplication::translate("Widget", "\347\224\265\345\216\213\345\200\274\357\274\232", Q_NULLPTR));
-        Label_ResData->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
-        Label_NameDataCurrent->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\345\200\274\357\274\232", Q_NULLPTR));
-        Label_CurrData->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
-        Label_VoltData->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
-        Label_name5_2->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\350\277\233\345\272\246\357\274\232", Q_NULLPTR));
-        Label_NameDataResistivity->setText(QApplication::translate("Widget", "\347\224\265\351\230\273\347\216\207\357\274\232", Q_NULLPTR));
-        Label_MeasureProgress->setText(QApplication::translate("Widget", "\345\256\236\351\252\214\344\274\232\346\210\220\345\212\237\347\232\204", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Widget", "\345\256\236\351\252\214", Q_NULLPTR));
-        Label_Name_Temperature->setText(QApplication::translate("Widget", "\346\270\251\345\272\246:", Q_NULLPTR));
-        cin_Temperature->setText(QString());
-        Label_Name_SampleDiameter_3->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
-        Label_Name_SampleDiameter_4->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
-        Label_Name_SampleDiameter_2->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
-        cin_ProbeSpacing->setText(QString());
+        Widget->setWindowTitle(QApplication::translate("Widget", "\345\233\233\346\216\242\351\222\210\346\231\266\345\234\206\347\224\265\351\230\273\347\216\207\346\265\213\351\207\217\347\263\273\347\273\237", Q_NULLPTR));
+        lblComPort->setText(QApplication::translate("Widget", "COM\345\217\243", Q_NULLPTR));
+        Button_SelCOM->setText(QApplication::translate("Widget", "COM", Q_NULLPTR));
+        lblConnectStatusTitle->setText(QApplication::translate("Widget", "\350\277\236\346\216\245\347\212\266\346\200\201", Q_NULLPTR));
+        lblConnectStatus->setText(QApplication::translate("Widget", "\346\234\252\350\277\236\346\216\245", Q_NULLPTR));
+        lblCurrentRangeTitle->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\346\241\243\344\275\215", Q_NULLPTR));
+        lblCurrentRange->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblVoltageRangeTitle->setText(QApplication::translate("Widget", "\347\224\265\345\216\213\346\241\243\344\275\215", Q_NULLPTR));
+        lblVoltageRange->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblMeasureModeTitle->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\346\250\241\345\274\217", Q_NULLPTR));
+        lblMeasureMode->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblMeasureStateTitle->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\347\212\266\346\200\201", Q_NULLPTR));
+        lblMeasureState->setText(QApplication::translate("Widget", "\347\251\272\351\227\262", Q_NULLPTR));
+        lblNavTitle->setText(QApplication::translate("Widget", "\345\212\237\350\203\275\345\257\274\350\210\252", Q_NULLPTR));
+        btnPageExperiment->setText(QApplication::translate("Widget", "\345\256\236\351\252\214\346\265\213\351\207\217", Q_NULLPTR));
+        btnPageSample->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\345\217\202\346\225\260", Q_NULLPTR));
+        btnPageResult->setText(QApplication::translate("Widget", "\346\225\260\346\215\256\347\273\223\346\236\234", Q_NULLPTR));
+        btnPageDebug->setText(QApplication::translate("Widget", "\350\260\203\350\257\225\351\241\265\351\235\242", Q_NULLPTR));
+        grpExperimentControl->setTitle(QApplication::translate("Widget", "\345\256\236\351\252\214\346\216\247\345\210\266", Q_NULLPTR));
+        lblModeSelect->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\346\250\241\345\274\217", Q_NULLPTR));
+        ToolButton_MeasureMode->setText(QApplication::translate("Widget", "\345\215\225\346\254\241\346\265\213\351\207\217", Q_NULLPTR));
+        lblCurrentRangeSelect->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\346\241\243\344\275\215", Q_NULLPTR));
+        Button_CurrPos->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblVoltageRangeSelect->setText(QApplication::translate("Widget", "\347\224\265\345\216\213\346\241\243\344\275\215", Q_NULLPTR));
+        Button_VolRange->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        Button_MeasStart->setText(QApplication::translate("Widget", "\345\274\200\345\247\213\346\265\213\351\207\217", Q_NULLPTR));
+        btnStopMeasure->setText(QApplication::translate("Widget", "\345\201\234\346\255\242/\344\270\255\346\255\242", Q_NULLPTR));
+        btnClearCurrentData->setText(QApplication::translate("Widget", "\346\270\205\347\251\272\345\275\223\345\211\215\346\225\260\346\215\256", Q_NULLPTR));
+        grpRealtimeData->setTitle(QApplication::translate("Widget", "\345\256\236\346\227\266\346\225\260\346\215\256", Q_NULLPTR));
+        Label_NameDataVoltage->setText(QApplication::translate("Widget", "\347\224\265\345\216\213", Q_NULLPTR));
+        Label_VoltData->setText(QApplication::translate("Widget", "-- V", Q_NULLPTR));
+        Label_NameDataCurrent->setText(QApplication::translate("Widget", "\347\224\265\346\265\201", Q_NULLPTR));
+        Label_CurrData->setText(QApplication::translate("Widget", "-- A", Q_NULLPTR));
+        lblResistanceTitle->setText(QApplication::translate("Widget", "\347\224\265\351\230\273", Q_NULLPTR));
+        lblRealtimeResistance->setText(QApplication::translate("Widget", "-- \316\251", Q_NULLPTR));
+        Label_NameDataResistivity->setText(QApplication::translate("Widget", "\347\224\265\351\230\273\347\216\207", Q_NULLPTR));
+        Label_ResData->setText(QApplication::translate("Widget", "-- \316\251\302\267cm", Q_NULLPTR));
+        grpMeasureProgress->setTitle(QApplication::translate("Widget", "\346\265\213\351\207\217\350\277\233\345\272\246", Q_NULLPTR));
+        lblStageTitle->setText(QApplication::translate("Widget", "\345\275\223\345\211\215\351\230\266\346\256\265", Q_NULLPTR));
+        Label_MeasureProgress->setText(QApplication::translate("Widget", "\347\251\272\351\227\262", Q_NULLPTR));
+        lblStageHint->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\350\277\207\347\250\213\347\212\266\346\200\201\344\274\232\345\234\250\346\255\244\345\220\214\346\255\245\346\230\276\347\244\272", Q_NULLPTR));
+        grpSampleBasic->setTitle(QApplication::translate("Widget", "\346\240\267\345\223\201\345\217\202\346\225\260", Q_NULLPTR));
+        Label_Name_SemiType->setText(QApplication::translate("Widget", "\345\215\212\345\257\274\344\275\223\347\261\273\345\236\213", Q_NULLPTR));
         Button_SelSemiType->setText(QApplication::translate("Widget", "P", Q_NULLPTR));
-        Label_Name_SampleThickness->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\345\216\232\345\272\246:", Q_NULLPTR));
-        Label_Name_SampleThickness_2->setText(QApplication::translate("Widget", "\346\216\242\351\222\210\351\227\264\350\267\235:", Q_NULLPTR));
-        Label_Name_SemiType->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\347\261\273\345\236\213:", Q_NULLPTR));
-        cin_SampleDiameter->setText(QString());
-        Label_Name_SampleDiameter->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\347\233\264\345\276\204:", Q_NULLPTR));
-        Label_Name_FspCorrectionFactor->setText(QApplication::translate("Widget", "Fsp:", Q_NULLPTR));
-        cin_FspCorrectionFactor->setText(QString());
-        Label_Name_SampleDiameter_5->setText(QApplication::translate("Widget", "\342\204\203", Q_NULLPTR));
-        cin_CurrErrorBound->setText(QString());
-        Label_Name_Temperature_4->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\350\257\257\345\267\256\351\231\220:", Q_NULLPTR));
+        Label_Name_Temperature->setText(QApplication::translate("Widget", "\346\270\251\345\272\246", Q_NULLPTR));
+        cin_Temperature->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\346\270\251\345\272\246", Q_NULLPTR));
+        Label_Name_Temperature_2->setText(QApplication::translate("Widget", "\342\204\203", Q_NULLPTR));
+        Label_Name_SampleThickness->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\345\216\232\345\272\246", Q_NULLPTR));
+        cin_Thickness->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\345\216\232\345\272\246", Q_NULLPTR));
+        Label_Name_SampleThickness_2->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
+        Label_Name_SampleDiameter->setText(QApplication::translate("Widget", "\346\240\267\345\223\201\347\233\264\345\276\204", Q_NULLPTR));
+        cin_SampleDiameter->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\346\240\267\345\223\201\347\233\264\345\276\204", Q_NULLPTR));
+        Label_Name_SampleDiameter_2->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
+        Label_Name_SampleDiameter_3->setText(QApplication::translate("Widget", "\346\216\242\351\222\210\351\227\264\350\267\235", Q_NULLPTR));
+        cin_ProbeSpacing->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\346\216\242\351\222\210\351\227\264\350\267\235", Q_NULLPTR));
+        Label_Name_SampleDiameter_4->setText(QApplication::translate("Widget", "mm", Q_NULLPTR));
+        Label_Name_FspCorrectionFactor->setText(QApplication::translate("Widget", "\344\277\256\346\255\243\347\263\273\346\225\260", Q_NULLPTR));
+        cin_FspCorrectionFactor->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\344\277\256\346\255\243\347\263\273\346\225\260", Q_NULLPTR));
+        Label_Name_Temperature_3->setText(QApplication::translate("Widget", "a \345\217\202\346\225\260", Q_NULLPTR));
+        cin_a->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245a", Q_NULLPTR));
+        Label_Name_Temperature_4->setText(QApplication::translate("Widget", "b \345\217\202\346\225\260", Q_NULLPTR));
+        cin_b->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245b", Q_NULLPTR));
+        grpCorrectionFactor->setTitle(QApplication::translate("Widget", "\344\277\256\346\255\243\345\233\240\345\255\220", Q_NULLPTR));
+        lblWsTitle->setText(QApplication::translate("Widget", "WS", Q_NULLPTR));
+        lblWS->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblSdTitle->setText(QApplication::translate("Widget", "SD", Q_NULLPTR));
+        lblSD->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblGeometryFactorTitle->setText(QApplication::translate("Widget", "\345\207\240\344\275\225\344\277\256\346\255\243", Q_NULLPTR));
+        lblGeometryFactor->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblTemperatureFactorTitle->setText(QApplication::translate("Widget", "\346\270\251\345\272\246\344\277\256\346\255\243", Q_NULLPTR));
+        lblTemperatureFactor->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblTotalFactorTitle->setText(QApplication::translate("Widget", "\347\273\274\345\220\210\347\263\273\346\225\260", Q_NULLPTR));
+        lblTotalFactor->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        grpSampleActions->setTitle(QApplication::translate("Widget", "\345\217\202\346\225\260\350\256\276\347\275\256", Q_NULLPTR));
+        Label_Name_SampleDiameter_5->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\350\257\257\345\267\256\350\214\203\345\233\264", Q_NULLPTR));
+        cin_CurrErrorBound->setPlaceholderText(QApplication::translate("Widget", "\350\276\223\345\205\245\350\214\203\345\233\264", Q_NULLPTR));
         Label_Name_SampleDiameter_6->setText(QApplication::translate("Widget", "%", Q_NULLPTR));
-        cin_a->setText(QString());
-        Label_Name_Temperature_3->setText(QApplication::translate("Widget", "b:", Q_NULLPTR));
-        Label_Name_Temperature_2->setText(QApplication::translate("Widget", "a:", Q_NULLPTR));
-        cin_b->setText(QString());
-        cin_Thickness->setText(QString());
-        tabWidget->setTabText(tabWidget->indexOf(Tab_ParamSetting), QApplication::translate("Widget", "\345\217\202\346\225\260\350\256\276\347\275\256", Q_NULLPTR));
-        cin_Kp->setText(QString());
-        cin_Ti->setText(QString());
-        Label_Name_Kp->setText(QApplication::translate("Widget", "Kp:", Q_NULLPTR));
-        Label_Name_Ti->setText(QApplication::translate("Widget", "Ti:", Q_NULLPTR));
-        Label_Current->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
-        Label_Name_Current->setText(QApplication::translate("Widget", "\347\224\265\346\265\201:", Q_NULLPTR));
+        btnSaveParams->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\345\217\202\346\225\260", Q_NULLPTR));
+        btnResetParams->setText(QApplication::translate("Widget", "\346\201\242\345\244\215\351\273\230\350\256\244", Q_NULLPTR));
+        btnImportParams->setText(QApplication::translate("Widget", "\345\257\274\345\205\245\345\217\202\346\225\260", Q_NULLPTR));
+        btnExportParams->setText(QApplication::translate("Widget", "\345\257\274\345\207\272\345\217\202\346\225\260", Q_NULLPTR));
+        Button_Temperature->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\346\270\251\345\272\246", Q_NULLPTR));
+        Button_Thickness->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\345\216\232\345\272\246", Q_NULLPTR));
+        Button_SampleDiameter->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\347\233\264\345\276\204", Q_NULLPTR));
+        Button_ProbeSpacing->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\351\227\264\350\267\235", Q_NULLPTR));
+        Button_FspCorrectionFactor->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\344\277\256\346\255\243\347\263\273\346\225\260", Q_NULLPTR));
+        Button_ab->setText(QApplication::translate("Widget", "\344\277\235\345\255\230ab", Q_NULLPTR));
+        Button_CurrErrorBound->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\350\257\257\345\267\256\350\214\203\345\233\264", Q_NULLPTR));
+        grpForwardData->setTitle(QApplication::translate("Widget", "\346\255\243\345\220\221\346\265\213\351\207\217\346\225\260\346\215\256", Q_NULLPTR));
+        grpReverseData->setTitle(QApplication::translate("Widget", "\345\217\215\345\220\221\346\265\213\351\207\217\346\225\260\346\215\256", Q_NULLPTR));
+        grpStatistics->setTitle(QApplication::translate("Widget", "\347\273\237\350\256\241\347\273\223\346\236\234", Q_NULLPTR));
+        lblAverageTitle->setText(QApplication::translate("Widget", "\345\271\263\345\235\207\347\224\265\351\230\273\347\216\207", Q_NULLPTR));
+        lblAverageValue->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblStdTitle->setText(QApplication::translate("Widget", "\346\240\207\345\207\206\345\267\256", Q_NULLPTR));
+        lblStdValue->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblFinalResistivityTitle->setText(QApplication::translate("Widget", "\346\234\200\347\273\210\347\224\265\351\230\273\347\216\207", Q_NULLPTR));
+        lblFinalResistivity->setText(QApplication::translate("Widget", "-- \316\251\302\267cm", Q_NULLPTR));
+        grpFileInfo->setTitle(QApplication::translate("Widget", "\346\226\207\344\273\266\344\277\241\346\201\257", Q_NULLPTR));
+        lblMeasureStartTimeTitle->setText(QApplication::translate("Widget", "\346\265\213\351\207\217\345\274\200\345\247\213\346\227\266\351\227\264", Q_NULLPTR));
+        lblMeasureStartTime->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblDataPathTitle->setText(QApplication::translate("Widget", "\346\225\260\346\215\256\344\277\235\345\255\230\350\267\257\345\276\204", Q_NULLPTR));
+        lblDataSavePath->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        btnOpenDataFolder->setText(QApplication::translate("Widget", "\346\211\223\345\274\200\346\225\260\346\215\256\346\226\207\344\273\266\345\244\271", Q_NULLPTR));
+        grpResultActions->setTitle(QApplication::translate("Widget", "\347\273\223\346\236\234\346\223\215\344\275\234", Q_NULLPTR));
+        btnExportCsv->setText(QApplication::translate("Widget", "\345\257\274\345\207\272 CSV", Q_NULLPTR));
+        btnExportExcel->setText(QApplication::translate("Widget", "\345\257\274\345\207\272 Excel", Q_NULLPTR));
+        btnCopyFinalResult->setText(QApplication::translate("Widget", "\345\244\215\345\210\266\346\234\200\347\273\210\347\273\223\346\236\234", Q_NULLPTR));
+        btnClearResult->setText(QApplication::translate("Widget", "\346\270\205\347\251\272\347\273\223\346\236\234", Q_NULLPTR));
+        grpPidDebug->setTitle(QApplication::translate("Widget", "PID \345\217\202\346\225\260", Q_NULLPTR));
+        Label_Name_Kp->setText(QApplication::translate("Widget", "Kp", Q_NULLPTR));
+        cin_Kp->setPlaceholderText(QApplication::translate("Widget", "Kp", Q_NULLPTR));
+        Label_Name_Ti->setText(QApplication::translate("Widget", "Ti", Q_NULLPTR));
+        cin_Ti->setPlaceholderText(QApplication::translate("Widget", "Ti", Q_NULLPTR));
+        Label_Name_Td->setText(QApplication::translate("Widget", "Td", Q_NULLPTR));
+        cin_Td->setPlaceholderText(QApplication::translate("Widget", "Td", Q_NULLPTR));
+        ToolButton_ControlAlgo->setText(QApplication::translate("Widget", "PID\347\256\227\346\263\225:\345\205\263\351\227\255", Q_NULLPTR));
+        grpVoltageDebug->setTitle(QApplication::translate("Widget", "\345\216\213\346\216\247\347\224\265\345\216\213\350\260\203\350\257\225", Q_NULLPTR));
+        lblControlVoltageDebugTitle->setText(QApplication::translate("Widget", "\346\216\247\345\210\266\347\224\265\345\216\213", Q_NULLPTR));
+        cin_ControlVoltage->setPlaceholderText(QApplication::translate("Widget", "0~3V", Q_NULLPTR));
+        Button_SendControlVoltage->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\346\216\247\345\210\266\347\224\265\345\216\213", Q_NULLPTR));
+        Button_ControlVoltage->setText(QApplication::translate("Widget", "\344\277\235\345\255\230\345\275\223\345\211\215\346\241\243\344\275\215\345\216\213\346\216\247", Q_NULLPTR));
+        grpManualCommand->setTitle(QApplication::translate("Widget", "\346\211\213\345\212\250\345\221\275\344\273\244", Q_NULLPTR));
+        Button_SendCurrentPosition->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\347\224\265\346\265\201\346\241\243\344\275\215", Q_NULLPTR));
+        Button_SendVoltageRange->setText(QApplication::translate("Widget", "\345\217\221\351\200\201\347\224\265\345\216\213\346\241\243\344\275\215", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("Widget", "\346\270\205\347\220\206\346\265\213\351\207\217\347\274\223\345\255\230", Q_NULLPTR));
+        grpCurrentReadDebug->setTitle(QApplication::translate("Widget", "\347\224\265\346\265\201\350\257\273\345\217\226\350\260\203\350\257\225", Q_NULLPTR));
         pushButton->setText(QApplication::translate("Widget", "\345\274\200\345\247\213\346\265\213\347\224\265\346\265\201", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("Widget", "\345\201\234\346\255\242\346\265\213\347\224\265\346\265\201", Q_NULLPTR));
-        Label_RE_Current->setText(QApplication::translate("Widget", "-", Q_NULLPTR));
-        Label_Name_Current_2->setText(QApplication::translate("Widget", "%", Q_NULLPTR));
-        Button_CurrPos->setText(QApplication::translate("Widget", "\347\224\265\346\265\201\346\241\243\344\275\215", Q_NULLPTR));
-        ToolButton_ControlAlgo->setText(QApplication::translate("Widget", "\346\227\240\347\224\265\346\265\201\351\227\255\347\216\257\350\260\203\350\212\202", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("Widget", "\345\274\200\345\247\213\346\265\213\347\224\265\346\265\201", Q_NULLPTR));
-        Button_SelCOM->setText(QApplication::translate("Widget", "COM", Q_NULLPTR));
-        Button_logText1_CLR->setText(QApplication::translate("Widget", "\346\270\205\351\231\244\n"
-"\346\227\245\345\277\227", Q_NULLPTR));
-        cin_Td->setText(QString());
-        Label_Name_Td->setText(QApplication::translate("Widget", "Td:", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Widget", "\347\224\265\346\265\201\347\233\221\346\265\213", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem = TableWidget_f->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem1 = TableWidget_f->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem2 = TableWidget_f->horizontalHeaderItem(2);
-        ___qtablewidgetitem2->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem3 = TableWidget_f->horizontalHeaderItem(3);
-        ___qtablewidgetitem3->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem4 = TableWidget_f->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem5 = TableWidget_f->horizontalHeaderItem(5);
-        ___qtablewidgetitem5->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem6 = TableWidget_f->horizontalHeaderItem(6);
-        ___qtablewidgetitem6->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        QTableWidgetItem *___qtablewidgetitem7 = TableWidget_f->horizontalHeaderItem(7);
-        ___qtablewidgetitem7->setText(QApplication::translate("Widget", "\346\226\260\345\273\272\345\210\227", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_54545), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
+        Label_Name_Current->setText(QApplication::translate("Widget", "\345\275\223\345\211\215\347\224\265\346\265\201", Q_NULLPTR));
+        Label_Current->setText(QApplication::translate("Widget", "-- A", Q_NULLPTR));
+        grpPidState->setTitle(QApplication::translate("Widget", "PID \347\212\266\346\200\201", Q_NULLPTR));
+        lblPidSpTitle->setText(QApplication::translate("Widget", "SP", Q_NULLPTR));
+        lblPidSp->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblPidPvTitle->setText(QApplication::translate("Widget", "PV", Q_NULLPTR));
+        lblPidPv->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblPidErrTitle->setText(QApplication::translate("Widget", "Err", Q_NULLPTR));
+        lblPidErr->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblPidUkTitle->setText(QApplication::translate("Widget", "uk", Q_NULLPTR));
+        lblPidUk->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblPidLastUkTitle->setText(QApplication::translate("Widget", "Last uk", Q_NULLPTR));
+        lblPidLastUk->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        Label_Name_Current_2->setText(QApplication::translate("Widget", "\345\256\236\346\265\213\347\224\265\346\265\201", Q_NULLPTR));
+        Label_RE_Current->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        grpCommDebug->setTitle(QApplication::translate("Widget", "\351\200\232\344\277\241\350\260\203\350\257\225", Q_NULLPTR));
+        Button_logText1_CLR->setText(QApplication::translate("Widget", "\346\270\205\347\251\272", Q_NULLPTR));
+        lblAckNackTitle->setText(QApplication::translate("Widget", "ACK/NACK", Q_NULLPTR));
+        lblAckNack->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
+        lblOperationDoneTitle->setText(QApplication::translate("Widget", "Operation Done", Q_NULLPTR));
+        lblOperationDone->setText(QApplication::translate("Widget", "--", Q_NULLPTR));
     } // retranslateUi
 
 };

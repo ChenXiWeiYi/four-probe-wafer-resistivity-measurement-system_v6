@@ -100,12 +100,18 @@ Widget::Widget(QWidget *parent)
     ui->TableWidget_f->setRowCount(500);
     ui->TableWidget_f->setColumnCount(10);
     ui->TableWidget_f->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->TableWidget_f->verticalHeader()->setDefaultSectionSize(28);
+    ui->TableWidget_f->setWordWrap(false);
+    ui->TableWidget_f->setAlternatingRowColors(true);
     for(int i = 0; i <= 9; i++){
         ui->TableWidget_f->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i+1)));
     }
     ui->TableWidget_r->setRowCount(500);
     ui->TableWidget_r->setColumnCount(10);
     ui->TableWidget_r->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->TableWidget_r->verticalHeader()->setDefaultSectionSize(28);
+    ui->TableWidget_r->setWordWrap(false);
+    ui->TableWidget_r->setAlternatingRowColors(true);
     for(int i = 0; i <= 9; i++){
         ui->TableWidget_r->setHorizontalHeaderItem(i, new QTableWidgetItem(QString::number(i+1)));
     }
@@ -148,6 +154,7 @@ Widget::Widget(QWidget *parent)
     initLineEditPlaceholder(ui->cin_FspCorrectionFactor, "输入探针修正系数");
 
     Init_Style_Button();
+    Reset_MeasureDisplay();
 }
 
 /**
@@ -267,6 +274,9 @@ void Widget::Init_PageNavigation(void)
         connect(clearDataButton, &QPushButton::clicked, this, [this](){
             ui->TableWidget_f->clearContents();
             ui->TableWidget_r->clearContents();
+            Buffer_MeasureValue_f.clear();
+            Buffer_MeasureValue_r.clear();
+            Reset_MeasureDisplay();
             ui->ProgressBar_MeasureProgress->setValue(0);
             ui->Label_MeasureProgress->setText("空闲");
             SetOptionalLabelText("lblMeasureState", "空闲");
@@ -277,6 +287,9 @@ void Widget::Init_PageNavigation(void)
         connect(clearResultButton, &QPushButton::clicked, this, [this](){
             ui->TableWidget_f->clearContents();
             ui->TableWidget_r->clearContents();
+            Buffer_MeasureValue_f.clear();
+            Buffer_MeasureValue_r.clear();
+            Reset_MeasureDisplay();
         });
     }
 }

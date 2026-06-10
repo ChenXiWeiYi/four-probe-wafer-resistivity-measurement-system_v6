@@ -15,6 +15,7 @@ void Widget::Process_Resistivity(double Voltage, double Current)
     Update_CorrectionFactor(Resistance);
 
     double Resistivity = Param_used.CorrectionFactor * Resistance;
+    Update_RealtimeMeasureDisplay(Voltage, Current, Resistance, Resistivity);
 
     AppendValueToFile(Voltage, VALUE_VOLTAGE);
     AppendValueToFile(Current, VALUE_CURRENT);

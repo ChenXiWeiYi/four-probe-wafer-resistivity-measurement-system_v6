@@ -20,6 +20,18 @@ build*/
 *.pro.user
 *.user
 *.autosave
+Wafer Resistivity Measurement System/config/Param.ini
+Wafer Resistivity Measurement System/config/Param_broken_*.ini
+Wafer Resistivity Measurement System/debug/config/
+Wafer Resistivity Measurement System/release/config/
+Wafer Resistivity Measurement System/debug/moc_*.cpp
+Wafer Resistivity Measurement System/debug/moc_*.h
+Wafer Resistivity Measurement System/release/moc_*.cpp
+Wafer Resistivity Measurement System/release/moc_*.h
+McuSimulator_Qt/.qmake.stash
+McuSimulator_Qt/Makefile*
+McuSimulator_Qt/debug/
+McuSimulator_Qt/release/
 
 # General
 *.log
